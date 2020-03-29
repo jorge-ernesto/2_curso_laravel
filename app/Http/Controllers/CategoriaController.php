@@ -34,7 +34,14 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* Obtenemos todo el request */
+        // return $request->all();
+
+        /* Validar request */
+        $request->validate([
+            'nombre'      => 'required|max:50',
+            'descripcion' => 'max:256'
+        ]);
     }
 
     /**
