@@ -15,10 +15,7 @@
                 </a>
                 <div class="collapse" id="aprendiendoLaravel" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        {{-- <a class="nav-link" href="{{ route('enlace-blog') }}">Blog</a>
-                        <a class="nav-link" href="{{ route('enlace-about') }}">About</a>
-                        <a class="nav-link" href="{{ route('enlace-nosotros') }}">Nosotros</a>
-                        <a class="nav-link" href="{{ route('notas.listar') }}">Notas</a> --}}
+                        <a class="nav-link" href="{{ route('categoria.index') }}">Categoria</a>                        
                     </nav>
                 </div>
                
