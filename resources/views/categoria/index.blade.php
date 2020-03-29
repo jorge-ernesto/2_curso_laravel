@@ -1,5 +1,9 @@
 @extends('layout.plantilla')
 
-@section('seccion-main')     
-    <h1>Categoria</h1>
+@section('seccion-main')    
+    
+    @foreach($dataCategoria as $key=>$value)
+        {{ $value->nombre }}
+    @endforeach
+
 @endsection

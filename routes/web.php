@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/* Ruta por defecto */
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 /* Categoria */
+Route::get('/', 'CategoriaController@index');
 Route::resource('/categoria', 'CategoriaController');

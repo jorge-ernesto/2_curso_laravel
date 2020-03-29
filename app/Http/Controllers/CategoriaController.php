@@ -4,36 +4,62 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App; //Recuperando modelos, App es el namespace
+use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
+
+/** 
+   Controladores
+ * Los basicos
+ * Controladores de recursos
+ * @link https://laravel.com/docs/7.x/controllers#resource-controllers
+ * 
+ * Los basicos
+ * Validación
+ * @link https://laravel.com/docs/7.x/validation#quick-writing-the-validation-logic
+ * 
+   Modelos
+ * ORM Elocuent
+ * Definiendo modelos
+ * @link https://laravel.com/docs/7.x/eloquent#defining-models
+ * 
+   DB
+ * Base de datos
+ * Ejecución de consultas SQL sin procesar
+ * @link https://laravel.com/docs/7.x/database#running-queries
+ * 
+ * Base de datos
+ * Recuperando Resultados
+ * @link https://laravel.com/docs/7.x/queries#retrieving-results
+ * 
+   App
+ * ORM Elocuent
+ * Recuperando modelos
+ * @link https://laravel.com/docs/7.x/eloquent#retrieving-models
+ * 
+ * ORM Elocuent
+ * Subconsultas avanzadas
+ * @link https://laravel.com/docs/7.x/eloquent#advanced-subqueries
+ */
+
 class CategoriaController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('categoria.index');
+{    
+    public function index(Request $request){        
+        if($request):
+            $searchText = $request->searchText;
+            $dataCategoria  = DB::table('categoria')
+                                    ->where('nombre', 'like', '%'.$searchText.'%')
+                                    ->where('condicion', '=', '1')
+                                    ->orderBy('idcategoria', 'desc')
+                                    ->paginate('7');
+            return view('categoria.index', compact('dataCategoria', 'searchText'));
+        endif;
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+ 
+    public function create(){
+        return view('categoria.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    
+    public function store(Request $request){
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -42,50 +68,46 @@ class CategoriaController extends Controller
             'nombre'      => 'required|max:50',
             'descripcion' => 'max:256'
         ]);
+
+        /* Guardamos categoria */
+        $categoriaNueva              = new App\Categoria;
+        $categoriaNueva->nombre      = $request->nombre;
+        $categoriaNueva->descripcion = $request->descripcion;
+        $categoriaNueva->condicion   = 1;
+        $categoriaNueva->save();        
+        return back()->with('mensaje', 'Categoria agregada');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function show($id){        
+        $dataCategoria = App\Categoria::findOrFail($id);
+        return view('categoria.show', compact('dataCategoria'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function edit($id){        
+        $dataCategoria = App\Categoria::findOrFail($id);
+        return view('categoria.edit', compact('dataCategoria'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+        /* Obtenemos todo el request */
+        // return $request->all();
+
+        /* Validar request */
+        $request->validate([
+            'nombre'      => 'required|max:50',
+            'descripcion' => 'max:256'
+        ]);
+
+        /* Guardamos categoria */
+        $categoriaActualizada              = App\Categoria::find($id);
+        $categoriaActualizada->nombre      = $request->nombre;
+        $categoriaActualizada->descripcion = $request->descripcion;
+        $categoriaActualizada->condicion   = 1;
+        $categoriaActualizada->save();        
+        return back()->with('mensaje', 'Categoria editada');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        
     }
 }
