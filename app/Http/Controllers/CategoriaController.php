@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
 
-/** 
+/**
    Controladores
  * Los basicos
  * Controladores de recursos
@@ -107,9 +107,15 @@ class CategoriaController extends Controller
     }
 
     public function destroy($id){
+        /* Cambiar estado de categoria */
         $categoriaActualizada = App\Categoria::findOrFail($id);
         $categoriaActualizada->condicion = 0;
-        $categoriaActualizada->update();    
+        $categoriaActualizada->update();
         return back()->with('mensaje_eliminado', 'Categoria eliminada');
+
+        /* Eliminar categoria */
+        $categoriaActualizada = App\Categoria::findOrFail($id);        
+        $categoriaActualizada->delete();
+        return back()->with('mensaje_eliminado', 'Categoria eliminada');        
     }
 }

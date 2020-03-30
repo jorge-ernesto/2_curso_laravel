@@ -18,7 +18,7 @@
                                 <th class="text-primary">nombre</th>
                                 <th class="text-primary">descripcion</th>
                                 <th class="text-primary">update</th>
-                                <th class="text-primary">dete</th>                                
+                                <th class="text-primary">delete</th>                                
                             </tr>
                         </thead>
                         <tfoot>
@@ -27,7 +27,7 @@
                                 <th class="text-primary">nombre</th>
                                 <th class="text-primary">descripcion</th>
                                 <th class="text-primary">update</th>
-                                <th class="text-primary">dete</th>                                
+                                <th class="text-primary">delete</th>                                
                             </tr>
                         </tfoot>
                         <tbody>
@@ -41,8 +41,9 @@
                                     <td>
                                         <a href="{{ route('categoria.edit', $value->idcategoria) }}" class="btn btn-warning btn-sm">Editar</a>                                        
                                     </td>
-                                    <td>
-                                        <a href="{{ route('categoria.destroy', $value->idcategoria) }}" class="btn btn-warning btn-sm">Eliminar</a>                                        
+                                    <td>                                        
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idcategoria }}">Eliminar</button>
+                                        @include('categoria.modal_delete')
                                     </td>
                                 </tr>                           
                             @endforeach
@@ -56,5 +57,5 @@
                 
             </div>
         </div>
-    </div>
+    </div>    
 @endsection

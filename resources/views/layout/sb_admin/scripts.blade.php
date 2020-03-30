@@ -8,3 +8,6 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 <script src="{{ asset('assets/demo/datatables-demo.js') }}"></script>
+
+{{-- Personalizado uwu --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
