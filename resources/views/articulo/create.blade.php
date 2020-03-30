@@ -15,9 +15,9 @@
                         <label class="col-form-label col-md-2">Categoría:</label> <!-- col-md-4 -->
                         <div class="col-md-5"> <!-- col-md-8 -->
                             <select name="categoria" class="form-control">
-                                @foreach ($dataCategoria as $item)
+                                @foreach($dataCategoria as $item)
                                     <option value="{{ $item->idcategoria }}">{{ $item->nombre }}</option>
-                                @endforeach                                                                
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -43,6 +43,15 @@
                         <label for="descripcion" class="col-form-label col-md-2">Descripción:</label>
                         <div class="col-md-5">
                             <input type="text" name="descripcion" class="form-control" value="{{ old('descripcion') }}">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="descripcion" class="col-form-label col-md-2">Descripción:</label>
+                        <div class="col-md-5">
+                            <div class="custom-file">
+                                <input type="file" name="imagen" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                              </div>
                         </div>
                     </div>
                     <h4>
