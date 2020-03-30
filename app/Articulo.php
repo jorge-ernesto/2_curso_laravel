@@ -11,8 +11,12 @@ class Articulo extends Model
     public $timestamps    = false;
 
     protected $fillable = [
+        "idcategoria",
+        "codigo",
         "nombre",
+        "stock",
         "descripcion",
-        "condicion"
+        "imagen",
+        "estado"
     ]; 
 }

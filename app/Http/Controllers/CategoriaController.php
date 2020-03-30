@@ -39,6 +39,12 @@ use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
  * ORM Elocuent
  * Subconsultas avanzadas
  * @link https://laravel.com/docs/7.x/eloquent#advanced-subqueries
+ * 
+   Comprobar data
+ * echo "<pre>";
+ * print_r($dataCategoria);
+ * echo "</pre>";
+ * die();
  */
 
 class CategoriaController extends Controller
