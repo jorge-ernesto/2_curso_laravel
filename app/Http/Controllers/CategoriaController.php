@@ -66,7 +66,7 @@ class CategoriaController extends Controller
         /* Validar request */
         $request->validate([
             'nombre'      => 'required|max:50',
-            'descripcion' => 'max:256'
+            'descripcion' => 'required|max:256'
         ]);
 
         /* Guardamos categoria */
@@ -95,19 +95,21 @@ class CategoriaController extends Controller
         /* Validar request */
         $request->validate([
             'nombre'      => 'required|max:50',
-            'descripcion' => 'max:256'
+            'descripcion' => 'required|max:256'
         ]);
 
         /* Guardamos categoria */
-        $categoriaActualizada              = App\Categoria::find($id);
+        $categoriaActualizada              = App\Categoria::findOrFail($id);
         $categoriaActualizada->nombre      = $request->nombre;
-        $categoriaActualizada->descripcion = $request->descripcion;
-        $categoriaActualizada->condicion   = 1;
-        $categoriaActualizada->save();        
+        $categoriaActualizada->descripcion = $request->descripcion;        
+        $categoriaActualizada->update();        
         return back()->with('mensaje', 'Categoria editada');
     }
 
     public function destroy($id){
-        
+        $categoriaActualizada = App\Categoria::findOrFail($id);
+        $categoriaActualizada->condicion = 0;
+        $categoriaActualizada->update();    
+        return back()->with('mensaje_eliminado', 'Categoria eliminada');
     }
 }
