@@ -20,4 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 /* Categoria */
 Route::get('/', 'CategoriaController@index');
-Route::resource('/categoria', 'CategoriaController');
+Route::resources([
+    '/categoria' => 'categoriaController',
+    '/articulo' => 'articuloController'
+]);

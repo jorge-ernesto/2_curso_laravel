@@ -1,9 +1,12 @@
+<!-- $('#modal_delete_1').modal('show'); -->
+<!-- animated fadeIn -->
+
 <!-- Modal -->
-<div class="modal fade animated fadeIn" id="modal_delete_{{ $value->idcategoria }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade animated fadeIn" id="modal_delete_{{ $value->idcategoria }}">
     <div class="modal-dialog" role="document">                    
         <div class="modal-content">
             <div class="modal-header">                
-                <h5 class="modal-title" id="staticBackdropLabel">Eliminar</h5>
+                <h5 class="modal-title">Eliminar</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
