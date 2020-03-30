@@ -3,14 +3,15 @@
 @section('seccion-main')    
     <div class="container-fluid">
         <h1 class="mt-4">Categorias
-            <a href="{{ route('categoria.create') }}" class="btn btn-primary">Crear</a>    
+            <a href="{{ route('categoria.create') }}" class="btn btn-primary">Crear</a>              
         </h1>        
         <div class="card mb-4">
             <div class="card-header"><i class="fas fa-table mr-1"></i>Categorias</div>
             <div class="card-body">
-
+                
+                @include('categoria.search')  
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
                             <tr>
                                 <th class="text-primary">id</th>
@@ -47,6 +48,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-between">
+                        Showing {{ $dataCategoria->firstItem() }} to {{ $dataCategoria->lastItem() }} of {{ $dataCategoria->total() }} entries        
+                        {{ $dataCategoria->links() }}
+                    </div>
                 </div>
                 
             </div>

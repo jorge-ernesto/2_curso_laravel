@@ -6,8 +6,7 @@
         <h4>id: {{ $dataCategoria['idcategoria'] }}</h4>
         <h4>nombre: {{ $dataCategoria['nombre'] }}</h4>
         <h4>descripcion: {{ $dataCategoria['descripcion'] }}</h4>
-        <h4>created_at: {{ $dataCategoria['created_at'] }}</h4>
-        <h4>updated_at: {{ $dataCategoria['updated_at'] }}</h4>
+        <h4>condicion: {{ $dataCategoria['condicion'] }}</h4>        
         <h2>
             <a class="btn btn-primary" href="{{ route('categoria.index') }}">Atras</a>    
         </h2>

@@ -49,8 +49,8 @@ class CategoriaController extends Controller
             $dataCategoria  = DB::table('categoria')
                                     ->where('nombre', 'like', '%'.$searchText.'%')
                                     ->where('condicion', '=', '1')
-                                    ->orderBy('idcategoria', 'desc')
-                                    ->paginate('7');
+                                    ->orderBy('idcategoria', 'asc')
+                                    ->paginate('10');
             return view('categoria.index', compact('dataCategoria', 'searchText'));
         endif;
     }
