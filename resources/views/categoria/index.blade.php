@@ -9,6 +9,8 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Categorias</div>
             <div class="card-body">
                 
+                @include('categoria.alerts')
+                                
                 @include('categoria.search')  
                 <div class="table-responsive">
                     <table class="table table-bordered" width="100%" cellspacing="0"> <!-- id="dataTable" -->
