@@ -2,14 +2,14 @@
 
 @section('seccion-main')    
     <div class="container-fluid">
-        <h1 class="mt-4">Personas</h1>        
+        <h1 class="mt-4">Clientes</h1>        
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Personas</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Clientes</div>
             <div class="card-body">
 
-                @include('persona.alerts')
+                @include('cliente.alerts')
 
-                <form method="POST" action="{{ route('persona.update', $dataPersona['idpersona']) }}">
+                <form method="POST" action="{{ route('cliente.update', $dataPersona['idpersona']) }}">
                     @method('PUT')
                     @csrf
                     <div class="row form-group">
@@ -65,8 +65,8 @@
                         </div>
                     </div>
                     <h4>
-                        <button type="submit" class="btn btn-primary">Crear Persona</button>                        
-                        <a href="{{ route('persona.index') }}" class="btn btn-primary">Atras</a>    
+                        <button type="submit" class="btn btn-primary">Crear Cliente</button>                        
+                        <a href="{{ route('cliente.index') }}" class="btn btn-primary">Atras</a>    
                     </h4>
                 </form>                    
 

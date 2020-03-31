@@ -16,7 +16,7 @@
             </div>
             <div class="modal-footer">
 
-                <form method="POST" action="{{ route('persona.destroy', $value->idpersona) }}">
+                <form method="POST" action="{{ route('proveedor.destroy', $value->idpersona) }}">
                     @method('DELETE')
                     @csrf
                     <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>                

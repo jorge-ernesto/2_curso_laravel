@@ -2,16 +2,16 @@
 
 @section('seccion-main')    
     <div class="container-fluid">
-        <h1 class="mt-4">Personas
-            <a href="{{ route('persona.create') }}" class="btn btn-primary">Crear</a>              
+        <h1 class="mt-4">Clientes
+            <a href="{{ route('cliente.create') }}" class="btn btn-primary">Crear</a>              
         </h1>        
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Personas</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Clientes</div>
             <div class="card-body">
                 
-                @include('persona.alerts')
+                @include('cliente.alerts')
                                 
-                @include('persona.search')  
+                @include('cliente.search')  
                 <div class="table-responsive">
                     <table class="table table-bordered" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
@@ -46,7 +46,7 @@
                             @foreach($dataPersona as $key=>$value)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('persona.show', $value->idpersona) }}">{{ $value->idpersona }}</a>                                        
+                                        <a href="{{ route('cliente.show', $value->idpersona) }}">{{ $value->idpersona }}</a>                                        
                                     </td>
                                     <td>{{ $value->tipo_persona }}</td>
                                     <td>{{ $value->nombre }}</td>
@@ -56,11 +56,11 @@
                                     <td>{{ $value->telefono }}</td>
                                     <td>{{ $value->email }}</td>
                                     <td>
-                                        <a href="{{ route('persona.edit', $value->idpersona) }}" class="btn btn-warning btn-sm">Editar</a>                                        
+                                        <a href="{{ route('cliente.edit', $value->idpersona) }}" class="btn btn-warning btn-sm">Editar</a>                                        
                                     </td>
                                     <td>                                        
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idpersona }}">Eliminar</button>
-                                        @include('persona.modal_delete')
+                                        @include('cliente.modal_delete')
                                     </td>
                                 </tr>                           
                             @endforeach

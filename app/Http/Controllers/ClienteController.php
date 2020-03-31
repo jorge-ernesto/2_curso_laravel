@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
 
-class PersonaController extends Controller
+class ClienteController extends Controller
 {
     public function index(Request $request){
         if($request):
@@ -17,14 +17,14 @@ class PersonaController extends Controller
                                 ->orWhere('num_documento', 'LIKE', '%'.$searchText.'%')->where('tipo_persona', '=', 'Cliente')
                                 ->orderBy('idpersona', 'ASC')
                                 ->paginate('10');
-            return view('persona.index', compact('dataPersona', 'searchText'));
+            return view('cliente.index', compact('dataPersona', 'searchText'));
         endif;
     }
 
     public function create(){
         $dataDocumento  = DB::table('documento')
                             ->get();
-        return view('persona.create', compact('dataDocumento'));
+        return view('cliente.create', compact('dataDocumento'));
     }
 
     public function store(Request $request){
@@ -52,19 +52,19 @@ class PersonaController extends Controller
         $personaNueva->telefono       = $request->telefono;
         $personaNueva->email          = $request->email;
         $personaNueva->save();        
-        return back()->with('mensaje', 'Persona agregada');
+        return back()->with('mensaje', 'Cliente agregado');
     }
 
     public function show($id){
         $dataPersona = App\Persona::findOrFail($id);
-        return view('persona.show', compact('dataPersona'));
+        return view('cliente.show', compact('dataPersona'));
     }
 
     public function edit($id){
         $dataDocumento  = DB::table('documento')
                             ->get();
         $dataPersona = App\Persona::findOrFail($id);
-        return view('persona.edit', compact('dataDocumento', 'dataPersona'));
+        return view('cliente.edit', compact('dataDocumento', 'dataPersona'));
     }
 
     public function update(Request $request, $id){
@@ -92,13 +92,13 @@ class PersonaController extends Controller
         $personaActualizada->telefono       = $request->telefono;
         $personaActualizada->email          = $request->email;
         $personaActualizada->update();        
-        return back()->with('mensaje', 'Persona editada');
+        return back()->with('mensaje', 'Cliente editado');
     }
 
     public function destroy($id){
         /* Eliminar persona */
         $personaActualizada = App\Persona::findOrFail($id);        
         $personaActualizada->delete();
-        return back()->with('mensaje_eliminado', 'Persona eliminada'); 
+        return back()->with('mensaje_eliminado', 'Cliente eliminado'); 
     }
 }

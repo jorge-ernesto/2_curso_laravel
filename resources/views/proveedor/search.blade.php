@@ -1,4 +1,4 @@
-<form method="GET" action="{{ route('persona.index') }}">
+<form method="GET" action="{{ route('proveedor.index') }}">
     <div class="form-group">
         <div class="input-group">
             <input type="text" class="form-control" name="searchText" placeholder="Buscar" value="{{ $searchText }}">        

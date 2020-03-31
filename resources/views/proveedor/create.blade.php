@@ -2,20 +2,20 @@
 
 @section('seccion-main')    
     <div class="container-fluid">
-        <h1 class="mt-4">Personas</h1>        
+        <h1 class="mt-4">Proveedores</h1>        
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Personas</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Proveedores</div>
             <div class="card-body">
 
-                @include('persona.alerts')
+                @include('proveedor.alerts')
 
-                <form method="POST" action="{{ route('persona.store') }}">
+                <form method="POST" action="{{ route('proveedor.store') }}">
                     @csrf
                     <div class="row form-group">
                         <label for="nombre" class="col-form-label col-md-2">Tipo persona:</label>
                         <div class="col-md-5">
                             <select name="tipo_persona" class="form-control">
-                                <option value="Cliente" selected>Cliente</option>
+                                <option value="Proveedor" selected>Proveedor</option>
                             </select>
                         </div>
                     </div>
@@ -60,8 +60,8 @@
                         </div>
                     </div>
                     <h4>
-                        <button type="submit" class="btn btn-primary">Crear Persona</button>                        
-                        <a href="{{ route('persona.index') }}" class="btn btn-primary">Atras</a>    
+                        <button type="submit" class="btn btn-primary">Crear Proveedor</button>                        
+                        <a href="{{ route('proveedor.index') }}" class="btn btn-primary">Atras</a>    
                     </h4>
                 </form>                    
 

@@ -23,5 +23,6 @@ Route::get('/', 'CategoriaController@index');
 Route::resources([
     'categoria' => 'CategoriaController',
     'articulo' => 'ArticuloController',
-    'persona' => 'PersonaController'
+    'cliente' => 'ClienteController',
+    'proveedor' => 'ProveedorController'
 ]);
