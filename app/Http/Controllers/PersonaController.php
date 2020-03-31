@@ -10,7 +10,15 @@ use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
 class PersonaController extends Controller
 {
     public function index(){
-
+        if($request):
+            $searchText = $request->searchText;
+            $dataPersona = DB::table('persona')
+                                ->where('nombre', 'LIKE', '%'.$searchText.'%')->where('tipo_persona', '=', 'Cliente')
+                                ->orWhere('num_documento', 'LIKE', '%'.$searchText.'%')->where('tipo_persona', '=', 'Cliente')
+                                ->orderBy('idpersona', 'ASC')
+                                ->paginate('10');
+            return view('articulo.index', compact('dataArticulo', 'searchText'));
+        endif;
     }
 
     public function create(){

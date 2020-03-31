@@ -53,9 +53,9 @@ class CategoriaController extends Controller
         if($request):
             $searchText = $request->searchText;
             $dataCategoria  = DB::table('categoria')
-                                    ->where('nombre', 'like', '%'.$searchText.'%')
+                                    ->where('nombre', 'LIKE', '%'.$searchText.'%')
                                     ->where('condicion', '=', '1')
-                                    ->orderBy('idcategoria', 'asc')
+                                    ->orderBy('idcategoria', 'ASC')
                                     ->paginate('10');
             return view('categoria.index', compact('dataCategoria', 'searchText'));
         endif;
