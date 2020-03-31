@@ -53,16 +53,22 @@
                                     <td>{{ $value->nombre }}</td>
                                     <td>{{ $value->stock }}</td>
                                     <td>{{ $value->descripcion }}</td>
+                                    <td><img src="{{ asset('imagenes/articulos/' . $value->imagen) }}" alt="" width="100"></td>
                                     <td>
-                                        <img src="{{ asset('imagenes/articulos/' . $value->imagen) }}" alt="" width="100">
+                                        @if( $value->estado == "Activo" )
+                                            <span class="badge badge-primary">{{ $value->estado }}</span>
+                                        @else
+                                            <span class="badge badge-danger">{{ $value->estado }}</span>
+                                        @endif
                                     </td>
-                                    <td>{{ $value->estado }}</td>
-                                    <td>
-                                        <a href="{{ route('articulo.edit', $value->idarticulo) }}" class="btn btn-warning btn-sm">Editar</a>                                        
-                                    </td>
-                                    <td>                                        
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idarticulo }}">Eliminar</button>
-                                        @include('articulo.modal_delete')
+                                    <td><a href="{{ route('articulo.edit', $value->idarticulo) }}" class="btn btn-warning btn-sm">Editar</a></td>
+                                    <td>    
+                                        @if( $value->estado == "Activo" )                                    
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idarticulo }}">Desactivar</button>
+                                        @else
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_restore_{{ $value->idarticulo }}">Activar</button>
+                                        @endif                                        
+                                        @include('articulo.modal_delete_restore')
                                     </td>
                                 </tr>                           
                             @endforeach

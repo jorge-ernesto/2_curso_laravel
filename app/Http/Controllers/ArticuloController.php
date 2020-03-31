@@ -16,7 +16,7 @@ class ArticuloController extends Controller
                                     ->join('categoria as c', 'a.idcategoria', '=', 'c.idcategoria')
                                     ->select('a.idarticulo', 'c.nombre as categoria', 'a.codigo', 'a.nombre', 'a.stock', 'a.descripcion', 'a.imagen', 'a.estado')                                                                                                                                                                                    
                                     ->where('a.codigo', 'like', '%'.$searchText.'%')
-                                    ->orWhere('a.codigo', 'like', '%'.$searchText.'%')                                                                                                                                                                                
+                                    ->orWhere('a.nombre', 'like', '%'.$searchText.'%')                                                                                                                                                                                
                                     ->orderBy('idarticulo', 'asc')
                                     ->paginate('10');
             return view('articulo.index', compact('dataArticulo', 'searchText'));
@@ -107,12 +107,22 @@ class ArticuloController extends Controller
         return back()->with('mensaje', 'Articulo editado');
     }
 
-    public function destroy($id){
+    public function destroy(Request $request, $id){
+        /* Obtenemos todo el request */
+        // return $request->all();
+
         /* Cambiar estado de articulo */
-        $articuloActualizado = App\Articulo::findOrFail($id);
-        $articuloActualizado->estado = 'Inactivo';
-        $articuloActualizado->update();
-        return back()->with('mensaje_eliminado', 'Articulo eliminado');
+        if($request->action == "delete"):
+            $articuloActualizado = App\Articulo::findOrFail($id);
+            $articuloActualizado->estado = 'Inactivo';
+            $articuloActualizado->update();
+            return back()->with('mensaje_eliminado', 'Articulo desactivado');
+        elseif($request->action == "restore"):
+            $articuloActualizado = App\Articulo::findOrFail($id);
+            $articuloActualizado->estado = 'Activo';
+            $articuloActualizado->update();
+            return back()->with('mensaje', 'Articulo activado');
+        endif;        
 
         /* Eliminar articulo */
         $articuloActualizado = App\Articulo::findOrFail($id);        
