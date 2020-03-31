@@ -71,8 +71,8 @@ class CategoriaController extends Controller
 
         /* Validar request */
         $request->validate([
-            'nombre'      => 'required|max:50',
-            'descripcion' => 'required|max:256'
+            "nombre"      => "required|max:50",
+            "descripcion" => "required|max:256"
         ]);
 
         /* Guardamos categoria */
@@ -100,8 +100,8 @@ class CategoriaController extends Controller
 
         /* Validar request */
         $request->validate([
-            'nombre'      => 'required|max:50',
-            'descripcion' => 'required|max:256'
+            "nombre"      => "required|max:50",
+            "descripcion" => "required|max:256"
         ]);
 
         /* Guardamos categoria */

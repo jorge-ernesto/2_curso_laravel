@@ -14,5 +14,5 @@ class Categoria extends Model
         "nombre",
         "descripcion",
         "condicion"
-    ];    
+    ];
 }
