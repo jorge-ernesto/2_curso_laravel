@@ -15,8 +15,8 @@
                 </a>
                 <div class="collapse" id="aprendiendoLaravel" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('categoria.index') }}">Categoria</a>                        
-                        <a class="nav-link" href="{{ route('articulo.index') }}">Articulo</a>                        
+                        <a class="nav-link" href="{{ route('categoria.index') }}">Categoría</a>                        
+                        <a class="nav-link" href="{{ route('articulo.index') }}">Artículo</a>                        
                         <a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a>                        
                         <a class="nav-link" href="{{ route('proveedor.index') }}">Proveedor</a>                        
                     </nav>

@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="nombre" class="col-form-label col-md-2">Codigo:</label>
+                        <label for="nombre" class="col-form-label col-md-2">Código:</label>
                         <div class="col-md-5">
                             <input type="text" name="codigo" class="form-control" value="{{ old('codigo') }}">
                         </div>

@@ -2,9 +2,9 @@
 
 @section('seccion-main')    
     <div class="container-fluid">
-        <h1 class="mt-4">Articulos</h1>        
+        <h1 class="mt-4">Artículos</h1>        
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Articulos</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Artículos</div>
             <div class="card-body">
 
                 @include('articulo.alerts')
@@ -59,7 +59,7 @@
                               </div>
                         </div>
                         @if($dataArticulo['imagen'] != "")
-                            <img src="{{ asset('imagenes/articulos/'.$dataArticulo['imagen']) }}" alt="" width="100" style="position: relative; top: -62px!important;">
+                            <img src="{{ asset('imagenes/Artículos/'.$dataArticulo['imagen']) }}" alt="" width="100" style="position: relative; top: -62px!important;">
                         @endif
                     </div>                    
                     <h4>
