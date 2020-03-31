@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 /* Categoria */
 Route::get('/', 'CategoriaController@index');
 Route::resources([
-    '/categoria' => 'categoriaController',
-    '/articulo' => 'articuloController'
+    'categoria' => 'CategoriaController',
+    'articulo' => 'ArticuloController',
+    'persona' => 'PersonaController'
 ]);

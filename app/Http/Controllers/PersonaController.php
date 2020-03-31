@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
 
 class PersonaController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         if($request):
             $searchText = $request->searchText;
             $dataPersona = DB::table('persona')
@@ -17,12 +17,12 @@ class PersonaController extends Controller
                                 ->orWhere('num_documento', 'LIKE', '%'.$searchText.'%')->where('tipo_persona', '=', 'Cliente')
                                 ->orderBy('idpersona', 'ASC')
                                 ->paginate('10');
-            return view('articulo.index', compact('dataArticulo', 'searchText'));
+            return view('persona.index', compact('dataPersona', 'searchText'));
         endif;
     }
 
     public function create(){
-        
+        return view('persona.create');
     }
 
     public function store(Request $request){
@@ -39,14 +39,28 @@ class PersonaController extends Controller
             "telefono"       => "max:15",
             "email"          => "max:50"
         ]);
+
+        /* Guardamos persona */
+        $personaNueva                 = new App\Persona;
+        $personaNueva->tipo_persona   = "Cliente";
+        $personaNueva->nombre         = $request->nombre;
+        $personaNueva->tipo_documento = $request->tipo_documento;
+        $personaNueva->num_documento  = $request->num_documento;
+        $personaNueva->direccion      = $request->direccion;
+        $personaNueva->telefono       = $request->telefono;
+        $personaNueva->email          = $request->email;
+        $personaNueva->save();        
+        return back()->with('mensaje', 'Persona agregada');
     }
 
     public function show($id){
-        
+        $dataPersona = App\Persona::findOrFail($id);
+        return view('persona.show', compact('dataPersona'));
     }
 
     public function edit($id){
-        
+        $dataPersona = App\Persona::findOrFail($id);
+        return view('persona.edit', compact('dataPersona'));
     }
 
     public function update(Request $request, $id){
@@ -63,9 +77,24 @@ class PersonaController extends Controller
             "telefono"       => "max:15",
             "email"          => "max:50"
         ]);
+
+        /* Guardamos persona */
+        $personaActualizada                 = App\Persona::findOrFail($id);
+        $personaActualizada->tipo_persona   = "Cliente";
+        $personaActualizada->nombre         = $request->nombre;
+        $personaActualizada->tipo_documento = $request->tipo_documento;
+        $personaActualizada->num_documento  = $request->num_documento;
+        $personaActualizada->direccion      = $request->direccion;
+        $personaActualizada->telefono       = $request->telefono;
+        $personaActualizada->email          = $request->email;
+        $personaActualizada->update();        
+        return back()->with('mensaje', 'Persona editada');
     }
 
     public function destroy($id){
-        
+        /* Eliminar persona */
+        $personaActualizada = App\Persona::findOrFail($id);        
+        $personaActualizada->delete();
+        return back()->with('mensaje_eliminado', 'Persona eliminada'); 
     }
 }
