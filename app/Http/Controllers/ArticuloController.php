@@ -41,7 +41,7 @@ class ArticuloController extends Controller
             "nombre"      => "required|max:100",
             "stock"       => "required|numeric",
             "descripcion" => "required|max:512", 
-            "imagen"      => "mimes:jpeg,bmp,png"
+            "imagen"      => "mimes:jpeg,jpg,bmp,png"
         ]);
 
         /* Guardamos articulo */
@@ -52,11 +52,11 @@ class ArticuloController extends Controller
         $articuloNuevo->stock       = $request->stock;
         $articuloNuevo->descripcion = $request->descripcion;                
         /* Imagen */
-        if(Input::hasFile('imagen')):
-            $file = Input::file('imagen');
+        if($request->hasFile('imagen')):
+            $file = $request->file('imagen');
             $file->move(public_path().'/imagenes/articulos/', $file->getClientOriginalName());
             $articuloNuevo->imagen = $file->getClientOriginalName();
-        endif;                
+        endif;
         $articuloNuevo->estado      = 'Activo';
         $articuloNuevo->save();        
         return back()->with('mensaje', 'Articulo agregado');
@@ -86,23 +86,23 @@ class ArticuloController extends Controller
             "nombre"      => "required|max:100",
             "stock"       => "required|numeric",
             "descripcion" => "required|max:512", 
-            "imagen"      => "mimes:jpeg,bmp,png"
+            "imagen"      => "mimes:jpeg,jpg,bmp,png"
         ]);
 
         /* Guardamos articulo */
-        $articuloActualizado              = new App\Articulo;
+        $articuloActualizado              = App\Articulo::findOrFail($id);
         $articuloActualizado->idcategoria = $request->idcategoria;
         $articuloActualizado->codigo      = $request->codigo;
         $articuloActualizado->nombre      = $request->nombre;
         $articuloActualizado->stock       = $request->stock;
         $articuloActualizado->descripcion = $request->descripcion;                
         /* Imagen */
-        if(Input::hasFile('imagen')):
-            $file = Input::file('imagen');
+        if($request->hasFile('imagen')):
+            $file = $request->file('imagen');
             $file->move(public_path().'/imagenes/articulos/', $file->getClientOriginalName());
             $articuloActualizado->imagen = $file->getClientOriginalName();
-        endif;                
-        $articuloActualizado->estado      = 'Activo';
+        endif;
+        $articuloActualizado->estado = 'Activo';
         $articuloActualizado->update();        
         return back()->with('mensaje', 'Articulo editado');
     }

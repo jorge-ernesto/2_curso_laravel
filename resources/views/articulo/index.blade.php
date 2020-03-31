@@ -2,11 +2,11 @@
 
 @section('seccion-main')    
     <div class="container-fluid">
-        <h1 class="mt-4">Articulos
+        <h1 class="mt-4">Artículos
             <a href="{{ route('articulo.create') }}" class="btn btn-primary">Crear</a>              
         </h1>        
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Articulos</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Artículos</div>
             <div class="card-body">
                 
                 @include('articulo.alerts')

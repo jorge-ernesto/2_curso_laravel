@@ -2,19 +2,19 @@
 
 @section('seccion-main')    
     <div class="container-fluid">
-        <h1 class="mt-4">Articulos</h1>        
+        <h1 class="mt-4">Artículos</h1>        
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Articulos</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Artículos</div>
             <div class="card-body">
 
                 @include('articulo.alerts')
 
-                <form method="POST" action="{{ route('articulo.store') }}">
+                <form method="POST" action="{{ route('articulo.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row form-group">
-                        <label class="col-form-label col-md-2">Categoría:</label> <!-- col-md-4 -->
-                        <div class="col-md-5"> <!-- col-md-8 -->
-                            <select name="categoria" class="form-control">
+                        <label class="col-form-label col-md-2">Categoría:</label>
+                        <div class="col-md-5">
+                            <select name="idcategoria" class="form-control">
                                 @foreach($dataCategoria as $item)
                                     <option value="{{ $item->idcategoria }}">{{ $item->nombre }}</option>
                                 @endforeach
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="nombre" class="col-form-label col-md-2">Código:</label>
+                        <label for="nombre" class="col-form-label col-md-2">Codigo:</label>
                         <div class="col-md-5">
                             <input type="text" name="codigo" class="form-control" value="{{ old('codigo') }}">
                         </div>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="descripcion" class="col-form-label col-md-2">Descripción:</label>
+                        <label for="descripcion" class="col-form-label col-md-2">Imagen:</label>
                         <div class="col-md-5">
                             <div class="custom-file">
                                 <input type="file" name="imagen" class="custom-file-input" id="customFile">
@@ -55,11 +55,9 @@
                         </div>
                     </div>
                     <h4>
-                        <button type="submit" id="crear" class="btn btn-primary">Crear Categoría</button>                        
+                        <button type="submit" class="btn btn-primary">Crear Artículo</button>                        
                         <a href="{{ route('articulo.index') }}" class="btn btn-primary">Atras</a>    
                     </h4>
-
-                    <input type="hidden" name="id" class="form-control" value="">
                 </form>                    
 
             </div>

@@ -24,11 +24,9 @@
                         </div>
                     </div>
                     <h4>
-                        <button type="submit" id="crear" class="btn btn-primary">Crear Categoría</button>                        
+                        <button type="submit" class="btn btn-primary">Crear Categoria</button>                        
                         <a href="{{ route('categoria.index') }}" class="btn btn-primary">Atras</a>    
                     </h4>
-
-                    <input type="hidden" name="id" class="form-control" value="">
                 </form>                    
 
             </div>
