@@ -22,7 +22,9 @@ class PersonaController extends Controller
     }
 
     public function create(){
-        return view('persona.create');
+        $dataDocumento  = DB::table('documento')
+                            ->get();
+        return view('persona.create', compact('dataDocumento'));
     }
 
     public function store(Request $request){
@@ -37,7 +39,7 @@ class PersonaController extends Controller
             "num_documento"  => "required|max:15",
             "direccion"      => "max:70",
             "telefono"       => "max:15",
-            "email"          => "max:50"
+            "email"          => "max:50|email"
         ]);
 
         /* Guardamos persona */
@@ -59,8 +61,10 @@ class PersonaController extends Controller
     }
 
     public function edit($id){
+        $dataDocumento  = DB::table('documento')
+                            ->get();
         $dataPersona = App\Persona::findOrFail($id);
-        return view('persona.edit', compact('dataPersona'));
+        return view('persona.edit', compact('dataDocumento', 'dataPersona'));
     }
 
     public function update(Request $request, $id){

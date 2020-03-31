@@ -46,7 +46,7 @@
                             @foreach($dataArticulo as $key=>$value)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('articulo.show', $value->idarticulo) }}">{{ $value->idarticulo }}</a>                                        
+                                        <a href="{{ route('articulo.show', $value->idarticulo) }}">{{ $value->idarticulo }}</a>
                                     </td>
                                     <td>{{ $value->categoria }}</td>
                                     <td>{{ $value->codigo }}</td>
