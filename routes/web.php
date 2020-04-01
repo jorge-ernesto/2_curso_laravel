@@ -31,10 +31,7 @@ Route::resources([
     'ingreso' => 'IngresoController'
 ]);
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
+//Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
