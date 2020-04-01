@@ -24,5 +24,6 @@ Route::resources([
     'categoria' => 'CategoriaController',
     'articulo' => 'ArticuloController',
     'cliente' => 'ClienteController',
-    'proveedor' => 'ProveedorController'
+    'proveedor' => 'ProveedorController',
+    'ingreso' => 'IngresoController'
 ]);

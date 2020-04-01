@@ -45,6 +45,8 @@ use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
  * print_r($dataCategoria);
  * echo "</pre>";
  * die();
+ * 
+ * ->dd();
  */
 
 class CategoriaController extends Controller

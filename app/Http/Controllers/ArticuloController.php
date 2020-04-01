@@ -24,7 +24,7 @@ class ArticuloController extends Controller
     }
     
     public function create(){
-        $dataCategoria  = DB::table('categoria')
+        $dataCategoria = DB::table('categoria')
                             ->where('condicion', '=', '1')
                             ->get();
         return view('articulo.create', compact('dataCategoria'));
@@ -68,7 +68,7 @@ class ArticuloController extends Controller
     }
 
     public function edit($id){        
-        $dataCategoria  = DB::table('categoria')
+        $dataCategoria = DB::table('categoria')
                             ->where('condicion', '=', '1')
                             ->get();
         $dataArticulo = App\Articulo::findOrFail($id);        
