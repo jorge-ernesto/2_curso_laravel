@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App; //Recuperando modelos, App es el namespace
-use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
+use Illuminate\Support\Facades\DB; //Recuperando resultados
 use Illuminate\Support\Carbon;
 // use Illuminate\Http\Response;
 // use Illuminate\Http\Collection;

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App; //Recuperando modelos, App es el namespace
-use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
+use Illuminate\Support\Facades\DB; //Recuperando resultados
 
 /**
    Controladores
@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
  * @link https://laravel.com/docs/7.x/database#running-queries
  * 
  * Base de datos
- * Recuperando Resultados
+ * Recuperando resultados
  * @link https://laravel.com/docs/7.x/queries#retrieving-results
  * 
    Comprobar data
