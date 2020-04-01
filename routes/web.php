@@ -17,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 /* Categoria */
-Route::get('/', 'CategoriaController@index');
+// Route::get('/', 'CategoriaController@index');
 Route::resources([
     'categoria' => 'CategoriaController',
     'articulo' => 'ArticuloController',
@@ -27,3 +30,7 @@ Route::resources([
     'proveedor' => 'ProveedorController',
     'ingreso' => 'IngresoController'
 ]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
