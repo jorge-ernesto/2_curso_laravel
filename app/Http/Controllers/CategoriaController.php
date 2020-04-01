@@ -22,6 +22,11 @@ use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
  * Definiendo modelos
  * @link https://laravel.com/docs/7.x/eloquent#defining-models
  * 
+   App
+ * ORM Elocuent
+ * Recuperando modelos
+ * @link https://laravel.com/docs/7.x/eloquent#retrieving-models
+ * 
    DB
  * Base de datos
  * Ejecución de consultas SQL sin procesar
@@ -30,15 +35,6 @@ use Illuminate\Support\Facades\DB; //Ejecución de consultas SQL sin procesar
  * Base de datos
  * Recuperando Resultados
  * @link https://laravel.com/docs/7.x/queries#retrieving-results
- * 
-   App
- * ORM Elocuent
- * Recuperando modelos
- * @link https://laravel.com/docs/7.x/eloquent#retrieving-models
- * 
- * ORM Elocuent
- * Subconsultas avanzadas
- * @link https://laravel.com/docs/7.x/eloquent#advanced-subqueries
  * 
    Comprobar data
  * echo "<pre>";
