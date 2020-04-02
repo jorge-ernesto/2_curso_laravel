@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\User; //Recuperando modelos, App es el namespace
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,3 +43,8 @@ Auth::routes([
             ]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/* Pruebas */
+Route::get('/test', function(){
+    return User::get()->roles();
+});
