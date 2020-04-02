@@ -59,7 +59,7 @@
                               </div>
                         </div>
                         @if($dataArticulo['imagen'] != "")
-                            <img src="{{ asset('imagenes/Artículos/'.$dataArticulo['imagen']) }}" alt="" width="100" style="position: relative; top: -62px!important;">
+                            <img src="{{ asset('imagenes/articulos/'.$dataArticulo['imagen']) }}" alt="" width="100" style="position: relative; top: -62px!important;">
                         @endif
                     </div>                    
                     <h4>

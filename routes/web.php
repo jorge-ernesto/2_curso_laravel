@@ -28,7 +28,8 @@ Route::resources([
     'articulo' => 'ArticuloController',
     'cliente' => 'ClienteController',
     'proveedor' => 'ProveedorController',
-    'ingreso' => 'IngresoController'
+    'ingreso' => 'IngresoController',
+    'usuario' => 'UsuarioController'
 ]);
 
 //Auth::routes();
