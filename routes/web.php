@@ -46,7 +46,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /* Pruebas */
 Route::get('/test', function(){
-    return $roles = App\User::find(2)
-                   ->roles()->orderBy('id')
-                   ->get();
+    return $roles = App\User::find(1)
+                    ->roles()                    
+                    ->get();
 });
