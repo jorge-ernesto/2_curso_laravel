@@ -15,5 +15,10 @@ class Role extends Model
         'slug', 
         'description',
         'full-access'
-    ];    
+    ];
+
+    /* Relacion de muchos a muchos */
+    public function users(){
+        return $this->BelongToMany('App\User')->whitTimeStamps();
+    }
 }

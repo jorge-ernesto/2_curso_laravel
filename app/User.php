@@ -28,4 +28,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime'
     ];
+
+    /* Relacion de muchos a muchos */
+    public function roles(){
+        return $this->BelongToMany('App\Role')->whitTimeStamps();
+    }
 }
