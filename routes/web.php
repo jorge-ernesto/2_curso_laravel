@@ -32,6 +32,10 @@ Route::resources([
 ]);
 
 //Auth::routes();
-Auth::routes(['register' => false]);
+Auth::routes([
+            'register' => false, 
+            'reset' => false, 
+            'confirm' => false
+            ]);
 
 Route::get('/home', 'HomeController@index')->name('home');

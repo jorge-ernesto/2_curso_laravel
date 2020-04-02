@@ -91,8 +91,13 @@
                                         </form>
 
                                     </div>
-                                    <div class="card-footer text-center">
-                                        <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
+                                    <div class="card-footer text-center">                                        
+                                        <div class="small">
+                                            @if (Route::has('register'))                                                                                
+                                                <a href="{{ route('register') }}">{{ __('Register') }}</a><br>
+                                            @endif                                                                                
+                                            <a href="/login">Powered by Jorge Ernesto</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
