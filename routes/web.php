@@ -35,9 +35,9 @@ Route::resources([
 //Auth::routes();
 /* Desactivamos route register, reset, confirm */
 Auth::routes([
-            // 'register' => false, 
-            // 'reset' => false, 
-            // 'confirm' => false
+            'register' => false, 
+            'reset' => false, 
+            'confirm' => false
             ]);
 
 Route::get('/home', 'HomeController@index')->name('home');
