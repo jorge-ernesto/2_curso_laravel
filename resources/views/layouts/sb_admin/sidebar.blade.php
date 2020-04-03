@@ -19,6 +19,7 @@
                         <a class="nav-link" href="{{ route('articulo.index') }}">Artículo</a>                        
                         <a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a>                        
                         <a class="nav-link" href="{{ route('proveedor.index') }}">Proveedor</a>                        
+                        <a class="nav-link" href="{{ route('usuario.index') }}">Usuario</a>                        
                     </nav>
                 </div>
                

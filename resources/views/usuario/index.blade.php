@@ -18,19 +18,25 @@
                         <thead>
                             <tr>
                                 <th class="text-primary">id</th>
-                                <th class="text-primary">nombre</th>
+                                <th class="text-primary">name</th>
                                 <th class="text-primary">email</th>
+                                <th class="text-primary">role</th>
                                 <th class="text-primary">created_at</th>
-                                <th class="text-primary">updated_at</th>                                
+                                <th class="text-primary">updated_at</th>    
+                                <th class="text-primary">updated</th>    
+                                <th class="text-primary">delete</th>    
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th class="text-primary">id</th>
-                                <th class="text-primary">nombre</th>
+                                <th class="text-primary">user</th>
                                 <th class="text-primary">email</th>
+                                <th class="text-primary">role</th>
                                 <th class="text-primary">created_at</th>
-                                <th class="text-primary">updated_at</th>                                 
+                                <th class="text-primary">updated_at</th>
+                                <th class="text-primary">updated</th>    
+                                <th class="text-primary">delete</th>                                     
                             </tr>
                         </tfoot>
                         <tbody>
@@ -39,8 +45,11 @@
                                     <td>
                                         <a href="{{ route('usuario.show', $value->id) }}">{{ $value->id }}</a>                                        
                                     </td>
-                                    <td>{{ $value->name }}</td>
+                                    <td>{{ $value->user }}</td>
                                     <td>{{ $value->email }}</td>
+                                    <td>{{ $value->role }}</td>
+                                    <td>{{ $value->created_at }}</td>
+                                    <td>{{ $value->updated_at }}</td>
                                     <td>
                                         <a href="{{ route('usuario.edit', $value->id) }}" class="btn btn-warning btn-sm">Editar</a>                                        
                                     </td>
