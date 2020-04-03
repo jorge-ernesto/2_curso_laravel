@@ -1,4 +1,5 @@
-@extends('layouts.plantilla')
+@include('categoria.role')
+@extends('layouts.plantilla')    
 
 @section('seccion-main')    
     <div class="container-fluid">

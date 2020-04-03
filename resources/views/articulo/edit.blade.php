@@ -1,3 +1,4 @@
+@include('articulo.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
