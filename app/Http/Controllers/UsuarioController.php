@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Carbon;
 
 class UsuarioController extends Controller
 {
@@ -29,11 +31,46 @@ class UsuarioController extends Controller
     }
 
     public function create(){
-        return view('usuario.create');
+        $dataRole = DB::table('roles')                            
+                            ->get();
+        return view('usuario.create', compact('dataRole'));
     }
 
     public function store(Request $request){
-        //
+        /* Obtenemos todo el request */
+        // return $request->all();
+
+        /* Validar request */
+        $request->validate([
+            "name"     => "required|max:255",
+            "email"    => "required|email|max:255|unique:users",
+            "password" => "required|min:8|confirmed",
+
+            "role_id" => "required",
+        ]);
+
+        try{
+            DB::beginTransaction();            
+            
+            /* Guardamos usuario */
+            $usuario           = new App\User;
+            $usuario->name     = $request->name;
+            $usuario->email    = $request->email;
+            $usuario->password = Hash::make($request->password);
+            $usuario->save();        
+
+            /* Guardamos role */
+            $role_id = $usuario->role_id;
+            $user_id = $usuario->id;     
+            $date    = Carbon::now('America/Lima');            
+            $date    = $date->toDateTimeString();
+            DB::insert('insert into role_user (role_id, user_id, created_at, updated_at) values (?, ?, ?, ?)', [$role_id, $role_id, $date, $date]);
+            
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollback();
+        }                             
+        return back()->with('mensaje', 'Usuario agregado');
     }
 
     public function show($id){

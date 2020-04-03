@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
 use Illuminate\Support\Carbon;
-// use Illuminate\Http\Response;
-// use Illuminate\Http\Collection;
 
 class IngresoController extends Controller
 {   
