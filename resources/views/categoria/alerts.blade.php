@@ -7,6 +7,14 @@
     <div class="alert alert-danger">{{ session('mensaje_eliminado') }}</div>
 @endif
 
+@if( session('mensaje_rollback') )
+    <div class="alert alert-danger">{{ session('mensaje_rollback') }}</div>
+@endif
+
+@if( session('mensaje_rollback') )
+    <div class="alert alert-danger">{{ session('mensaje_rollback') }}</div>
+@endif
+
 {{-- Errores --}}
 @error('nombre')
     <div class="alert alert-danger">El nombre es requerido</div>        

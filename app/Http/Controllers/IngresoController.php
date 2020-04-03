@@ -47,15 +47,15 @@ class IngresoController extends Controller
 
         /* Validar request ingreso, detalle */
         $request->validate([
-            "idproveedor" => "required",
-            "tipo_comprobante" => "required|max:20",
+            "idproveedor"       => "required",
+            "tipo_comprobante"  => "required|max:20",
             "serie_comprobante" => "max:7",
-            "num_comprobante" => "required|max:10",
+            "num_comprobante"   => "required|max:10",
 
-            "idarticulo" => "required",
-            "cantidad" => "required",
+            "idarticulo"    => "required",
+            "cantidad"      => "required",
             "precio_compra" => "required",
-            "precio_venta" => "required"
+            "precio_venta"  => "required"
         ]);
 
         try{
@@ -93,10 +93,11 @@ class IngresoController extends Controller
             endwhile;
 
             DB::commit();
+            return back()->with('mensaje', 'Ingreso agregado');
         }catch(\Exception $e){
             DB::rollback();
-        }                     
-        return back()->with('mensaje', 'Ingreso agregado');
+            return back()->with('mensaje_rollback', 'ROLLBACK: Ingreso no se pudo agregar');
+        }                             
     }
 
     public function show($id){

@@ -46,13 +46,13 @@ class UsuarioController extends Controller
             "email"    => "required|email|max:255|unique:users",
             "password" => "required|min:8|confirmed",
 
-            "role_id" => "required",
+            "role_id"  => "required"
         ]);
 
         try{
             DB::beginTransaction();            
             
-            /* Guardamos usuario */
+            /* Guardamos user */
             $usuario           = new App\User;
             $usuario->name     = $request->name;
             $usuario->email    = $request->email;
@@ -60,17 +60,16 @@ class UsuarioController extends Controller
             $usuario->save();        
 
             /* Guardamos role */
-            $role_id = $usuario->role_id;
-            $user_id = $usuario->id;     
-            $date    = Carbon::now('America/Lima');            
-            $date    = $date->toDateTimeString();
-            DB::insert('insert into role_user (role_id, user_id, created_at, updated_at) values (?, ?, ?, ?)', [$role_id, $role_id, $date, $date]);
-            
+            $role_id = $request->role_id;
+            $user_id = $usuario->id;
+            DB::insert(" insert into role_user (role_id, user_id, created_at, updated_at) values ('$role_id', '$user_id', NOW(), NOW()) ");
+             
             DB::commit();
+            return back()->with('mensaje', 'Usuario agregado');
         }catch(\Exception $e){
             DB::rollback();
+            return back()->with('mensaje_rollback', 'ROLLBACK: Usuario no se pudo agregar');
         }                             
-        return back()->with('mensaje', 'Usuario agregado');
     }
 
     public function show($id){
