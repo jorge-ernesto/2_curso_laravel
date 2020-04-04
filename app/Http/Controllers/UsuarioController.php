@@ -84,8 +84,7 @@ class UsuarioController extends Controller
                             ->select('u.id', 'u.name', 'u.email', 'u.password', 'u.created_at', 'u.updated_at', 
                                      'r.id as role_id', 'r.name as role_name')
                             ->where('u.id', '=', $id)
-                            ->orderBy('u.id', 'ASC')
-                            ->first();    
+                            ->first();
         return view('usuario.edit', compact('dataRole', 'dataUsuario'));
     }
 

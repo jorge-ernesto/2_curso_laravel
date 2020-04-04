@@ -16,7 +16,6 @@ class IngresoController extends Controller
     
     public function index(Request $request){        
         if($request):
-            DB::enableQueryLog();
             $searchText = $request->searchText;            
             $dataIngreso  = DB::table('ingreso as i')                                
                                 ->join('persona as p', 'i.idproveedor', '=', 'p.idpersona')
