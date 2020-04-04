@@ -40,7 +40,7 @@ class UsuarioController extends Controller
         /* Obtenemos todo el request */
         // return $request->all();
 
-        /* Validar request */
+        /* Validar request user, role */
         $request->validate([
             "name"     => "required|max:255",
             "email"    => "required|email|max:255|unique:users",
@@ -93,7 +93,7 @@ class UsuarioController extends Controller
         /* Obtenemos todo el request */
         // return $request->all();
 
-        /* Validar request */
+        /* Validar request user, role */
         $request->validate([
             "name"     => "required|max:255",
             "email"    => "required|email|max:255",
