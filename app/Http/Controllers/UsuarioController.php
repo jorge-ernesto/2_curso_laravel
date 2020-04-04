@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Carbon;
 
 class UsuarioController extends Controller
 {
@@ -21,10 +20,12 @@ class UsuarioController extends Controller
             $dataUsuario  = DB::table('users as u')
                                 ->join('role_user as ru', 'ru.user_id', '=', 'u.id')
                                 ->join('roles as r', 'ru.role_id', '=', 'r.id')
-                                ->select('u.id', 'u.name as user', 'u.email', 'u.password', 'r.name as role', 'u.created_at', 'u.updated_at')
+                                ->select('u.id', 'u.name', 'u.email', 'u.password', 'u.created_at', 'u.updated_at', 
+                                         'r.id as role_id', 'r.name as role_name')
                                 ->where('u.name', 'LIKE', '%'.$searchText.'%')                                    
+                                ->orWhere('u.email', 'LIKE', '%'.$searchText.'%')                                    
+                                ->orWhere('r.name', 'LIKE', '%'.$searchText.'%')                                    
                                 ->orderBy('u.id', 'ASC')
-                                ->orderBy('r.id', 'ASC')
                                 ->paginate('10');
             return view('usuario.index', compact('dataUsuario', 'searchText'));
         endif;
@@ -40,11 +41,12 @@ class UsuarioController extends Controller
         /* Obtenemos todo el request */
         // return $request->all();
 
-        /* Validar request */
+        /* Validar request user, role */
         $request->validate([
             "name"     => "required|max:255",
             "email"    => "required|email|max:255|unique:users",
             "password" => "required|min:8|confirmed",
+            
             "role_id"  => "required"
         ]);
 
@@ -56,12 +58,12 @@ class UsuarioController extends Controller
             $usuario->name     = $request->name;
             $usuario->email    = $request->email;
             $usuario->password = Hash::make($request->password);
-            $usuario->save();        
+            $usuario->save();
 
             /* Guardamos role */
             $role_id = $request->role_id;
             $user_id = $usuario->id;
-            DB::insert(" insert into role_user (role_id, user_id, created_at, updated_at) values ('$role_id', '$user_id', NOW(), NOW()) ");
+            DB::insert(" INSERT INTO role_user (role_id, user_id, created_at, updated_at) VALUES ('$role_id', '$user_id', NOW(), NOW()) ");
              
             DB::commit();
             return back()->with('mensaje', 'Usuario agregado');
@@ -72,11 +74,22 @@ class UsuarioController extends Controller
     }
 
     public function show($id){
-        //
+        $dataUsuario = App\User::findOrFail($id);
+        return view('usuario.show', compact('dataUsuario'));
     }
 
     public function edit($id){
-        //
+        $dataRole = DB::table('roles')                            
+                            ->get();
+        $dataUsuario  = DB::table('users as u')
+                            ->join('role_user as ru', 'ru.user_id', '=', 'u.id')
+                            ->join('roles as r', 'ru.role_id', '=', 'r.id')
+                            ->select('u.id', 'u.name', 'u.email', 'u.password', 'u.created_at', 'u.updated_at', 
+                                     'r.name as role_id', 'r.name as name_role')
+                            ->where('u.id', '=', $id)
+                            ->orderBy('u.id', 'ASC')
+                            ->first();    
+        return view('usuario.edit', compact('dataRole', 'dataUsuario'));
     }
 
     public function update(Request $request, $id){

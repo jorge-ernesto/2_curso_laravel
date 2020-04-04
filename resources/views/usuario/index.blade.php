@@ -20,38 +20,47 @@
                                 <th class="text-primary">id</th>
                                 <th class="text-primary">name</th>
                                 <th class="text-primary">email</th>
-                                <th class="text-primary">role</th>
                                 <th class="text-primary">created_at</th>
-                                <th class="text-primary">updated_at</th>    
-                                <th class="text-primary">updated</th>    
-                                <th class="text-primary">delete</th>    
+                                <th class="text-primary">updated_at</th>
+
+                                {{-- <th class="text-primary">role_id</th> --}}
+                                <th class="text-primary">role_name</th>                                
+                                
+                                <th class="text-primary">updated</th>
+                                <th class="text-primary">delete</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th class="text-primary">id</th>
-                                <th class="text-primary">user</th>
+                                <th class="text-primary">name</th>
                                 <th class="text-primary">email</th>
-                                <th class="text-primary">role</th>
                                 <th class="text-primary">created_at</th>
                                 <th class="text-primary">updated_at</th>
-                                <th class="text-primary">updated</th>    
-                                <th class="text-primary">delete</th>                                     
+
+                                {{-- <th class="text-primary">role_id</th> --}}
+                                <th class="text-primary">role_name</th>                                
+
+                                <th class="text-primary">updated</th>
+                                <th class="text-primary">delete</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach($dataUsuario as $key=>$value)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('usuario.show', $value->id) }}">{{ $value->id }}</a>                                        
+                                        <a href="{{ route('usuario.show', $value->id) }}">{{ $value->id }}</a>
                                     </td>
-                                    <td>{{ $value->user }}</td>
+                                    <td>{{ $value->name }}</td>
                                     <td>{{ $value->email }}</td>
-                                    <td>{{ $value->role }}</td>
                                     <td>{{ $value->created_at }}</td>
                                     <td>{{ $value->updated_at }}</td>
+
+                                    {{-- <td>{{ $value->role_id }}</td> --}}
+                                    <td>{{ $value->role_name }}</td>
+                                    
                                     <td>
-                                        <a href="{{ route('usuario.edit', $value->id) }}" class="btn btn-warning btn-sm">Editar</a>                                        
+                                        <a href="{{ route('usuario.edit', $value->id) }}" class="btn btn-warning btn-sm">Editar</a>
                                     </td>
                                     <td>                                        
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->id }}">Eliminar</button>

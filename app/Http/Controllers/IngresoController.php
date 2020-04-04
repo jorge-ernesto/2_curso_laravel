@@ -106,8 +106,7 @@ class IngresoController extends Controller
                             ->join('detalle_ingreso as di', 'i.idingreso', '=', 'di.idingreso')
                             ->select('i.idingreso', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.fecha_hora', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * di.precio_compra) as total'))
                             ->where('i.idingreso', '=', $id)                                                            
-                            ->groupBy('i.idingreso')
-                            ->get();
+                            ->first();
         $dataDetalle = DB::table('detalle_ingreso as di')
                             ->join('articulo as a', 'di.idarticulo', '=', 'a.idarticulo')
                             ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," ",a.nombre) as articulo'), 'di.cantidad', 'di.precio_compra')
