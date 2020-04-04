@@ -14,7 +14,7 @@
                     @method('PUT')
                     @csrf
                     <div class="row form-group">
-                        <label class="col-form-label col-md-2">Categoría:</label>
+                        <label for="nombre" class="col-form-label col-md-2">Categoría:</label>
                         <div class="col-md-5">
                             <select name="idcategoria" class="form-control">
                                 @foreach($dataCategoria as $item)
