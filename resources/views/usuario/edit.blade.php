@@ -28,13 +28,13 @@
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Password:</label>
                         <div class="col-md-5">
-                            <input type="password" name="password" class="form-control" value="{{ $dataUsuario->password }}">
+                            <input type="password" name="password" class="form-control" value="">
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Confirmar Password:</label>
                         <div class="col-md-5">
-                            <input type="password" name="password_confirmation" class="form-control" value="{{ $dataUsuario->password }}">
+                            <input type="password" name="password_confirmation" class="form-control" value="">
                         </div>
                     </div>
                     <div class="row form-group">
@@ -42,7 +42,11 @@
                         <div class="col-md-5">
                             <select name="role_id" class="form-control">
                                 @foreach($dataRole as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @if($item->id == $dataUsuario->role_id)
+                                        <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endif                                    
                                 @endforeach
                             </select>
                         </div>

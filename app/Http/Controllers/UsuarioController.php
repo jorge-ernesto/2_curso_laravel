@@ -32,8 +32,7 @@ class UsuarioController extends Controller
     }
 
     public function create(){
-        $dataRole = DB::table('roles')                            
-                            ->get();
+        $dataRole = DB::table('roles')->get();
         return view('usuario.create', compact('dataRole'));
     }
 
@@ -41,12 +40,11 @@ class UsuarioController extends Controller
         /* Obtenemos todo el request */
         // return $request->all();
 
-        /* Validar request user, role */
+        /* Validar request */
         $request->validate([
             "name"     => "required|max:255",
             "email"    => "required|email|max:255|unique:users",
             "password" => "required|min:8|confirmed",
-            
             "role_id"  => "required"
         ]);
 
@@ -57,11 +55,11 @@ class UsuarioController extends Controller
             $usuario           = new App\User;
             $usuario->name     = $request->name;
             $usuario->email    = $request->email;
-            $usuario->password = Hash::make($request->password);
+            $usuario->password = Hash::make($request->password);            
+            $role_id           = $request->role_id;
             $usuario->save();
 
-            /* Guardamos role */
-            $role_id = $request->role_id;
+            /* Guardamos role */                        
             $user_id = $usuario->id;
             DB::insert(" INSERT INTO role_user (role_id, user_id, created_at, updated_at) VALUES ('$role_id', '$user_id', NOW(), NOW()) ");
              
@@ -70,7 +68,7 @@ class UsuarioController extends Controller
         }catch(\Exception $e){
             DB::rollback();
             return back()->with('mensaje_rollback', 'ROLLBACK: Usuario no se pudo agregar');
-        }                             
+        }
     }
 
     public function show($id){
@@ -79,13 +77,12 @@ class UsuarioController extends Controller
     }
 
     public function edit($id){
-        $dataRole = DB::table('roles')                            
-                            ->get();
-        $dataUsuario  = DB::table('users as u')
+        $dataRole = DB::table('roles')->get();
+        $dataUsuario = DB::table('users as u')
                             ->join('role_user as ru', 'ru.user_id', '=', 'u.id')
                             ->join('roles as r', 'ru.role_id', '=', 'r.id')
                             ->select('u.id', 'u.name', 'u.email', 'u.password', 'u.created_at', 'u.updated_at', 
-                                     'r.name as role_id', 'r.name as name_role')
+                                     'r.id as role_id', 'r.name as role_name')
                             ->where('u.id', '=', $id)
                             ->orderBy('u.id', 'ASC')
                             ->first();    
@@ -93,10 +90,43 @@ class UsuarioController extends Controller
     }
 
     public function update(Request $request, $id){
-        //
+        /* Obtenemos todo el request */
+        // return $request->all();
+
+        /* Validar request */
+        $request->validate([
+            "name"     => "required|max:255",
+            "email"    => "required|email|max:255",
+            "password" => "required|min:8|confirmed",
+            "role_id"  => "required"
+        ]);
+
+        try{
+            DB::beginTransaction();            
+            
+            /* Guardamos user */
+            $usuario           = App\User::findOrFail($id);
+            $usuario->name     = $request->name;
+            $usuario->email    = $request->email;
+            $usuario->password = Hash::make($request->password);
+            $role_id           = $request->role_id;      
+            $usuario->update();
+
+            /* Guardamos role */                  
+            DB::update(" UPDATE role_user SET role_id = '$role_id', updated_at = NOW() WHERE user_id = '$id' ");
+             
+            DB::commit();
+            return back()->with('mensaje', 'Usuario editado');
+        }catch(\Exception $e){
+            DB::rollback();
+            return back()->with('mensaje_rollback', 'ROLLBACK: Usuario no se pudo editar');
+        }
     }
 
     public function destroy($id){
-        //
+        /* Eliminar user */
+        $usuario = App\User::findOrFail($id);        
+        $usuario->delete();
+        return back()->with('mensaje_eliminado', 'Usuario eliminado');        
     }
 }
