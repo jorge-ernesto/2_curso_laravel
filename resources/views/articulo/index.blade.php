@@ -54,7 +54,9 @@
                                     <td>{{ $value->nombre }}</td>
                                     <td>{{ $value->stock }}</td>
                                     <td>{{ $value->descripcion }}</td>
-                                    <td><img src="{{ asset('imagenes/articulos/' . $value->imagen) }}" alt="" width="100"></td>
+                                    <td>
+                                        <img src="{{ asset('imagenes/articulos/' . $value->imagen) }}" alt="" width="100">
+                                    </td>
                                     <td>
                                         @if( $value->estado == "Activo" )
                                             <span class="badge badge-primary">{{ $value->estado }}</span>
@@ -62,7 +64,9 @@
                                             <span class="badge badge-danger">{{ $value->estado }}</span>
                                         @endif
                                     </td>
-                                    <td><a href="{{ route('articulo.edit', $value->idarticulo) }}" class="btn btn-warning btn-sm">Editar</a></td>
+                                    <td>
+                                        <a href="{{ route('articulo.edit', $value->idarticulo) }}" class="btn btn-warning btn-sm">Editar</a>
+                                    </td>
                                     <td>    
                                         @if( $value->estado == "Activo" )                                    
                                             <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idarticulo }}">Desactivar</button>
