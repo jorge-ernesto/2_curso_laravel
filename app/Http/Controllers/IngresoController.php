@@ -69,7 +69,7 @@ class IngresoController extends Controller
             $date                       = Carbon::now('America/Lima');
             $ingreso->fecha_hora        = $date->toDateTimeString();            
             $ingreso->impuesto          = 18;
-            $ingreso->estado            = "A";
+            $ingreso->estado            = "Aceptado";
             $ingreso->save();                        
 
             /* Guardamos detalle */
@@ -123,7 +123,7 @@ class IngresoController extends Controller
     public function destroy($id){
         /* Cambiar estado de ingreso */
         $ingreso = App\Ingreso::findOrFail($id);
-        $ingreso->estado = "C";
+        $ingreso->estado = "Cancelado";
         $ingreso->update();
         return back()->with('mensaje_eliminado', 'Ingreso eliminado');
 

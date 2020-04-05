@@ -57,7 +57,13 @@
                                     <td>{{ $value->num_comprobante }}</td>
                                     <td>{{ $value->fecha_hora }}</td>
                                     <td>{{ $value->impuesto }}</td>
-                                    <td>{{ $value->estado }}</td>
+                                    <td>
+                                        @if( $value->estado == "Aceptado" )
+                                            <span class="badge badge-primary">{{ $value->estado }}</span>
+                                        @else
+                                            <span class="badge badge-danger">{{ $value->estado }}</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $value->total }}</td>
                                     <td>
                                         <a href="{{ route('ingreso.show', $value->idingreso) }}" class="btn btn-warning btn-sm">Ver</a>                                        
