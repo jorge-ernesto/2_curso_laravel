@@ -42,7 +42,7 @@ class ProveedorController extends Controller
             "num_documento"  => "required|max:15",
             "direccion"      => "max:70",
             "telefono"       => "max:15",
-            "email"          => "max:50|email"
+            "email"          => "max:50|email|nullable"
         ]);
 
         /* Guardamos persona */
@@ -81,7 +81,7 @@ class ProveedorController extends Controller
             "num_documento"  => "required|max:15",
             "direccion"      => "max:70",
             "telefono"       => "max:15",
-            "email"          => "max:50"
+            "email"          => "max:50|email|nullable"
         ]);
 
         /* Guardamos persona */

@@ -20,7 +20,7 @@ class IngresoController extends Controller
             $dataIngreso  = DB::table('ingreso as i')                                
                                 ->join('persona as p', 'i.idproveedor', '=', 'p.idpersona')
                                 ->join('detalle_ingreso as di', 'i.idingreso', '=', 'di.idingreso')                                
-                                ->select('i.idingreso', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.fecha_hora', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * di.precio_compra) as total'))
+                                ->select('i.idingreso', 'p.nombre as proveedor', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.fecha_hora', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * di.precio_compra) as total'))
                                 ->where('i.num_comprobante', 'LIKE', '%'.$searchText.'%')                                                            
                                 ->orderBy('i.idingreso', 'ASC')
                                 ->groupBy('i.idingreso')
