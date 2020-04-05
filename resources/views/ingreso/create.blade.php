@@ -3,9 +3,9 @@
 
 @section('seccion-main')    
     <div class="container-fluid">
-        <h1 class="mt-4">Categorías</h1>        
+        <h1 class="mt-4">Ingresos</h1>        
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Categorías</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Ingresos</div>
             <div class="card-body">
 
                 @include('ingreso.alerts')
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <h4>
-                        <button type="submit" class="btn btn-primary">Crear Categoría</button>                        
+                        <button type="submit" class="btn btn-primary">Crear Ingreso</button>                        
                         <a href="{{ route('ingreso.index') }}" class="btn btn-primary">Atras</a>    
                     </h4>
                 </form>                    

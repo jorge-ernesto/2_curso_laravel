@@ -1,4 +1,4 @@
-@include('ingreso.role')
+@include('categoria.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
@@ -8,9 +8,9 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Categorías</div>
             <div class="card-body">
 
-                @include('ingreso.alerts')
+                @include('categoria.alerts')
 
-                <form method="POST" action="{{ route('ingreso.update', $dataCategoria['idcategoria']) }}">
+                <form method="POST" action="{{ route('categoria.update', $dataCategoria['idcategoria']) }}">
                     @method('PUT')
                     @csrf
                     <div class="row form-group">
@@ -27,7 +27,7 @@
                     </div>
                     <h4>
                         <button type="submit" id="crear" class="btn btn-primary">Editar Categoría</button>                        
-                        <a href="{{ route('ingreso.index') }}" class="btn btn-primary">Atras</a>    
+                        <a href="{{ route('categoria.index') }}" class="btn btn-primary">Atras</a>    
                     </h4>                
                 </form>                    
 

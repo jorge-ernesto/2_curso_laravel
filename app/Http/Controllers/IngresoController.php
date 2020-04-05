@@ -35,7 +35,7 @@ class IngresoController extends Controller
                             ->where('a.estado', '=', 'Activo')
                             ->get();
         $dataPersona = DB::table('persona')
-                            ->where('condicion', '=', 'Proveedor')
+                            ->where('tipo_persona', '=', 'Proveedor')
                             ->get();        
         return view('ingreso.create', compact('dataArticulo', 'dataPersona'));
     }
