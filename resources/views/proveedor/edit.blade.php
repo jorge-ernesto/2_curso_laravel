@@ -31,13 +31,13 @@
                         <label for="nombre" class="col-form-label col-md-2">Tipo documento:</label>
                         <div class="col-md-5">
                             <select name="tipo_documento" class="form-control">
-                                @foreach($dataDocumento as $item)
-                                    @if($item->nombre == $dataPersona['tipo_documento'])
-                                        <option value="{{ $item->nombre }}" selected>{{ $item->nombre }}</option>
-                                    @else
-                                        <option value="{{ $item->nombre }}">{{ $item->nombre }}</option>
-                                    @endif                                    
-                                @endforeach
+                                @if($dataPersona['tipo_documento'] == "DNI")
+                                    <option value="DNI" selected>DNI</option>
+                                    <option value="RUC">RUC</option> 
+                                @else
+                                    <option value="DNI">DNI</option>
+                                    <option value="RUC" selected>RUC</option> 
+                                @endif
                             </select>
                         </div>
                     </div>

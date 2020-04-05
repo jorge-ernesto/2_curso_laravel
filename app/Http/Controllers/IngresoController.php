@@ -30,14 +30,14 @@ class IngresoController extends Controller
     }
     
     public function create(){
+        $dataPersona = DB::table('persona')
+                            ->where('tipo_persona', '=', 'Proveedor')
+                            ->get(); 
         $dataArticulo = DB::table('articulo as a')
                             ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," ",a.nombre) as articulo'))
                             ->where('a.estado', '=', 'Activo')
-                            ->get();
-        $dataPersona = DB::table('persona')
-                            ->where('tipo_persona', '=', 'Proveedor')
-                            ->get();        
-        return view('ingreso.create', compact('dataArticulo', 'dataPersona'));
+                            ->get();               
+        return view('ingreso.create', compact('dataPersona', 'dataArticulo'));
     }
     
     public function store(Request $request){

@@ -25,9 +25,8 @@ class ClienteController extends Controller
         endif;
     }
 
-    public function create(){
-        $dataDocumento  = DB::table('documento')->get();
-        return view('cliente.create', compact('dataDocumento'));
+    public function create(){        
+        return view('cliente.create');
     }
 
     public function store(Request $request){
@@ -64,9 +63,8 @@ class ClienteController extends Controller
     }
 
     public function edit($id){
-        $dataDocumento  = DB::table('documento')->get();
         $dataPersona = App\Persona::findOrFail($id);
-        return view('cliente.edit', compact('dataDocumento', 'dataPersona'));
+        return view('cliente.edit', compact('dataPersona'));
     }
 
     public function update(Request $request, $id){

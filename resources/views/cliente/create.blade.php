@@ -30,9 +30,8 @@
                         <label for="nombre" class="col-form-label col-md-2">Tipo documento:</label>
                         <div class="col-md-5">
                             <select name="tipo_documento" class="form-control">
-                                @foreach($dataDocumento as $item)
-                                    <option value="{{ $item->nombre }}">{{ $item->nombre }}</option>
-                                @endforeach
+                                <option value="DNI">DNI</option>
+                                <option value="RUC">RUC</option>                                
                             </select>
                         </div>
                     </div>

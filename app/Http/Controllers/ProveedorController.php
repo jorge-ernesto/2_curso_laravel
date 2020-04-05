@@ -26,8 +26,7 @@ class ProveedorController extends Controller
     }
 
     public function create(){
-        $dataDocumento  = DB::table('documento')->get();
-        return view('proveedor.create', compact('dataDocumento'));
+        return view('proveedor.create');
     }
 
     public function store(Request $request){
@@ -64,9 +63,8 @@ class ProveedorController extends Controller
     }
 
     public function edit($id){
-        $dataDocumento  = DB::table('documento')->get();
         $dataPersona = App\Persona::findOrFail($id);
-        return view('proveedor.edit', compact('dataDocumento', 'dataPersona'));
+        return view('proveedor.edit', compact('dataPersona'));
     }
 
     public function update(Request $request, $id){

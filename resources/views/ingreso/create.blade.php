@@ -13,6 +13,16 @@
                 <form method="POST" action="{{ route('ingreso.store') }}">
                     @csrf
                     <div class="row form-group">
+                        <label for="nombre" class="col-form-label col-md-2">Proveedor:</label>
+                        <div class="col-md-5">
+                            <select name="idproveedor" class="form-control">
+                                @foreach($dataPersona as $item)
+                                    <option value="{{ $item->idpersona }}">{{ $item->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
                         <label for="nombre" class="col-form-label col-md-2">Nombre:</label>
                         <div class="col-md-5">
                             <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}">
