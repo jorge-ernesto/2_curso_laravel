@@ -25,7 +25,9 @@
                                 <th class="text-primary">fecha_hora</th>                                
                                 <th class="text-primary">impuesto</th>                                
                                 <th class="text-primary">estado</th>                                
-                                <th class="text-primary">total</th>                                                                
+                                <th class="text-primary">total</th> 
+                                <th class="text-primary">show</th>
+                                <th class="text-primary">delete</th>                                                                  
                             </tr>
                         </thead>
                         <tfoot>
@@ -38,7 +40,9 @@
                                 <th class="text-primary">fecha_hora</th>                                
                                 <th class="text-primary">impuesto</th>                                
                                 <th class="text-primary">estado</th>                                
-                                <th class="text-primary">total</th>                                                                
+                                <th class="text-primary">total</th>    
+                                <th class="text-primary">show</th>
+                                <th class="text-primary">delete</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -56,10 +60,10 @@
                                     <td>{{ $value->estado }}</td>
                                     <td>{{ $value->total }}</td>
                                     <td>
-                                        <a href="{{ route('ingreso.edit', $value->idcategoria) }}" class="btn btn-warning btn-sm">Editar</a>                                        
+                                        <a href="{{ route('ingreso.show', $value->idingreso) }}" class="btn btn-warning btn-sm">Ver</a>                                        
                                     </td>
                                     <td>                                        
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idcategoria }}">Eliminar</button>
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idingreso }}">Eliminar</button>
                                         @include('ingreso.modal_delete')
                                     </td>
                                 </tr>                           

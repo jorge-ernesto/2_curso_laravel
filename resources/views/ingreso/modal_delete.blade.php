@@ -2,7 +2,7 @@
 <!-- animated fadeIn -->
 
 <!-- Modal -->
-<div class="modal fade animated fadeIn" id="modal_delete_{{ $value->idcategoria }}">
+<div class="modal fade animated fadeIn" id="modal_delete_{{ $value->idingreso }}">
     <div class="modal-dialog" role="document">                    
         <div class="modal-content">
             <div class="modal-header">                
@@ -16,7 +16,7 @@
             </div>
             <div class="modal-footer">
 
-                <form method="POST" action="{{ route('ingreso.destroy', $value->idcategoria) }}">
+                <form method="POST" action="{{ route('ingreso.destroy', $value->idingreso) }}">
                     @method('DELETE')
                     @csrf
                     <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>                
