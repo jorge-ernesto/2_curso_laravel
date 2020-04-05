@@ -4,9 +4,10 @@
         <?php
         session(['categoria' => true]);
         session(['articulo' => true]);
-        session(['proveedor' => true]);        
         session(['cliente' => true]);
+        session(['proveedor' => true]);                
         session(['ingreso' => true]);        
+        session(['venta' => true]);
         session(['usuario' => true]);        
         ?>
     @endif    
@@ -15,9 +16,10 @@
         <?php
         session(['categoria' => true]);
         session(['articulo' => true]);
-        session(['proveedor' => true]);
         session(['cliente' => true]);
-        session(['ingreso' => true]);                
+        session(['proveedor' => true]);                
+        session(['ingreso' => true]);        
+        session(['venta' => true]);
         ?>
     @endif    
 

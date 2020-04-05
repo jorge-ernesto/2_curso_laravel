@@ -31,6 +31,7 @@ Route::resources([
     'cliente' => 'ClienteController',
     'proveedor' => 'ProveedorController',
     'ingreso' => 'IngresoController',
+    'venta' => 'VentaController',
     'usuario' => 'UsuarioController'
 ]);
 
