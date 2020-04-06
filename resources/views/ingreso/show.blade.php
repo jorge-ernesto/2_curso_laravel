@@ -30,61 +30,43 @@
                         <label for="nombre" class="col-form-label col-md-2">Tipo de comprobante:</label>
                         <div class="col-md-5">
                             <select name="tipo_comprobante" class="form-control">
-                                <option value="Boleta">Boleta</option>
-                                <option value="Factura">Factura</option>                                
-                                <option value="Ticket">Ticket</option>                                
+                                @if($dataIngreso->tipo_comprobante == "Boleta")
+                                    <option value="Boleta" selected>Boleta</option>
+                                    <option value="Factura">Factura</option>                                
+                                    <option value="Ticket">Ticket</option>            
+                                @elseif($dataIngreso->tipo_comprobante == "Factura")
+                                    <option value="Boleta">Boleta</option>
+                                    <option value="Factura" selected>Factura</option>                                
+                                    <option value="Ticket">Ticket</option>
+                                @elseif($dataIngreso->tipo_comprobante == "Ticket")
+                                    <option value="Boleta">Boleta</option>
+                                    <option value="Factura">Factura</option>                                
+                                    <option value="Ticket" selected>Ticket</option>
+                                @endif 
                             </select>
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="nombre" class="col-form-label col-md-2">Serie de comprobante:</label>
                         <div class="col-md-5">
-                            <input type="text" name="serie_comprobante" class="form-control" value="Synthesis 001" readonly>
+                            <input type="text" name="serie_comprobante" class="form-control" value="{{ $dataIngreso->serie_comprobante }}" readonly>
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Numero de comprobante:</label>
                         <div class="col-md-5">
-                            <input type="text" name="num_comprobante" class="form-control" value="Autogenerado" readonly>
+                            <input type="text" name="num_comprobante" class="form-control" value="{{ $dataIngreso->num_comprobante }}" readonly>
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="nombre" class="col-form-label col-md-2">Impuesto:</label>
                         <div class="col-md-5">
-                            <input type="number" name="impuesto" class="form-control" value="18" min="1" step="any" placeholder="Impuesto">
+                            <input type="text" name="impuesto" class="form-control" value="{{ $dataIngreso->impuesto }}" pattern="[-+]?[0-9]*[.]?[0-9]+" required placeholder="Impuesto"> {{-- type="number" min="1" step="any" required --}}
                         </div>
                     </div>
 
                     <div class="card border-primary mb-3">                        
                         <div class="card-body text-primary">
-                            
-                            <div class="form-row">
-                                <div class="form-group col-md-3">
-                                    <label for="nombre">Articulo</label>
-                                    <select class="form-control selectpicker" data-live-search="true" data-size="5" 
-                                            id="idarticulo">
-                                        @foreach($dataArticulo as $item)
-                                            <option value="{{ $item->idarticulo }}">{{ $item->articulo }}</option>
-                                        @endforeach                                                                    
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="nombre">Cantidad</label>
-                                    <input type="number" class="form-control" value="1" min="1" required placeholder="Cantidad" 
-                                           id="cantidad">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="nombre">Precio compra</label>
-                                    <input type="text" class="form-control" value="1" pattern="[-+]?[0-9]*[.]?[0-9]+" required placeholder="Precio compra" {{-- Antes tenia estas caracteristicas: type="number" min="1" step="any" required --}}
-                                           id="precio_compra">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="nombre">Precio venta</label>
-                                    <input type="text" class="form-control" value="1" pattern="[-+]?[0-9]*[.]?[0-9]+" required placeholder="Precio venta" 
-                                           id="precio_venta">
-                                </div>
-                                <a class="btn btn-primary btn-sm" href="javascript:agregar()">Agregar</a>
-                            </div>
 
                         </div>
                     </div>
@@ -99,19 +81,35 @@
                                     <th>Precio compra</th>
                                     <th>Precio venta</th>                                    
                                     <th>Total</th>
-                                    <th>Eliminar</th>
                                 </tr>
                             </thead>                            
                             <tbody id="cargarDetalle">
+                                @foreach($dataDetalle as $key=>$value)
+                                <tr id="row_1">
+                                    <td class="d-none">
+                                        <input type="hidden" name="idarticulo[]" value="{{ $value->idarticulo }}">
+                                    </td>
+                                    <td>{{ $value->articulo }}</td>
+                                    <td style="width: 190px;">
+                                        <input type="number" name="cantidad[]" class="form-control col-sm-8" value="{{ $value->cantidad }}" min="1" required="" onkeyup="calcularImporte(1);" onchange="calcularImporte(1);" id="cantidad_1">
+                                    </td>
+                                    <td style="width: 220px;">
+                                        <input type="text" name="precio_compra[]" class="form-control col-sm-8" value="{{ $value->precio_compra }}" pattern="[-+]?[0-9]*[.]?[0-9]+" required="" onkeyup="calcularImporte(1);" onchange="calcularImporte(1);" id="precio_compra_1">
+                                    </td>
+                                    <td style="width: 220px;">
+                                        <input type="text" name="precio_venta[]" class="form-control col-sm-8" value="{{ $value->precio_venta }}" pattern="[-+]?[0-9]*[.]?[0-9]+" required="" id="precio_venta_1">
+                                    </td>
+                                    <td><span id="totalImporte_1">1.00</span></td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                     <h5 class="float-right clearfix">Total
-                        <span class="badge badge-dark" id="granTotal">Total</span>
+                        <span class="badge badge-dark" id="granTotal">{{ $dataIngreso->total }}</span>
                     </h5>
 
                     <h4>
-                        <button type="submit" class="btn btn-primary">Crear Ingreso</button>                        
                         <a href="{{ route('ingreso.index') }}" class="btn btn-primary">Atras</a>    
                     </h4>
                 {{-- </form> --}}

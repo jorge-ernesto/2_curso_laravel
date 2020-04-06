@@ -47,7 +47,7 @@
                     <div class="row form-group">
                         <label for="nombre" class="col-form-label col-md-2">Impuesto:</label>
                         <div class="col-md-5">
-                            <input type="number" name="impuesto" class="form-control" value="18" min="1" step="any" placeholder="Impuesto">
+                            <input type="text" name="impuesto" class="form-control" value="18" pattern="[-+]?[0-9]*[.]?[0-9]+" required placeholder="Impuesto"> {{-- type="number" min="1" step="any" required --}}
                         </div>
                     </div>
 
@@ -71,12 +71,12 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="nombre">Precio compra</label>
-                                    <input type="text" class="form-control" value="1" pattern="[-+]?[0-9]*[.]?[0-9]+" required placeholder="Precio compra" {{-- Antes tenia estas caracteristicas: type="number" min="1" step="any" required --}}
+                                    <input type="text" class="form-control" value="1" pattern="[-+]?[0-9]*[.]?[0-9]+" required placeholder="Precio compra" {{-- type="number" min="1" step="any" required --}}
                                            id="precio_compra">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="nombre">Precio venta</label>
-                                    <input type="text" class="form-control" value="1" pattern="[-+]?[0-9]*[.]?[0-9]+" required placeholder="Precio venta" 
+                                    <input type="text" class="form-control" value="1" pattern="[-+]?[0-9]*[.]?[0-9]+" required placeholder="Precio venta" {{-- type="number" min="1" step="any" required --}}
                                            id="precio_venta">
                                 </div>
                                 <a class="btn btn-primary btn-sm" href="javascript:agregar()">Agregar</a>
@@ -143,15 +143,15 @@
                                 '</td>' +
                                 '<td>'+ nombre +'</td>' +
                                 '<td style="width: 190px;">' +
-                                    '<input type="number" name="cantidad[]" class="form-control col-sm-8" value="'+ cantidad +'" min="1" required onkeyup="calcularImporte('+ idarticulo +');" onchange="calcularImporte('+ idarticulo +');"' +
+                                    '<input type="number" name="cantidad[]" class="form-control col-sm-8" value="'+ cantidad +'" min="1" required onkeyup="calcularImporte('+ idarticulo +');" onchange="calcularImporte('+ idarticulo +');"' + " " +
                                             'id="cantidad_'+ idarticulo +'">' +
                                 '</td>' +
                                 '<td style="width: 220px;">' +
-                                    '<input type="text" name="precio_compra[]" class="form-control col-sm-8" value="'+ precio_compra +'" pattern="[-+]?[0-9]*[.]?[0-9]+" required onkeyup="calcularImporte('+ idarticulo +');" onchange="calcularImporte('+ idarticulo +');"' +
+                                    '<input type="text" name="precio_compra[]" class="form-control col-sm-8" value="'+ precio_compra +'" pattern="[-+]?[0-9]*[.]?[0-9]+" required onkeyup="calcularImporte('+ idarticulo +');" onchange="calcularImporte('+ idarticulo +');"' + " " +
                                             'id="precio_compra_'+ idarticulo +'">' +
                                 '</td>' +
                                 '<td style="width: 220px;">' +
-                                    '<input type="text" name="precio_venta[]" class="form-control col-sm-8" value="'+ precio_venta +'" pattern="[-+]?[0-9]*[.]?[0-9]+" required' +
+                                    '<input type="text" name="precio_venta[]" class="form-control col-sm-8" value="'+ precio_venta +'" pattern="[-+]?[0-9]*[.]?[0-9]+" required' + " " +
                                             'id="precio_venta_'+ idarticulo +'">' +
                                 '</td>' +
                                 '<td>' +

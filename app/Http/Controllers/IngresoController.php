@@ -71,8 +71,7 @@ class IngresoController extends Controller
             $ingreso->fecha_hora        = $date->toDateTimeString();            
             $ingreso->impuesto          = 18;
             $ingreso->estado            = "Aceptado";
-            $ingreso->save();                        
-
+            $ingreso->save();
             /* Actualizamos num_comprobante */
             DB::table('ingreso')
                 ->where('idingreso', '=', $ingreso->idingreso)
@@ -109,10 +108,6 @@ class IngresoController extends Controller
         $dataPersona = DB::table('persona')
                             ->where('tipo_persona', '=', 'Proveedor')
                             ->get();
-        $dataArticulo = DB::table('articulo as a')
-                            ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," - ",a.nombre) as articulo'))
-                            ->where('a.estado', '=', 'Activo')
-                            ->get();
         $dataIngreso = DB::table('ingreso as i')
                             ->join('persona as p', 'i.idproveedor', '=', 'p.idpersona')
                             ->join('detalle_ingreso as di', 'i.idingreso', '=', 'di.idingreso')
@@ -121,10 +116,11 @@ class IngresoController extends Controller
                             ->first();
         $dataDetalle = DB::table('detalle_ingreso as di')
                             ->join('articulo as a', 'di.idarticulo', '=', 'a.idarticulo')
-                            ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," - ",a.nombre) as articulo'), 'di.cantidad', 'di.precio_compra')
+                            ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," - ",a.nombre) as articulo'), 'di.cantidad', 'di.precio_compra', 'di.precio_venta')
                             ->where('di.idingreso', '=', $id)
                             ->get();
-        return view('ingreso.show', compact('dataPersona', 'dataArticulo', 'dataIngreso', 'dataDetalle'));
+        //dd($dataDetalle);
+        return view('ingreso.show', compact('dataPersona', 'dataIngreso', 'dataDetalle'));
     }
 
     public function edit($id){        
