@@ -10,4 +10,4 @@
 <script src="{{ asset('assets/demo/datatables-demo.js') }}"></script>
 
 {{-- Personalizado uwu --}}
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script> <!-- Bootstrap Select -->

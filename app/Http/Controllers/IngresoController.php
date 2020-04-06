@@ -34,7 +34,7 @@ class IngresoController extends Controller
                             ->where('tipo_persona', '=', 'Proveedor')
                             ->get(); 
         $dataArticulo = DB::table('articulo as a')
-                            ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," ",a.nombre) as articulo'))
+                            ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," - ",a.nombre) as articulo'))
                             ->where('a.estado', '=', 'Activo')
                             ->get();               
         return view('ingreso.create', compact('dataPersona', 'dataArticulo'));
@@ -48,8 +48,9 @@ class IngresoController extends Controller
         $request->validate([
             "idproveedor"       => "required",
             "tipo_comprobante"  => "required|max:20",
-            "serie_comprobante" => "max:7",
-            "num_comprobante"   => "required|max:10",
+            "serie_comprobante" => "required|max:15",
+            "num_comprobante"   => "required|max:15",
+            "impuesto"          => "required|numeric|max:99",
 
             "idarticulo"    => "required",
             "cantidad"      => "required",
@@ -72,21 +73,26 @@ class IngresoController extends Controller
             $ingreso->estado            = "Aceptado";
             $ingreso->save();                        
 
+            /* Validacion para el num_comprobante */
+            DB::table('ingreso')
+                ->where('idingreso', '=', $ingreso->idingreso)
+                ->update(['num_comprobante' => $ingreso->idingreso]);
+
             /* Guardamos detalle */
-            $idingreso          = $ingreso->idingreso;
-            $idarticulo_array   = $request->idarticulo;
-            $cantidad_array     = $request->cantidad;
-            $preciocompra_array = $request->preciocompra;
-            $precioventa_array  = $request->precioventa;
+            $idingreso           = $ingreso->idingreso;
+            $idarticulo_array    = $request->idarticulo;
+            $cantidad_array      = $request->cantidad;
+            $precio_compra_array = $request->precio_compra;
+            $precio_venta_array  = $request->precio_venta;
                         
-            $cont = 1;
+            $cont = 0;
             while($cont < count($idarticulo_array)): 
-                $detalle               = new App\DetalleIngreso;
-                $detalle->idingreso    = $idingreso;
-                $detalle->idarticulo   = $idarticulo_array[$cont];
-                $detalle->cantidad     = $cantidad_array[$cont];
-                $detalle->preciocompra = $preciocompra_array[$cont];
-                $detalle->precioventa  = $precioventa_array[$cont];              
+                $detalle                = new App\DetalleIngreso;
+                $detalle->idingreso     = $idingreso;
+                $detalle->idarticulo    = $idarticulo_array[$cont];
+                $detalle->cantidad      = $cantidad_array[$cont];
+                $detalle->precio_compra = $precio_compra_array[$cont];
+                $detalle->precio_venta  = $precio_venta_array[$cont];              
                 $detalle->save();
                 $cont++;
             endwhile;
@@ -108,7 +114,7 @@ class IngresoController extends Controller
                             ->first();
         $dataDetalle = DB::table('detalle_ingreso as di')
                             ->join('articulo as a', 'di.idarticulo', '=', 'a.idarticulo')
-                            ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," ",a.nombre) as articulo'), 'di.cantidad', 'di.precio_compra')
+                            ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," - ",a.nombre) as articulo'), 'di.cantidad', 'di.precio_compra')
                             ->where('di.idingreso', '=', $id)
                             ->get();
         return view('ingreso.show', compact('dataIngreso', 'dataDetalle'));

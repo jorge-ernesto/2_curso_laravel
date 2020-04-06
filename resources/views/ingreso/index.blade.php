@@ -66,10 +66,10 @@
                                     </td>
                                     <td>{{ $value->total }}</td>
                                     <td>
-                                        <a href="{{ route('ingreso.show', $value->idingreso) }}" class="btn btn-warning btn-sm">Ver</a>                                        
+                                        <a href="{{ route('ingreso.show', $value->idingreso) }}" class="btn btn-primary btn-sm">Ver</a>                                        
                                     </td>
                                     <td>                                        
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idingreso }}">Eliminar</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idingreso }}">Eliminar</button>
                                         @include('ingreso.modal_delete')
                                     </td>
                                 </tr>                           
