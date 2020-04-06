@@ -38,7 +38,7 @@ class ProveedorController extends Controller
             // "tipo_persona"   => "required",
             "nombre"         => "required|max:100",
             "tipo_documento" => "required|max:20",
-            "num_documento"  => "required|max:15",
+            "num_documento"  => "required|max:15|unique:persona",
             "direccion"      => "max:70",
             "telefono"       => "max:15",
             "email"          => "max:50|email|nullable"
@@ -76,7 +76,7 @@ class ProveedorController extends Controller
             // "tipo_persona"   => "required",
             "nombre"         => "required|max:100",
             "tipo_documento" => "required|max:20",
-            "num_documento"  => "required|max:15",
+            "num_documento"  => "required|max:15|unique:persona,num_documento,$id,idpersona",
             "direccion"      => "max:70",
             "telefono"       => "max:15",
             "email"          => "max:50|email|nullable"

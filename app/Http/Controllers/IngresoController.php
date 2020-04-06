@@ -32,11 +32,11 @@ class IngresoController extends Controller
     public function create(){
         $dataPersona = DB::table('persona')
                             ->where('tipo_persona', '=', 'Proveedor')
-                            ->get(); 
+                            ->get();
         $dataArticulo = DB::table('articulo as a')
                             ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," - ",a.nombre) as articulo'))
                             ->where('a.estado', '=', 'Activo')
-                            ->get();               
+                            ->get();
         return view('ingreso.create', compact('dataPersona', 'dataArticulo'));
     }
     
@@ -73,7 +73,7 @@ class IngresoController extends Controller
             $ingreso->estado            = "Aceptado";
             $ingreso->save();                        
 
-            /* Validacion para el num_comprobante */
+            /* Actualizamos num_comprobante */
             DB::table('ingreso')
                 ->where('idingreso', '=', $ingreso->idingreso)
                 ->update(['num_comprobante' => $ingreso->idingreso]);
@@ -106,10 +106,17 @@ class IngresoController extends Controller
     }
 
     public function show($id){
+        $dataPersona = DB::table('persona')
+                            ->where('tipo_persona', '=', 'Proveedor')
+                            ->get();
+        $dataArticulo = DB::table('articulo as a')
+                            ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," - ",a.nombre) as articulo'))
+                            ->where('a.estado', '=', 'Activo')
+                            ->get();
         $dataIngreso = DB::table('ingreso as i')
                             ->join('persona as p', 'i.idproveedor', '=', 'p.idpersona')
                             ->join('detalle_ingreso as di', 'i.idingreso', '=', 'di.idingreso')
-                            ->select('i.idingreso', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.fecha_hora', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * di.precio_compra) as total'))
+                            ->select('i.idingreso', 'p.idpersona as idproveedor', 'p.nombre as proveedor', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.fecha_hora', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * di.precio_compra) as total'))
                             ->where('i.idingreso', '=', $id)                                                            
                             ->first();
         $dataDetalle = DB::table('detalle_ingreso as di')
@@ -117,7 +124,7 @@ class IngresoController extends Controller
                             ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," - ",a.nombre) as articulo'), 'di.cantidad', 'di.precio_compra')
                             ->where('di.idingreso', '=', $id)
                             ->get();
-        return view('ingreso.show', compact('dataIngreso', 'dataDetalle'));
+        return view('ingreso.show', compact('dataPersona', 'dataArticulo', 'dataIngreso', 'dataDetalle'));
     }
 
     public function edit($id){        
