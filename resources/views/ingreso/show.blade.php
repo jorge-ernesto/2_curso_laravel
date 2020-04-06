@@ -106,7 +106,7 @@
                         </table>
                     </div>
                     <h5 class="float-right clearfix">Total
-                        <span class="badge badge-dark" id="granTotal">{{ $dataIngreso->total }}</span>
+                        <span class="badge badge-primary" id="granTotal">{{ $dataIngreso->total }}</span>
                     </h5>
 
                     <h4>

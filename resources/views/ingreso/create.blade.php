@@ -103,7 +103,7 @@
                         </table>
                     </div>
                     <h5 class="float-right clearfix">Total
-                        <span class="badge badge-dark" id="granTotal">Total</span>
+                        <span class="badge badge-primary" id="granTotal">Total</span>
                     </h5>
 
                     <h4>
