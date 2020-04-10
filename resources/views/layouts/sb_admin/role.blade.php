@@ -1,6 +1,6 @@
-<?php $dataUser = Auth::user()->roles()->get(); ?>
-@foreach($dataUser as $key=>$value)                        
-    @if($value->name == "ROLE_ADMIN")                            
+<?php $dataRole = Auth::user()->roles()->get(); ?>
+@foreach($dataRole as $key=>$role)                        
+    @if($role->name == "ROLE_ADMIN")                            
         <?php
         session(['categoria' => true]);
         session(['articulo' => true]);
@@ -12,7 +12,7 @@
         ?>
     @endif    
 
-    @if($value->name == "ROLE_USER")                            
+    @if($role->name == "ROLE_USER")                            
         <?php
         session(['categoria' => true]);
         session(['articulo' => true]);
@@ -23,7 +23,7 @@
         ?>
     @endif    
 
-    @if($value->name == "ROLE_INVITADO")                            
+    @if($role->name == "ROLE_INVITADO")                            
         <?php
         session(['categoria' => true]);
         session(['articulo' => true]);

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,35 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /* Pruebas */
 Route::get('/test', function(){
-    return $roles = App\User::find(1)
-                    ->roles()                    
+    /* User */
+    $dataUser  = App\User::all();
+    $dataUser  = App\User::paginate(10);
+    $dataUser2 = DB::select('select * from users');
+    $dataUser3 = DB::table('users')
                     ->get();
+
+    foreach($dataUser as $key=>$user):        
+        echo "<h1>{$user->name}</h1>";
+
+        foreach($user->roles as $key=>$role):
+            echo "<h3>{$role->name}       </h3>";            
+            echo "<p> {$role->description}</p>";
+            echo "<p> {$role->created_at} </p>";
+            echo "<p> {$role->updated_at} </p>";
+        endforeach;
+        echo "<hr>";
+    endforeach;
+    /* Fin User */
+         
+    /* User find */
+    $dataUser = App\User::find(1);
+    foreach($dataUser->roles as $key=>$role):
+        echo $role->name;
+        echo "<hr>";
+    endforeach;
+    /* Fin User find */
+    
+    /* Otra forma */
+    echo $dataRole = App\User::find(1)->roles()->get();
+    /* Fin Otra forma */
 });
