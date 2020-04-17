@@ -43,7 +43,7 @@ use Illuminate\Support\Facades\DB; //Recuperando resultados
  * die();
  * 
  * ->dd();
- * dd($dataKKK);
+ * dd($data);
  */
 
 class CategoriaController extends Controller
