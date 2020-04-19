@@ -28,20 +28,20 @@ Route::get('/', function () {
 // Route::get('/', 'CategoriaController@index');
 Route::resources([
     'categoria' => 'CategoriaController',
-    'articulo' => 'ArticuloController',
-    'cliente' => 'ClienteController',
+    'articulo'  => 'ArticuloController',
+    'cliente'   => 'ClienteController',
     'proveedor' => 'ProveedorController',
-    'ingreso' => 'IngresoController',
-    'venta' => 'VentaController',
-    'usuario' => 'UsuarioController'
+    'ingreso'   => 'IngresoController',
+    'venta'     => 'VentaController',
+    'usuario'   => 'UsuarioController'
 ]);
 
 //Auth::routes();
 /* Desactivamos route register, reset, confirm */
 Auth::routes([
             'register' => false, 
-            'reset' => false, 
-            'confirm' => false
+            'reset'    => false, 
+            'confirm'  => false
             ]);
 
 Route::get('/home', 'HomeController@index')->name('home');
