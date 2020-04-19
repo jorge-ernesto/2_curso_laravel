@@ -2,11 +2,11 @@
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
-    <div class="container-fluid">
+    <div class="container-fluid text-primary">
         <h1 class="mt-4">Proveedores
             <a href="{{ route('proveedor.create') }}" class="btn btn-primary">Crear</a>              
         </h1>        
-        <div class="card mb-4">
+        <div class="card border-primary mb-4">
             <div class="card-header"><i class="fas fa-table mr-1"></i>Proveedores</div>
             <div class="card-body">
                 
@@ -14,33 +14,33 @@
                                 
                 @include('proveedor.search')  
                 <div class="table-responsive">
-                    <table class="table table-bordered" width="100%" cellspacing="0"> <!-- id="dataTable" -->
+                    <table class="table table-bordered text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
                             <tr>
-                                <th class="text-primary">id</th>
-                                <th class="text-primary">tipo_persona</th>
-                                <th class="text-primary">nombre</th>
-                                <th class="text-primary">tipo_documento</th>
-                                <th class="text-primary">num_documento</th>
-                                <th class="text-primary">direccion</th>                                
-                                <th class="text-primary">telefono</th>                                
-                                <th class="text-primary">email</th> 
-                                <th class="text-primary">update</th> 
-                                <th class="text-primary">delete</th>                                
+                                <th>id</th>
+                                <th>tipo_persona</th>
+                                <th>nombre</th>
+                                <th>tipo_documento</th>
+                                <th>num_documento</th>
+                                <th>direccion</th>                                
+                                <th>telefono</th>                                
+                                <th>email</th> 
+                                <th>update</th> 
+                                <th>delete</th>                                
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th class="text-primary">id</th>
-                                <th class="text-primary">tipo_persona</th>
-                                <th class="text-primary">nombre</th>
-                                <th class="text-primary">tipo_documento</th>
-                                <th class="text-primary">num_documento</th>
-                                <th class="text-primary">direccion</th>                                
-                                <th class="text-primary">telefono</th>                                
-                                <th class="text-primary">email</th>                                 
-                                <th class="text-primary">update</th> 
-                                <th class="text-primary">delete</th>                                
+                                <th>id</th>
+                                <th>tipo_persona</th>
+                                <th>nombre</th>
+                                <th>tipo_documento</th>
+                                <th>num_documento</th>
+                                <th>direccion</th>                                
+                                <th>telefono</th>                                
+                                <th>email</th>                                 
+                                <th>update</th> 
+                                <th>delete</th>                                
                             </tr>
                         </tfoot>
                         <tbody>

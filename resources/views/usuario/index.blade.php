@@ -2,11 +2,11 @@
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
-    <div class="container-fluid">
+    <div class="container-fluid text-primary">
         <h1 class="mt-4">Usuarios
             <a href="{{ route('usuario.create') }}" class="btn btn-primary">Crear</a>              
         </h1>        
-        <div class="card mb-4">
+        <div class="card border-primary mb-4">
             <div class="card-header"><i class="fas fa-table mr-1"></i>Usuarios</div>
             <div class="card-body">
                 
@@ -14,35 +14,35 @@
                                 
                 @include('usuario.search')  
                 <div class="table-responsive">
-                    <table class="table table-bordered" width="100%" cellspacing="0"> <!-- id="dataTable" -->
+                    <table class="table table-bordered text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
                             <tr>
-                                <th class="text-primary">id</th>
-                                <th class="text-primary">name</th>
-                                <th class="text-primary">email</th>
-                                <th class="text-primary">created_at</th>
-                                <th class="text-primary">updated_at</th>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>email</th>
+                                <th>created_at</th>
+                                <th>updated_at</th>
 
-                                {{-- <th class="text-primary">role_id</th> --}}
-                                <th class="text-primary">role_name</th>                                
+                                {{-- <th>role_id</th> --}}
+                                <th>role_name</th>                                
                                 
-                                <th class="text-primary">updated</th>
-                                <th class="text-primary">delete</th>
+                                <th>updated</th>
+                                <th>delete</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th class="text-primary">id</th>
-                                <th class="text-primary">name</th>
-                                <th class="text-primary">email</th>
-                                <th class="text-primary">created_at</th>
-                                <th class="text-primary">updated_at</th>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>email</th>
+                                <th>created_at</th>
+                                <th>updated_at</th>
 
-                                {{-- <th class="text-primary">role_id</th> --}}
-                                <th class="text-primary">role_name</th>                                
+                                {{-- <th>role_id</th> --}}
+                                <th>role_name</th>                                
 
-                                <th class="text-primary">updated</th>
-                                <th class="text-primary">delete</th>
+                                <th>updated</th>
+                                <th>delete</th>
                             </tr>
                         </tfoot>
                         <tbody>

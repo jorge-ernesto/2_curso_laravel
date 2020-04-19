@@ -2,11 +2,11 @@
 @extends('layouts.plantilla')    
 
 @section('seccion-main')    
-    <div class="container-fluid">
+    <div class="container-fluid text-primary">
         <h1 class="mt-4">Categorías
             <a href="{{ route('categoria.create') }}" class="btn btn-primary">Crear</a>              
         </h1>        
-        <div class="card mb-4">
+        <div class="card border-primary mb-4">
             <div class="card-header"><i class="fas fa-table mr-1"></i>Categorías</div>
             <div class="card-body">
                 
@@ -14,23 +14,23 @@
                                 
                 @include('categoria.search')  
                 <div class="table-responsive">
-                    <table class="table table-bordered" width="100%" cellspacing="0"> <!-- id="dataTable" -->
+                    <table class="table table-bordered text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
                             <tr>
-                                <th class="text-primary">id</th>
-                                <th class="text-primary">nombre</th>
-                                <th class="text-primary">descripcion</th>
-                                <th class="text-primary">update</th>
-                                <th class="text-primary">delete</th>                                
+                                <th>id</th>
+                                <th>nombre</th>
+                                <th>descripcion</th>
+                                <th>update</th>
+                                <th>delete</th>                                
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th class="text-primary">id</th>
-                                <th class="text-primary">nombre</th>
-                                <th class="text-primary">descripcion</th>
-                                <th class="text-primary">update</th>
-                                <th class="text-primary">delete</th>                                
+                                <th>id</th>
+                                <th>nombre</th>
+                                <th>descripcion</th>
+                                <th>update</th>
+                                <th>delete</th>                                
                             </tr>
                         </tfoot>
                         <tbody>

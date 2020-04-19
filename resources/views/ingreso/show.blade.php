@@ -2,11 +2,11 @@
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
-    <div class="container-fluid">
-        <h1 class="mt-4 text-primary">Ingresos</h1>        
+    <div class="container-fluid text-primary">
+        <h1 class="mt-4">Ingresos</h1>        
         <div class="card border-primary mb-4">
-            <div class="card-header text-primary"><i class="fas fa-table mr-1"></i>Ingresos</div>
-            <div class="card-body text-primary">
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Ingresos</div>
+            <div class="card-body">
 
                 @include('ingreso.alerts')
 
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="card border-primary mb-3">                        
-                        <div class="card-body text-primary">
+                        <div class="card-body">
 
                         </div>
                     </div>

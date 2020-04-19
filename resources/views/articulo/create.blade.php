@@ -2,9 +2,9 @@
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
-    <div class="container-fluid">
+    <div class="container-fluid text-primary">
         <h1 class="mt-4">Artículos</h1>        
-        <div class="card mb-4">
+        <div class="card border-primary mb-4">
             <div class="card-header"><i class="fas fa-table mr-1"></i>Artículos</div>
             <div class="card-body">
 
