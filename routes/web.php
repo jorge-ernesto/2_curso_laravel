@@ -25,6 +25,7 @@ Route::get('/', function () {
 });
 
 /* Categoria */
+// Route::get('/categoria', 'CategoriaController@index')->name('categoria.index');;
 Route::resources([
     'categoria' => 'CategoriaController',
     'articulo'  => 'ArticuloController',
