@@ -15,13 +15,27 @@
                 </a>
                 <div class="collapse" id="aprendiendoLaravel" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('categoria.index') }}">Categoría</a>                        
-                        <a class="nav-link" href="{{ route('articulo.index') }}">Artículo</a>                        
-                        <a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a>                        
-                        <a class="nav-link" href="{{ route('proveedor.index') }}">Proveedor</a>                        
-                        <a class="nav-link" href="{{ route('ingreso.index') }}">Ingreso</a>                        
-                        <a class="nav-link" href="{{ route('venta.index') }}">Venta</a>                        
-                        <a class="nav-link" href="{{ route('usuario.index') }}">Usuario</a>                        
+                        @if( session('categoria') )
+                            <a class="nav-link" href="{{ route('categoria.index') }}">Categoría</a>
+                        @endif
+                        @if( session('articulo') )
+                            <a class="nav-link" href="{{ route('articulo.index') }}">Artículo</a>
+                        @endif
+                        @if( session('cliente') )
+                            <a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a>
+                        @endif
+                        @if( session('proveedor') )
+                            <a class="nav-link" href="{{ route('proveedor.index') }}">Proveedor</a>
+                        @endif
+                        @if( session('ingreso') )
+                            <a class="nav-link" href="{{ route('ingreso.index') }}">Ingreso</a>
+                        @endif
+                        @if( session('venta') )
+                            <a class="nav-link" href="{{ route('venta.index') }}">Venta</a>
+                        @endif
+                        @if( session('usuario') )
+                            <a class="nav-link" href="{{ route('usuario.index') }}">Usuario</a>
+                        @endif
                     </nav>
                 </div>
                
