@@ -25,7 +25,6 @@ Route::get('/', function () {
 });
 
 /* Categoria */
-// Route::get('/', 'CategoriaController@index');
 Route::resources([
     'categoria' => 'CategoriaController',
     'articulo'  => 'ArticuloController',
