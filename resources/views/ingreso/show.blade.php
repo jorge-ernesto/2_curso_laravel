@@ -110,7 +110,8 @@
                     </h5>
 
                     <h4>
-                        <a href="{{ route('ingreso.index') }}" class="btn btn-primary">Atras</a>    
+                        {{-- <button type="submit" class="btn btn-primary">Crear Ingreso</button> --}}
+                        <a href="{{ route('ingreso.index') }}" class="btn btn-primary">Atras</a>
                     </h4>
                 {{-- </form> --}}
 
