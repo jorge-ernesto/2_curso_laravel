@@ -158,7 +158,7 @@
                                     '<span id="totalImporte_'+ idarticulo +'">1</span>' +
                                 '</td>' +
                                 '<td>' +
-                                    '<button type="button" class="btn btn-sm btn-danger" onclick="eliminar(' + idarticulo + ');">Eliminar</button>' +
+                                    '<button type="button" class="btn btn-sm btn-dark" onclick="eliminar(' + idarticulo + ');">Eliminar</button>' +
                                 '</td>' +
                             '</tr>';
             $('#cargarDetalle').append(response);     
