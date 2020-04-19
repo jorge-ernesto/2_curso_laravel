@@ -91,15 +91,15 @@
                                     </td>
                                     <td>{{ $value->articulo }}</td>
                                     <td style="width: 190px;">
-                                        <input type="number" name="cantidad[]" class="form-control col-sm-8" value="{{ $value->cantidad }}" min="1" required="" onkeyup="calcularImporte(1);" onchange="calcularImporte(1);" id="cantidad_1">
+                                        <input type="number" name="cantidad[]" class="form-control col-sm-8" value="{{ $value->cantidad }}" min="1" required onkeyup="calcularImporte(1);" onchange="calcularImporte(1);" id="cantidad_1">
                                     </td>
                                     <td style="width: 220px;">
-                                        <input type="text" name="precio_compra[]" class="form-control col-sm-8" value="{{ $value->precio_compra }}" pattern="[-+]?[0-9]*[.]?[0-9]+" required="" onkeyup="calcularImporte(1);" onchange="calcularImporte(1);" id="precio_compra_1">
+                                        <input type="text" name="precio_compra[]" class="form-control col-sm-8" value="{{ $value->precio_compra }}" pattern="[-+]?[0-9]*[.]?[0-9]+" required onkeyup="calcularImporte(1);" onchange="calcularImporte(1);" id="precio_compra_1">
                                     </td>
                                     <td style="width: 220px;">
-                                        <input type="text" name="precio_venta[]" class="form-control col-sm-8" value="{{ $value->precio_venta }}" pattern="[-+]?[0-9]*[.]?[0-9]+" required="" id="precio_venta_1">
+                                        <input type="text" name="precio_venta[]" class="form-control col-sm-8" value="{{ $value->precio_venta }}" pattern="[-+]?[0-9]*[.]?[0-9]+" required id="precio_venta_1">
                                     </td>
-                                    <td><span id="totalImporte_1">1.00</span></td>
+                                    <td><span id="totalImporte_1">{{ $value->total }}</span></td>
                                 </tr>
                                 @endforeach
                             </tbody>
