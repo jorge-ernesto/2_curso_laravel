@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\DB; //Recuperando resultados
  * 
  * ->dd();
  * dd($data);
+ * dump($data);
  */
 
 class CategoriaController extends Controller
