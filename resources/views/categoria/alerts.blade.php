@@ -10,6 +10,7 @@
 @if( session('mensaje_rollback') )
     <div class="alert alert-danger">{{ session('mensaje_rollback') }}</div>
 @endif
+{{-- Fin Alertas --}}
 
 {{-- Errores --}}
 @error('nombre')
@@ -20,4 +21,3 @@
     <div class="alert alert-danger">La descripción es requerida</div>
 @endif    
 {{-- Fin Errores --}}            
-{{-- Fin Alertas --}}

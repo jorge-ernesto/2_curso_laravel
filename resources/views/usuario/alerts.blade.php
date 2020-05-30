@@ -10,6 +10,7 @@
 @if( session('mensaje_rollback') )
     <div class="alert alert-danger">{{ session('mensaje_rollback') }}</div>
 @endif
+{{-- Fin Alertas --}}
 
 {{-- Errores --}}
 @if( $errors->any() )
@@ -22,4 +23,3 @@
     </div>
 @endif           
 {{-- Fin Errores --}}
-{{-- Fin Alertas --}}
