@@ -32,7 +32,7 @@ Route::resources([
     'cliente'   => 'ClienteController',
     'proveedor' => 'ProveedorController',
     'ingreso'   => 'IngresoController',
-    'venta'     => 'VentaController',
+    //'venta'     => 'VentaController',
     'usuario'   => 'UsuarioController'
 ]);
 
