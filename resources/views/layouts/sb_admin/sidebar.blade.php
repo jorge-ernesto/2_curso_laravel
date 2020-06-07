@@ -30,9 +30,9 @@
                         @if( session('ingreso') )
                             <a class="nav-link" href="{{ route('ingreso.index') }}">Ingreso</a>
                         @endif
-                        @if( session('venta') )
+                        {{-- @if( session('venta') )
                             <a class="nav-link" href="{{ route('venta.index') }}">Venta</a>
-                        @endif
+                        @endif --}}
                         @if( session('usuario') )
                             <a class="nav-link" href="{{ route('usuario.index') }}">Usuario</a>
                         @endif
