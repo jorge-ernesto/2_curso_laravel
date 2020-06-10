@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'es', //en, la carpeta con los archivos traducidos estan en resources/lang/es
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
