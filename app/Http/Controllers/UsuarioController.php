@@ -95,7 +95,7 @@ class UsuarioController extends Controller
         /* Validar request user, role */
         $request->validate([
             "name"     => "required|max:255",
-            "email"    => "required|email|max:255|unique:users,email,$id,id",
+            "email"    => "required|email|max:255|unique:users,email,$id", //El email sera unico, pero puede haber una excepción que el email coincide con el email del id actual
             "password" => "required|min:8|confirmed",
             "role_id"  => "required"
         ]);
