@@ -24,7 +24,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-/* Categoria */
+/* Rutas */
 // Route::get('/categoria', 'CategoriaController@index')->name('categoria.index');;
 Route::resources([
     'categoria' => 'CategoriaController',
@@ -36,8 +36,9 @@ Route::resources([
     'usuario'   => 'UsuarioController'
 ]);
 
+/* Rutas de la autenticación */
 //Auth::routes();
-/* Desactivamos route register, reset, confirm */
+//Desactivamos las rutas register, reset, confirm de la autenticación
 Auth::routes([
             'register' => false, 
             'reset'    => false, 
@@ -46,7 +47,7 @@ Auth::routes([
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-/* Pruebas */
+/* Ruta para pruebas */
 Route::get('/test', function(){
     /* User */
     $dataUser  = App\User::all();
