@@ -38,7 +38,8 @@ Route::resources([
 
 /* Rutas de la autenticación */
 //Auth::routes();
-//Desactivamos las rutas register, reset, confirm de la autenticación
+
+/* Desactivamos las rutas register, reset, confirm de la autenticación */
 Auth::routes([
             'register' => false, 
             'reset'    => false, 

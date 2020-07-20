@@ -1,5 +1,5 @@
 @if( session('articulo') )        
-    {{-- Display the page --}}
+    {{-- Mostramos la pagina --}}
 @else    
     <script type="text/javascript">
         window.location.href = "/404";

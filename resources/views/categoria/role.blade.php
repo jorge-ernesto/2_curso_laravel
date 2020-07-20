@@ -1,7 +1,7 @@
 @if( session('categoria') )        
-    {{-- Display the page --}}    
+    {{-- Mostramos la pagina --}}
 @else    
-    <script type="text/javascript">
+    <script>
         window.location.href = "/404";
     </script>
 @endif

@@ -1,6 +1,8 @@
 @if( session('role') )
+    {{-- Ya se le asigno role --}}
 @else
     <?php $dataRole = Auth::user()->roles()->get(); ?>
+
     @foreach($dataRole as $key=>$role)                        
         @if($role->name == "ROLE_ADMIN")                            
             <?php
