@@ -9,6 +9,6 @@
 <script src="{{ asset('assets/plugins/FontAwesome/all.min.js') }}"></script>
 
 {{-- Personalizado uwu --}}
-<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/plugins/BootstrapSelect/bootstrap-select.min.css') }}"> <!-- Bootstrap Select -->
 <script src="{{ asset('assets/plugins/JavaScriptCookie/js.cookie.js') }}"></script> <!-- JavaScript Cookie -->
