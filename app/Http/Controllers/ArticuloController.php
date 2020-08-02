@@ -58,7 +58,7 @@ class ArticuloController extends Controller
         /* Imagen */
         if($request->hasFile('imagen')):
             $file = $request->file('imagen');
-            $file->move(public_path().'/imagenes/articulos/', $file->getClientOriginalName());
+            $file->move(public_path().'/assets/imagenes/articulos/', $file->getClientOriginalName());
             $articuloNuevo->imagen = $file->getClientOriginalName();
         endif;
         $articuloNuevo->estado      = 'Activo';
@@ -103,7 +103,7 @@ class ArticuloController extends Controller
         /* Imagen */
         if($request->hasFile('imagen')):
             $file = $request->file('imagen');
-            $file->move(public_path().'/imagenes/articulos/', $file->getClientOriginalName());
+            $file->move(public_path().'/assets/imagenes/articulos/', $file->getClientOriginalName());
             $articuloActualizado->imagen = $file->getClientOriginalName();
         endif;
         $articuloActualizado->estado = 'Activo';
