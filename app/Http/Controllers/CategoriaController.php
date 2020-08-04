@@ -117,15 +117,15 @@ class CategoriaController extends Controller
     }
 
     public function destroy($id){
+        /* Eliminar categoria */
+        $categoriaActualizada = App\Categoria::findOrFail($id);        
+        $categoriaActualizada->delete();
+        return back()->with('mensaje_eliminado', 'Categoria eliminada');        
+
         /* Cambiar estado de categoria */
         $categoriaActualizada = App\Categoria::findOrFail($id);
         $categoriaActualizada->condicion = 0;
         $categoriaActualizada->update();
-        return back()->with('mensaje_eliminado', 'Categoria eliminada');
-
-        /* Eliminar categoria */
-        $categoriaActualizada = App\Categoria::findOrFail($id);        
-        $categoriaActualizada->delete();
         return back()->with('mensaje_eliminado', 'Categoria eliminada');        
     }
 }

@@ -134,11 +134,6 @@ class IngresoController extends Controller
         $ingreso = App\Ingreso::findOrFail($id);
         $ingreso->estado = "Cancelado";
         $ingreso->update();
-        return back()->with('mensaje_eliminado', 'Ingreso eliminado');
-
-        /* Eliminar ingreso */
-        $ingreso = App\Ingreso::findOrFail($id);        
-        $ingreso->delete();
-        return back()->with('mensaje_eliminado', 'Ingreso eliminado');        
+        return back()->with('mensaje_eliminado', 'Ingreso eliminado'); 
     }
 }

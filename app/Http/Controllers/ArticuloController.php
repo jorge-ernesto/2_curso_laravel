@@ -126,11 +126,6 @@ class ArticuloController extends Controller
             $articuloActualizado->estado = 'Activo';
             $articuloActualizado->update();
             return back()->with('mensaje', 'Articulo activado');
-        endif;        
-
-        /* Eliminar articulo */
-        $articuloActualizado = App\Articulo::findOrFail($id);        
-        $articuloActualizado->delete();
-        return back()->with('mensaje_eliminado', 'Articulo eliminado');        
+        endif;       
     }
 }
