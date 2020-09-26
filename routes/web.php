@@ -37,7 +37,7 @@ Route::resources([
 ]);
 
 /* Rutas de la autenticación */
-//Auth::routes();
+// Auth::routes();
 
 /* Desactivamos las rutas register, reset, confirm de la autenticación */
 Auth::routes([
@@ -52,7 +52,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', function(){
     /* User */
     $dataUser  = App\User::all();
-    $dataUser  = App\User::paginate(10);
     $dataUser2 = DB::select('select * from users');
     $dataUser3 = DB::table('users')
                     ->get();
