@@ -77,9 +77,9 @@ Route::get('/test', function(){
     echo "<hr>";
     /* Fin Role */
     
-    /* Otra forma */
+    /* Role otra forma */
     $dataRole = App\User::find(1)->roles()->get();    
     error_log("****** dataRole ******");
     error_log(json_encode($dataRole));
-    /* Fin Otra forma */
+    /* Fin Role otra forma */
 });
