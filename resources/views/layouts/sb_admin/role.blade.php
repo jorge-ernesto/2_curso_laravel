@@ -2,6 +2,7 @@
     {{-- Ya se le asigno role --}}
 @else
     <?php $dataRole = Auth::user()->roles()->get(); ?>    
+    <?php error_log("****** dataRole ******"); ?>
     <?php error_log(json_encode($dataRole)); ?>
 
     @foreach($dataRole as $key=>$role)                        
