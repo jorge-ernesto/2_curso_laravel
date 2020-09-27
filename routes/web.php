@@ -69,15 +69,17 @@ Route::get('/test', function(){
     endforeach;
     /* Fin User */
          
-    /* User find */
+    /* Role */
     $dataUser = App\User::find(1);
     foreach($dataUser->roles as $key=>$role):
         echo $role->name;
-        echo "<hr>";
     endforeach;
-    /* Fin User find */
+    echo "<hr>";
+    /* Fin Role */
     
     /* Otra forma */
-    echo $dataRole = App\User::find(1)->roles()->get();
+    $dataRole = App\User::find(1)->roles()->get();    
+    error_log("****** dataRole ******");
+    error_log(json_encode($dataRole));
     /* Fin Otra forma */
 });
