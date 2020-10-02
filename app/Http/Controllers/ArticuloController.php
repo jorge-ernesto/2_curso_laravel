@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\DB; //Recuperando resultados
 
 class ArticuloController extends Controller
 {    
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         if($request):
             $searchText = $request->searchText;
             $dataArticulo = DB::table('articulo as a')
@@ -27,14 +29,16 @@ class ArticuloController extends Controller
         endif;
     }
     
-    public function create(){
+    public function create()
+    {
         $dataCategoria = DB::table('categoria')
                             ->where('condicion', '=', '1')
                             ->get();
         return view('articulo.create', compact('dataCategoria'));
     }
     
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -66,12 +70,14 @@ class ArticuloController extends Controller
         return back()->with('mensaje', 'Articulo agregado');
     }
     
-    public function show($id){        
+    public function show($id)
+    {        
         $dataArticulo = App\Articulo::findOrFail($id);
         return view('articulo.show', compact('dataArticulo'));
     }
 
-    public function edit($id){        
+    public function edit($id)
+    {        
         $dataCategoria = DB::table('categoria')
                             ->where('condicion', '=', '1')
                             ->get();
@@ -79,7 +85,8 @@ class ArticuloController extends Controller
         return view('articulo.edit', compact('dataCategoria', 'dataArticulo'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -111,7 +118,8 @@ class ArticuloController extends Controller
         return back()->with('mensaje', 'Articulo editado');
     }
 
-    public function destroy(Request $request, $id){
+    public function destroy(Request $request, $id)
+    {
         /* Obtenemos todo el request */
         // return $request->all();
 

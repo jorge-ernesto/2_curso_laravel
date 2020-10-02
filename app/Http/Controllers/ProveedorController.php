@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\DB; //Recuperando resultados
 
 class ProveedorController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         if($request):
             $searchText = $request->searchText;
             $dataPersona = DB::table('persona')
@@ -25,11 +27,13 @@ class ProveedorController extends Controller
         endif;
     }
 
-    public function create(){
+    public function create()
+    {
         return view('proveedor.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -57,17 +61,20 @@ class ProveedorController extends Controller
         return back()->with('mensaje', 'Proveedor agregado');
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $dataPersona = App\Persona::findOrFail($id);
         return view('proveedor.show', compact('dataPersona'));
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $dataPersona = App\Persona::findOrFail($id);
         return view('proveedor.edit', compact('dataPersona'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -95,7 +102,8 @@ class ProveedorController extends Controller
         return back()->with('mensaje', 'Proveedor editado');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         /* Eliminar persona */
         $personaActualizada = App\Persona::findOrFail($id);        
         $personaActualizada->delete();

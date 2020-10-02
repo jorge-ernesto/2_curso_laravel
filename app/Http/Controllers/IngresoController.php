@@ -10,11 +10,13 @@ use Illuminate\Support\Carbon;
 
 class IngresoController extends Controller
 {   
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     
-    public function index(Request $request){        
+    public function index(Request $request)
+    {        
         if($request):
             $searchText = $request->searchText;            
             $dataIngreso  = DB::table('ingreso as i')                                
@@ -29,7 +31,8 @@ class IngresoController extends Controller
         endif;
     }
     
-    public function create(){
+    public function create()
+    {
         $dataPersona = DB::table('persona')
                             ->where('tipo_persona', '=', 'Proveedor')
                             ->get();
@@ -40,7 +43,8 @@ class IngresoController extends Controller
         return view('ingreso.create', compact('dataPersona', 'dataArticulo'));
     }
     
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -104,7 +108,8 @@ class IngresoController extends Controller
         }                             
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $dataPersona = DB::table('persona')
                             ->where('tipo_persona', '=', 'Proveedor')
                             ->get();
@@ -123,13 +128,16 @@ class IngresoController extends Controller
         return view('ingreso.show', compact('dataPersona', 'dataIngreso', 'dataDetalle'));
     }
 
-    public function edit($id){        
+    public function edit($id)
+    {        
     }
 
-    public function update(Request $request, $id){        
+    public function update(Request $request, $id)
+    {        
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         /* Cambiar estado de ingreso */
         $ingreso = App\Ingreso::findOrFail($id);
         $ingreso->estado = "Cancelado";

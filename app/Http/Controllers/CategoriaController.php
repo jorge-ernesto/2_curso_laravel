@@ -50,11 +50,13 @@ use Illuminate\Support\Facades\DB; //Recuperando resultados
 
 class CategoriaController extends Controller
 {    
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
-    public function index(Request $request){        
+    public function index(Request $request)
+    {        
         if($request):
             $searchText = $request->searchText;
             $dataCategoria  = DB::table('categoria')
@@ -66,11 +68,13 @@ class CategoriaController extends Controller
         endif;
     }
  
-    public function create(){
+    public function create()
+    {
         return view('categoria.create');
     }
     
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -89,17 +93,20 @@ class CategoriaController extends Controller
         return back()->with('mensaje', 'Categoria agregada');
     }
 
-    public function show($id){        
+    public function show($id)
+    {        
         $dataCategoria = App\Categoria::findOrFail($id);
         return view('categoria.show', compact('dataCategoria'));
     }
 
-    public function edit($id){        
+    public function edit($id)
+    {        
         $dataCategoria = App\Categoria::findOrFail($id);
         return view('categoria.edit', compact('dataCategoria'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -117,7 +124,8 @@ class CategoriaController extends Controller
         return back()->with('mensaje', 'Categoria editada');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         /* Eliminar categoria */
         $categoriaActualizada = App\Categoria::findOrFail($id);        
         $categoriaActualizada->delete();

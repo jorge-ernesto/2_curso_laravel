@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
-    public function index(Request $request){        
+    public function index(Request $request)
+    {        
         if($request):
             $searchText = $request->searchText;
             $dataUsuario  = DB::table('users as u')
@@ -31,12 +33,14 @@ class UsuarioController extends Controller
         endif;
     }
 
-    public function create(){
+    public function create()
+    {
         $dataRole = DB::table('roles')->get();
         return view('usuario.create', compact('dataRole'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -71,12 +75,14 @@ class UsuarioController extends Controller
         }
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $dataUsuario = App\User::findOrFail($id);
         return view('usuario.show', compact('dataUsuario'));
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $dataRole = DB::table('roles')->get();
         $dataUsuario = DB::table('users as u')
                             ->join('role_user as ru', 'ru.user_id', '=', 'u.id')
@@ -88,7 +94,8 @@ class UsuarioController extends Controller
         return view('usuario.edit', compact('dataRole', 'dataUsuario'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -112,7 +119,7 @@ class UsuarioController extends Controller
             $usuario->update();
 
             /* Guardamos role */                  
-            DB::update(" UPDATE role_user SET role_id = '$role_id', updated_at = NOW() WHERE user_id = '$id' ");
+            DB::update("UPDATE role_user SET role_id = '$role_id', updated_at = NOW() WHERE user_id = '$id' ");
              
             DB::commit();
             return back()->with('mensaje', 'Usuario editado');
@@ -122,7 +129,8 @@ class UsuarioController extends Controller
         }
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         /* Eliminar user */
         $usuario = App\User::findOrFail($id);        
         $usuario->delete();
