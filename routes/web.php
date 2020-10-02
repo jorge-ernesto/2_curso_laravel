@@ -39,6 +39,7 @@ Route::get('/', function () {
 
     //Rutas de autenticación
     // Auth::routes();
+
     // Route::get('/home', 'HomeController@index')->name('home');
 
     //Rutas de autenticación, desactivamos las rutas register, reset, confirm de la autenticación
@@ -47,4 +48,5 @@ Route::get('/', function () {
         'reset'    => false, 
         'confirm'  => false
         ]);
+
     Route::get('/home', 'HomeController@index')->name('home');
