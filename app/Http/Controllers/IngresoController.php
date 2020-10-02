@@ -89,7 +89,7 @@ class IngresoController extends Controller
             $precio_venta_array  = $request->precio_venta;
                         
             $cont = 0;
-            while($cont < count($idarticulo_array)): 
+            while($cont < count($idarticulo_array)){
                 $detalle                = new App\DetalleIngreso;
                 $detalle->idingreso     = $idingreso;
                 $detalle->idarticulo    = $idarticulo_array[$cont];
@@ -98,7 +98,7 @@ class IngresoController extends Controller
                 $detalle->precio_venta  = $precio_venta_array[$cont];              
                 $detalle->save();
                 $cont++;
-            endwhile;
+            }
 
             DB::commit();
             return back()->with('mensaje', 'Ingreso agregado');

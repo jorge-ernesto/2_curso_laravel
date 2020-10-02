@@ -60,11 +60,11 @@ class ArticuloController extends Controller
         $articuloNuevo->stock       = $request->stock;
         $articuloNuevo->descripcion = $request->descripcion;                
         /* Imagen */
-        if($request->hasFile('imagen')):
+        if($request->hasFile('imagen')){
             $file = $request->file('imagen');
             $file->move(public_path().'/assets/imagenes/articulos/', $file->getClientOriginalName());
             $articuloNuevo->imagen = $file->getClientOriginalName();
-        endif;
+        }
         $articuloNuevo->estado      = 'Activo';
         $articuloNuevo->save();        
         return back()->with('mensaje', 'Articulo agregado');
@@ -108,11 +108,11 @@ class ArticuloController extends Controller
         $articuloActualizado->stock       = $request->stock;
         $articuloActualizado->descripcion = $request->descripcion;                
         /* Imagen */
-        if($request->hasFile('imagen')):
+        if($request->hasFile('imagen')){
             $file = $request->file('imagen');
             $file->move(public_path().'/assets/imagenes/articulos/', $file->getClientOriginalName());
             $articuloActualizado->imagen = $file->getClientOriginalName();
-        endif;
+        }
         $articuloActualizado->estado = 'Activo';
         $articuloActualizado->update();        
         return back()->with('mensaje', 'Articulo editado');
@@ -124,16 +124,16 @@ class ArticuloController extends Controller
         // return $request->all();
 
         /* Cambiar estado de articulo */
-        if($request->action == "delete"):
+        if($request->action == "delete"){
             $articuloActualizado = App\Articulo::findOrFail($id);
             $articuloActualizado->estado = 'Inactivo';
             $articuloActualizado->update();
             return back()->with('mensaje_eliminado', 'Articulo desactivado');
-        elseif($request->action == "restore"):
+        }elseif($request->action == "restore"){
             $articuloActualizado = App\Articulo::findOrFail($id);
             $articuloActualizado->estado = 'Activo';
             $articuloActualizado->update();
             return back()->with('mensaje', 'Articulo activado');
-        endif;       
+        }
     }
 }
