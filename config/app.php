@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', true), //false
+    'debug' => (bool) env('APP_DEBUG', true), //false, se modifico
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'America/Lima', //UTC
+    'timezone' => 'America/Lima', //UTC, se modifico
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'es',
+    'locale' => 'es', //en, , se modifico
 
     /*
     |--------------------------------------------------------------------------
