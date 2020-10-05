@@ -31,6 +31,6 @@ class User extends Authenticatable
 
     /* Relacion de muchos a muchos */
     public function roles(){
-        return $this->belongsToMany('App\Role')->withTimeStamps();
+        return $this->belongsToMany('App\Role');
     }
 }

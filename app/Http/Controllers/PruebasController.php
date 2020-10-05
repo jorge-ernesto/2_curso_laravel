@@ -31,16 +31,18 @@ class PruebasController extends Controller
     
     public function Role(Request $request)
     {
+        $id = "1";
+
         //Role
-        $dataUser = App\User::find(1);
-        foreach($dataUser->roles as $key=>$role){
+        $user = App\User::find($id);
+        foreach($user->roles as $key=>$role){
             echo $role->name;
         }
         echo "<hr>";
         
         //Otra forma
-        $dataRole = App\User::find(1)->roles()->get();    
-        error_log("****** dataRole ******");
-        error_log(json_encode($dataRole));        
+        $roles = App\User::find(1)->roles()->get();    
+        error_log("****** roles ******");
+        error_log(json_encode($roles));        
     }   
 }

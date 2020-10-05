@@ -19,6 +19,6 @@ class Role extends Model
 
     /* Relacion de muchos a muchos */
     public function users(){
-        return $this->belongsToMany('App\User')->withTimeStamps();
+        return $this->belongsToMany('App\User');
     }
 }

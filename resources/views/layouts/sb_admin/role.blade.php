@@ -1,11 +1,11 @@
 @if( session('role') )
     {{-- Ya se le asigno role --}}
 @else
-    <?php $dataRole = Auth::user()->roles()->get(); ?>    
-    <?php error_log("****** dataRole ******"); ?>
-    <?php error_log(json_encode($dataRole)); ?>
+    <?php $roles = Auth::user()->roles()->get(); ?>    
+    <?php error_log("****** roles ******"); ?>
+    <?php error_log(json_encode($roles)); ?>
 
-    @foreach($dataRole as $key=>$role)                        
+    @foreach($roles as $key=>$role)                        
         @if($role->name == "ROLE_ADMIN")                            
             <?php
             session(['role' => true]);
