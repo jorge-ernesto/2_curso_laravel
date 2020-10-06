@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB; //Recuperando resultados
  * echo "</pre>";
  * die();
  * 
- * ->dd(); //Detiene la ejecucion, usarlo sin get, first o paginate
+ * ->dd(); //Detiene la ejecucion, usarlo sin get, first, paginate
  * ->toSql(); //Convierte a sql
  */
 
