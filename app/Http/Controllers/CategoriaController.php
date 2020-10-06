@@ -8,35 +8,9 @@ use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
 
 /**
-   Controladores
- * Los basicos
- * Controladores de recursos
- * @link https://laravel.com/docs/7.x/controllers#resource-controllers
+ * Comprobar data
+ * error_log(json_encode($dataCategoria));
  * 
- * Los basicos
- * Validación
- * @link https://laravel.com/docs/7.x/validation#quick-writing-the-validation-logic
- * 
-   Modelos
- * ORM Elocuent
- * Definiendo modelos
- * @link https://laravel.com/docs/7.x/eloquent#defining-models
- * 
-   App
- * ORM Elocuent
- * Recuperando modelos
- * @link https://laravel.com/docs/7.x/eloquent#retrieving-models
- * 
-   DB
- * Base de datos
- * Ejecución de consultas SQL sin procesar
- * @link https://laravel.com/docs/7.x/database#running-queries
- * 
- * Base de datos
- * Recuperando resultados
- * @link https://laravel.com/docs/7.x/queries#retrieving-results
- * 
-   Comprobar data
  * echo "<pre>";
  * print_r($dataCategoria);
  * echo "</pre>";
