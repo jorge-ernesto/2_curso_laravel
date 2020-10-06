@@ -16,10 +16,8 @@ use Illuminate\Support\Facades\DB; //Recuperando resultados
  * echo "</pre>";
  * die();
  * 
- * ->dd();
- * dd($data);
- * dump($data);
- * ->toSql();
+ * ->dd(); //Detiene la ejecucion, usarlo sin get, first o paginate
+ * ->toSql(); //Convierte a sql
  */
 
 class CategoriaController extends Controller
@@ -31,7 +29,7 @@ class CategoriaController extends Controller
 
     public function index(Request $request)
     {        
-        if($request):
+        if($request){
             $searchText = $request->searchText;
             $dataCategoria  = DB::table('categoria')
                                     ->where('nombre', 'LIKE', '%'.$searchText.'%')
@@ -39,7 +37,7 @@ class CategoriaController extends Controller
                                     ->orderBy('idcategoria', 'ASC')
                                     ->paginate('10');
             return view('categoria.index', compact('dataCategoria', 'searchText'));
-        endif;
+        }
     }
  
     public function create()
