@@ -17,7 +17,7 @@ class UsuarioController extends Controller
 
     public function index(Request $request)
     {        
-        if($request):
+        if($request){
             $searchText = $request->searchText;
             $dataUsuario  = DB::table('users as u')
                                 ->join('role_user as ru', 'ru.user_id', '=', 'u.id')
@@ -30,7 +30,7 @@ class UsuarioController extends Controller
                                 ->orderBy('u.id', 'ASC')
                                 ->paginate('10');
             return view('usuario.index', compact('dataUsuario', 'searchText'));
-        endif;
+        }
     }
 
     public function create()

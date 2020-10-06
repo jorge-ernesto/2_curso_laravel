@@ -16,7 +16,7 @@ class ProveedorController extends Controller
     
     public function index(Request $request)
     {
-        if($request):
+        if($request){
             $searchText = $request->searchText;
             $dataPersona = DB::table('persona')
                                 ->where('nombre', 'LIKE', '%'.$searchText.'%')->where('tipo_persona', '=', 'Proveedor')
@@ -24,7 +24,7 @@ class ProveedorController extends Controller
                                 ->orderBy('idpersona', 'ASC')
                                 ->paginate('10');
             return view('proveedor.index', compact('dataPersona', 'searchText'));
-        endif;
+        }
     }
 
     public function create()

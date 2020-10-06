@@ -16,7 +16,7 @@ class ClienteController extends Controller
 
     public function index(Request $request)
     {
-        if($request):
+        if($request){
             $searchText = $request->searchText;
             $dataPersona = DB::table('persona')
                                 ->where('nombre', 'LIKE', '%'.$searchText.'%')->where('tipo_persona', '=', 'Cliente')
@@ -24,7 +24,7 @@ class ClienteController extends Controller
                                 ->orderBy('idpersona', 'ASC')
                                 ->paginate('10');
             return view('cliente.index', compact('dataPersona', 'searchText'));
-        endif;
+        }
     }
 
     public function create()

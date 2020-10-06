@@ -16,7 +16,7 @@ class ArticuloController extends Controller
     
     public function index(Request $request)
     {
-        if($request):
+        if($request){
             $searchText = $request->searchText;
             $dataArticulo = DB::table('articulo as a')
                                     ->join('categoria as c', 'a.idcategoria', '=', 'c.idcategoria')
@@ -26,7 +26,7 @@ class ArticuloController extends Controller
                                     ->orderBy('idarticulo', 'ASC')
                                     ->paginate('10');
             return view('articulo.index', compact('dataArticulo', 'searchText'));
-        endif;
+        }
     }
     
     public function create()

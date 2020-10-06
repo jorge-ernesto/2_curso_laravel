@@ -17,7 +17,7 @@ class IngresoController extends Controller
     
     public function index(Request $request)
     {        
-        if($request):
+        if($request){
             $searchText = $request->searchText;            
             $dataIngreso  = DB::table('ingreso as i')                                
                                 ->join('persona as p', 'i.idproveedor', '=', 'p.idpersona')
@@ -28,7 +28,7 @@ class IngresoController extends Controller
                                 ->orderBy('i.idingreso', 'ASC')                                
                                 ->paginate(10);
             return view('ingreso.index', compact('dataIngreso', 'searchText'));                                
-        endif;
+        }
     }
     
     public function create()
