@@ -55,6 +55,6 @@ Route::get('/', function () {
         'register' => false, 
         'reset'    => false, 
         'confirm'  => false
-        ]);
+    ]);
 
     Route::get('/home', 'HomeController@index')->name('home');
