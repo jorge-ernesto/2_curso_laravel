@@ -59,7 +59,7 @@ class UsuarioController extends Controller
             $usuario           = new App\User;
             $usuario->name     = $request->name;
             $usuario->email    = $request->email;
-            $usuario->password = Hash::make($request->password);            
+            $usuario->password = Hash::make($request->password); //Este es el metodo que usa Laravel para encriptar contraseñas
             $role_id           = $request->role_id;
             $usuario->save();
 
