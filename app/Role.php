@@ -18,8 +18,14 @@ class Role extends Model
     ];
 
     /* RELACION DE MUCHOS A MUCHOS */
-    //Un usuario puede tener muchos roles, y un rol puede tener muchos usuarios
+    //Un rol puede tener muchos usuarios
     public function users(){
         return $this->belongsToMany('App\User');
+    }
+
+    /* RELACION DE MUCHOS A MUCHOS */
+    //Un rol puede tener muchos permisos
+    public function permissions(){
+        return $this->belongsToMany('App\Permissions');
     }
 }
