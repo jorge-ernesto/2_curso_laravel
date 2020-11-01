@@ -29,7 +29,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime'
     ];
 
-    /* Relacion de muchos a muchos */
+    /* RELACION DE MUCHOS A MUCHOS */
+    //Un usuario puede tener muchos roles, y un rol puede tener muchos usuarios
     public function roles(){
         return $this->belongsToMany('App\Role');
     }
