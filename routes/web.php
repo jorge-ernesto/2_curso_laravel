@@ -38,11 +38,11 @@ Route::get('/', function () {
     Route::resources([
         'almacen/categoria' => 'CategoriaController',
         'almacen/articulo'  => 'ArticuloController',
-        'cliente'   => 'ClienteController',
-        'proveedor' => 'ProveedorController',
-        'ingreso'   => 'IngresoController',
-        //'venta'     => 'VentaController',
-        'usuario'   => 'UsuarioController'
+        'cliente'           => 'ClienteController',
+        'compras/proveedor' => 'ProveedorController',
+        'compras/ingreso'   => 'IngresoController',
+        //'venta'           => 'VentaController',
+        'usuario'           => 'UsuarioController'
     ]);
 
     //Rutas de autenticación

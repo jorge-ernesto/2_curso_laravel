@@ -11,12 +11,14 @@
     
     //CONFIGURACION PARA OBTENER URL EN LARAVEL
     path = path.split('/');
-    path = path[0] + '/'+ path[1] + '/' + path[2] + '/' + path[3];
-    console.log(path);
+    var path_ = path[0] + '/'+ path[1] + '/' + path[2] + '/' + path[3];
+    var path__ = path[0] + '/'+ path[1] + '/' + path[2] + '/' + path[3] + '/' + path[4];
+    console.log(path_);
+    console.log(path__);
     //CERRAR CONFIGURACION PARA OBTENER URL EN LARAVEL
 
     $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
-        if (this.href === path) {
+        if (this.href === path_ || this.href === path__) {
             $(this).addClass("active");
 
             //CONFIGURACION PARA QUE EL ELEMENTO PADRE DEL ENLACE SE EXPANDA

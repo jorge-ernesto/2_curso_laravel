@@ -1,4 +1,4 @@
-@include('proveedor.role')
+@include('compras.proveedor.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
@@ -8,10 +8,9 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Proveedores</div>
             <div class="card-body">
 
-                @include('proveedor.alerts')
+                @include('compras.proveedor.alerts')
 
-                <form method="POST" action="{{ route('proveedor.update', $dataPersona['idpersona']) }}">
-                    @method('PUT')
+                <form method="POST" action="{{ route('proveedor.store') }}">
                     @csrf
                     <div class="row form-group">
                         <label for="nombre" class="col-form-label col-md-2">Tipo persona:</label>
@@ -24,45 +23,40 @@
                     <div class="row form-group">
                         <label for="nombre" class="col-form-label col-md-2">Nombre:</label>
                         <div class="col-md-5">
-                            <input type="text" name="nombre" class="form-control" value="{{ $dataPersona['nombre'] }}">
+                            <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}">
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="nombre" class="col-form-label col-md-2">Tipo documento:</label>
                         <div class="col-md-5">
                             <select name="tipo_documento" class="form-control">
-                                @if($dataPersona['tipo_documento'] == "DNI")
-                                    <option value="DNI" selected>DNI</option>
-                                    <option value="RUC">RUC</option> 
-                                @else
-                                    <option value="DNI">DNI</option>
-                                    <option value="RUC" selected>RUC</option> 
-                                @endif
+                                <option value="DNI">DNI</option>
+                                <option value="RUC">RUC</option>                                
                             </select>
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Numero documento:</label>
                         <div class="col-md-5">
-                            <input type="text" name="num_documento" class="form-control" value="{{ $dataPersona['num_documento'] }}">
+                            <input type="text" name="num_documento" class="form-control" value="{{ old('num_documento') }}">
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Direccion:</label>
                         <div class="col-md-5">
-                            <input type="text" name="direccion" class="form-control" value="{{ $dataPersona['direccion'] }}">
+                            <input type="text" name="direccion" class="form-control" value="{{ old('direccion') }}">
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Telefono:</label>
                         <div class="col-md-5">
-                            <input type="text" name="telefono" class="form-control" value="{{ $dataPersona['telefono'] }}">
+                            <input type="text" name="telefono" class="form-control" value="{{ old('telefono') }}">
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Email:</label>
                         <div class="col-md-5">
-                            <input type="text" name="email" class="form-control" value="{{ $dataPersona['email'] }}">
+                            <input type="text" name="email" class="form-control" value="{{ old('email') }}">
                         </div>
                     </div>
                     <h4>

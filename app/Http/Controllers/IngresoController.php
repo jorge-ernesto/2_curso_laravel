@@ -27,7 +27,7 @@ class IngresoController extends Controller
                                 ->groupBy('i.idingreso')
                                 ->orderBy('i.idingreso', 'ASC')                                
                                 ->paginate(10);
-            return view('ingreso.index', compact('dataIngreso', 'searchText'));                                
+            return view('compras.ingreso.index', compact('dataIngreso', 'searchText'));                                
         }
     }
     
@@ -40,7 +40,7 @@ class IngresoController extends Controller
                             ->select(DB::raw('a.idarticulo, CONCAT(a.codigo," - ",a.nombre) as articulo'))
                             ->where('a.estado', '=', 'Activo')
                             ->get();
-        return view('ingreso.create', compact('dataPersona', 'dataArticulo'));
+        return view('compras.ingreso.create', compact('dataPersona', 'dataArticulo'));
     }
     
     public function store(Request $request)
@@ -125,7 +125,7 @@ class IngresoController extends Controller
                             ->where('di.idingreso', '=', $id)
                             ->get();
         //dd($dataDetalle);
-        return view('ingreso.show', compact('dataPersona', 'dataIngreso', 'dataDetalle'));
+        return view('compras.ingreso.show', compact('dataPersona', 'dataIngreso', 'dataDetalle'));
     }
 
     public function edit($id)

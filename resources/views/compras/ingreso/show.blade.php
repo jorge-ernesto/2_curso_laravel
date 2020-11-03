@@ -1,4 +1,4 @@
-@include('ingreso.role')
+@include('compras.ingreso.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
@@ -8,7 +8,7 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Ingresos</div>
             <div class="card-body">
 
-                @include('ingreso.alerts')
+                @include('compras.ingreso.alerts')
 
                 {{-- <form method="POST" action="{{ route('ingreso.store') }}"> --}}
                     {{-- @csrf --}}

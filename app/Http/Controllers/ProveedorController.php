@@ -23,13 +23,13 @@ class ProveedorController extends Controller
                                 ->orWhere('num_documento', 'LIKE', '%'.$searchText.'%')->where('tipo_persona', '=', 'Proveedor')
                                 ->orderBy('idpersona', 'ASC')
                                 ->paginate('10');
-            return view('proveedor.index', compact('dataPersona', 'searchText'));
+            return view('compras.proveedor.index', compact('dataPersona', 'searchText'));
         }
     }
 
     public function create()
     {
-        return view('proveedor.create');
+        return view('compras.proveedor.create');
     }
 
     public function store(Request $request)
@@ -64,13 +64,13 @@ class ProveedorController extends Controller
     public function show($id)
     {
         $dataPersona = App\Persona::findOrFail($id);
-        return view('proveedor.show', compact('dataPersona'));
+        return view('compras.proveedor.show', compact('dataPersona'));
     }
 
     public function edit($id)
     {
         $dataPersona = App\Persona::findOrFail($id);
-        return view('proveedor.edit', compact('dataPersona'));
+        return view('compras.proveedor.edit', compact('dataPersona'));
     }
 
     public function update(Request $request, $id)

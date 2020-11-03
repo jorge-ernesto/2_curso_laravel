@@ -1,4 +1,4 @@
-@include('proveedor.role')
+@include('compras.proveedor.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
@@ -10,9 +10,9 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Proveedores</div>
             <div class="card-body">
                 
-                @include('proveedor.alerts')
+                @include('compras.proveedor.alerts')
                                 
-                @include('proveedor.search')  
+                @include('compras.proveedor.search')  
                 <div class="table-responsive">
                     <table class="table table-bordered text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
@@ -61,7 +61,7 @@
                                     </td>
                                     <td>                                        
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idpersona }}">Eliminar</button>
-                                        @include('proveedor.modal_delete')
+                                        @include('compras.proveedor.modal_delete')
                                     </td>
                                 </tr>                           
                             @endforeach

@@ -1,4 +1,4 @@
-@include('ingreso.role')
+@include('compras.ingreso.role')
 @extends('layouts.plantilla')    
 
 @section('seccion-main')    
@@ -10,9 +10,9 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Ingreso</div>
             <div class="card-body">
                 
-                @include('ingreso.alerts')
+                @include('compras.ingreso.alerts')
                                 
-                @include('ingreso.search')  
+                @include('compras.ingreso.search')  
                 <div class="table-responsive">
                     <table class="table table-bordered text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
@@ -70,7 +70,7 @@
                                     </td>
                                     <td>                                        
                                         <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idingreso }}">Eliminar</button>
-                                        @include('ingreso.modal_delete')
+                                        @include('compras.ingreso.modal_delete')
                                     </td>
                                 </tr>                           
                             @endforeach
