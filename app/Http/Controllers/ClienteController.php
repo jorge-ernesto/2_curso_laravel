@@ -23,13 +23,13 @@ class ClienteController extends Controller
                                 ->orWhere('num_documento', 'LIKE', '%'.$searchText.'%')->where('tipo_persona', '=', 'Cliente')
                                 ->orderBy('idpersona', 'ASC')
                                 ->paginate('10');
-            return view('cliente.index', compact('dataPersona', 'searchText'));
+            return view('ventas.cliente.index', compact('dataPersona', 'searchText'));
         }
     }
 
     public function create()
     {        
-        return view('cliente.create');
+        return view('ventas.cliente.create');
     }
 
     public function store(Request $request)
@@ -64,13 +64,13 @@ class ClienteController extends Controller
     public function show($id)
     {
         $dataPersona = App\Persona::findOrFail($id);
-        return view('cliente.show', compact('dataPersona'));
+        return view('ventas.cliente.show', compact('dataPersona'));
     }
 
     public function edit($id)
     {
         $dataPersona = App\Persona::findOrFail($id);
-        return view('cliente.edit', compact('dataPersona'));
+        return view('ventas.cliente.edit', compact('dataPersona'));
     }
 
     public function update(Request $request, $id)

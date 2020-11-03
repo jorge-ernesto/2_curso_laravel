@@ -1,4 +1,4 @@
-@include('cliente.role')
+@include('ventas.cliente.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
@@ -10,9 +10,9 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Clientes</div>
             <div class="card-body">
                 
-                @include('cliente.alerts')
+                @include('ventas.cliente.alerts')
                                 
-                @include('cliente.search')  
+                @include('ventas.cliente.search')  
                 <div class="table-responsive">
                     <table class="table table-bordered text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
@@ -61,7 +61,7 @@
                                     </td>
                                     <td>                                        
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idpersona }}">Eliminar</button>
-                                        @include('cliente.modal_delete')
+                                        @include('ventas.cliente.modal_delete')
                                     </td>
                                 </tr>                           
                             @endforeach

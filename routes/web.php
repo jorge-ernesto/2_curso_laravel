@@ -38,7 +38,7 @@ Route::get('/', function () {
     Route::resources([
         'almacen/categoria' => 'CategoriaController',
         'almacen/articulo'  => 'ArticuloController',
-        'cliente'           => 'ClienteController',
+        'ventas/cliente'    => 'ClienteController',
         'compras/proveedor' => 'ProveedorController',
         'compras/ingreso'   => 'IngresoController',
         //'venta'           => 'VentaController',
