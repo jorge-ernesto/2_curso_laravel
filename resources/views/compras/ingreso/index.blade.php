@@ -59,17 +59,17 @@
                                     <td>{{ $value->impuesto }}</td>
                                     <td>
                                         @if( $value->estado == "Aceptado" )
-                                            <span class="badge badge-primary">{{ $value->estado }}</span>
+                                            <span class="badge badge-success">{{ $value->estado }}</span>
                                         @else
-                                            <span class="badge badge-dark">{{ $value->estado }}</span>
+                                            <span class="badge badge-danger">{{ $value->estado }}</span>
                                         @endif
                                     </td>
                                     <td>{{ $value->total }}</td>
                                     <td>
-                                        <a href="{{ route('ingreso.show', $value->idingreso) }}" class="btn btn-primary btn-sm">Ver</a>                                        
+                                        <a href="{{ route('ingreso.show', $value->idingreso) }}" class="btn btn-success btn-sm">Ver</a>                                        
                                     </td>
                                     <td>                                        
-                                        <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idingreso }}">Eliminar</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idingreso }}">Eliminar</button>
                                         @include('compras.ingreso.modal_delete')
                                     </td>
                                 </tr>                           

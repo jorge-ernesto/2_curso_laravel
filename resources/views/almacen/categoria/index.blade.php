@@ -42,10 +42,10 @@
                                     <td>{{ $value->nombre }}</td>
                                     <td>{{ $value->descripcion }}</td>
                                     <td>
-                                        <a href="{{ route('categoria.edit', $value->idcategoria) }}" class="btn btn-warning btn-sm">Editar</a>                                        
+                                        <a href="{{ route('categoria.edit', $value->idcategoria) }}" class="btn btn-success btn-sm">Editar</a>                                        
                                     </td>
                                     <td>                                        
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idcategoria }}">Eliminar</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idcategoria }}">Eliminar</button>
                                         @include('almacen.categoria.modal_delete')
                                     </td>
                                 </tr>                           

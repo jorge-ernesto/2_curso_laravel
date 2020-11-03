@@ -57,10 +57,10 @@
                                     <td>{{ $value->telefono }}</td>
                                     <td>{{ $value->email }}</td>
                                     <td>
-                                        <a href="{{ route('proveedor.edit', $value->idpersona) }}" class="btn btn-warning btn-sm">Editar</a>                                        
+                                        <a href="{{ route('proveedor.edit', $value->idpersona) }}" class="btn btn-success btn-sm">Editar</a>                                        
                                     </td>
                                     <td>                                        
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idpersona }}">Eliminar</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idpersona }}">Eliminar</button>
                                         @include('compras.proveedor.modal_delete')
                                     </td>
                                 </tr>                           

@@ -59,19 +59,19 @@
                                     </td>
                                     <td>
                                         @if( $value->estado == "Activo" )
-                                            <span class="badge badge-primary">{{ $value->estado }}</span>
+                                            <span class="badge badge-success">{{ $value->estado }}</span>
                                         @else
                                             <span class="badge badge-danger">{{ $value->estado }}</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('articulo.edit', $value->idarticulo) }}" class="btn btn-warning btn-sm">Editar</a>
+                                        <a href="{{ route('articulo.edit', $value->idarticulo) }}" class="btn btn-success btn-sm">Editar</a>
                                     </td>
                                     <td>    
                                         @if( $value->estado == "Activo" )                                    
-                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idarticulo }}">Desactivar</button>
+                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->idarticulo }}">Desactivar</button>
                                         @else
-                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_restore_{{ $value->idarticulo }}">Activar</button>
+                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_restore_{{ $value->idarticulo }}">Activar</button>
                                         @endif                                        
                                         @include('almacen.articulo.modal_delete_restore')
                                     </td>
