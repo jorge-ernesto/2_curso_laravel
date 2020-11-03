@@ -1,4 +1,4 @@
-@include('usuario.role')
+@include('acceso.usuario.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
@@ -10,9 +10,9 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Usuarios</div>
             <div class="card-body">
                 
-                @include('usuario.alerts')
+                @include('acceso.usuario.alerts')
                                 
-                @include('usuario.search')  
+                @include('acceso.usuario.search')  
                 <div class="table-responsive">
                     <table class="table table-bordered text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
@@ -64,7 +64,7 @@
                                     </td>
                                     <td>                                        
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->id }}">Eliminar</button>
-                                        @include('usuario.modal_delete')
+                                        @include('acceso.usuario.modal_delete')
                                     </td>
                                 </tr>                           
                             @endforeach

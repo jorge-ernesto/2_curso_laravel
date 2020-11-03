@@ -29,14 +29,14 @@ class UsuarioController extends Controller
                                 ->orWhere('r.name', 'LIKE', '%'.$searchText.'%')                                    
                                 ->orderBy('u.id', 'ASC')
                                 ->paginate('10');
-            return view('usuario.index', compact('dataUsuario', 'searchText'));
+            return view('acceso.usuario.index', compact('dataUsuario', 'searchText'));
         }
     }
 
     public function create()
     {
         $dataRole = DB::table('roles')->get();
-        return view('usuario.create', compact('dataRole'));
+        return view('acceso.usuario.create', compact('dataRole'));
     }
 
     public function store(Request $request)
@@ -78,7 +78,7 @@ class UsuarioController extends Controller
     public function show($id)
     {
         $dataUsuario = App\User::findOrFail($id);
-        return view('usuario.show', compact('dataUsuario'));
+        return view('acceso.usuario.show', compact('dataUsuario'));
     }
 
     public function edit($id)
@@ -91,7 +91,7 @@ class UsuarioController extends Controller
                                      'r.id as role_id', 'r.name as role_name')
                             ->where('u.id', '=', $id)
                             ->first();
-        return view('usuario.edit', compact('dataRole', 'dataUsuario'));
+        return view('acceso.usuario.edit', compact('dataRole', 'dataUsuario'));
     }
 
     public function update(Request $request, $id)
