@@ -8,6 +8,7 @@
                     Dashboard
                 </a>
 
+                <!-- OPCION LARAVEL -->
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#aprendiendoLaravel" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Laravel
@@ -15,29 +16,75 @@
                 </a>
                 <div class="collapse" id="aprendiendoLaravel" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        @if( session('categoria') )
-                            <a class="nav-link" href="{{ route('categoria.index') }}">Categoría</a>
-                        @endif
-                        @if( session('articulo') )
-                            <a class="nav-link" href="{{ route('articulo.index') }}">Artículo</a>
-                        @endif
-                        @if( session('cliente') )
-                            <a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a>
-                        @endif
-                        @if( session('proveedor') )
-                            <a class="nav-link" href="{{ route('proveedor.index') }}">Proveedor</a>
-                        @endif
-                        @if( session('ingreso') )
-                            <a class="nav-link" href="{{ route('ingreso.index') }}">Ingreso</a>
-                        @endif
-                        {{-- @if( session('venta') )
-                            <a class="nav-link" href="{{ route('venta.index') }}">Venta</a>
-                        @endif --}}
-                        @if( session('usuario') )
-                            <a class="nav-link" href="{{ route('usuario.index') }}">Usuario</a>
-                        @endif
+
+                        <!-- OPCION ALMACEN -->
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#almacen" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            Almacen
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="almacen" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                @if( session('categoria') )
+                                    <a class="nav-link" href="{{ route('categoria.index') }}">Categoría</a>
+                                @endif
+                                @if( session('articulo') )
+                                    <a class="nav-link" href="{{ route('articulo.index') }}">Artículo</a>
+                                @endif
+                            </nav>
+                        </div>
+                        <!-- CERRAR OPCION ALMACEN -->
+
+                        <!-- OPCION VENTAS -->
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ventas" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            Ventas
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="ventas" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                @if( session('cliente') )
+                                    <a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a>
+                                @endif
+                                {{-- @if( session('venta') )
+                                    <a class="nav-link" href="{{ route('venta.index') }}">Venta</a>
+                                @endif --}}
+                            </nav>
+                        </div>
+                        <!-- CERRAR OPCION VENTAS -->
+                        
+                        <!-- OPCION COMPRAS -->
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#compras" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            Compras
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="compras" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                @if( session('proveedor') )
+                                    <a class="nav-link" href="{{ route('proveedor.index') }}">Proveedor</a>
+                                @endif
+                                @if( session('ingreso') )
+                                    <a class="nav-link" href="{{ route('ingreso.index') }}">Ingreso</a>
+                                @endif
+                            </nav>
+                        </div>
+                        <!-- CERRAR OPCION COMPRAS -->
+                        
+                        <!-- OPCION ACCESO -->
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#acceso" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            Acceso
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="acceso" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                @if( session('usuario') )
+                                    <a class="nav-link" href="{{ route('usuario.index') }}">Usuario</a>
+                                @endif
+                            </nav>
+                        </div>
+                        <!-- CERRAR OPCION ACCESO -->
+                        
                     </nav>
                 </div>
+                <!-- CERRAR OPCION LARAVEL -->
                
                 <div class="sb-sidenav-menu-heading">Interface</div>
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

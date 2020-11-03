@@ -42,7 +42,7 @@ Route::get('/', function () {
         'compras/proveedor' => 'ProveedorController',
         'compras/ingreso'   => 'IngresoController',
         //'venta'           => 'VentaController',
-        'usuario'           => 'UsuarioController'
+        'acceso/usuario'    => 'UsuarioController'
     ]);
 
     //Rutas de autenticación
