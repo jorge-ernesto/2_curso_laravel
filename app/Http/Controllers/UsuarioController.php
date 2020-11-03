@@ -103,7 +103,7 @@ class UsuarioController extends Controller
         $request->validate([
             "name"     => "required|max:255",
             "email"    => "required|email|max:255|unique:users,email,$id", //El email sera unico, pero puede haber una excepción que el email coincide con el email del id actual
-            "password" => "required|min:8|confirmed",
+            //"password" => "required|min:8|confirmed",
             "role_id"  => "required"
         ]);
 
@@ -114,7 +114,7 @@ class UsuarioController extends Controller
             $usuario           = App\User::findOrFail($id);
             $usuario->name     = $request->name;
             $usuario->email    = $request->email;
-            $usuario->password = Hash::make($request->password);
+            //$usuario->password = Hash::make($request->password);
             $role_id           = $request->role_id;      
             $usuario->update();
 

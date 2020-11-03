@@ -25,7 +25,7 @@
                             <input type="text" name="email" class="form-control" value="{{ $dataUsuario->email }}">
                         </div>
                     </div>
-                    <div class="row form-group">
+                    {{-- <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Password:</label>
                         <div class="col-md-5">
                             <input type="password" name="password" class="form-control" value="">
@@ -36,7 +36,7 @@
                         <div class="col-md-5">
                             <input type="password" name="password_confirmation" class="form-control" value="">
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row form-group">
                         <label class="col-form-label col-md-2">Role:</label>
                         <div class="col-md-5">
