@@ -9,14 +9,20 @@
     // Add active state to sidbar nav links
     var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
     
-    /* Tomara el primer route de la url */    
+    //CONFIGURACION PARA OBTENER URL EN LARAVEL
     path = path.split('/');
     path = path[0] + '/'+ path[1] + '/' + path[2] + '/' + path[3];
     console.log(path);
+    //CERRAR CONFIGURACION PARA OBTENER URL EN LARAVEL
 
     $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
         if (this.href === path) {
             $(this).addClass("active");
+
+            //CONFIGURACION PARA QUE EL ELEMENTO PADRE DEL ENLACE SE EXPANDA
+            var parent = $(this).parents('div.collapse');
+            parent.addClass('collapse show');
+            //CERRAR CONFIGURACION PARA QUE EL ELEMENTO PADRE DEL ENLACE SE EXPANDA
         }
     });
 
