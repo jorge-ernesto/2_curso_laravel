@@ -1,4 +1,4 @@
-@include('articulo.role')
+@include('almacen.articulo.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
@@ -10,9 +10,9 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Artículos</div>
             <div class="card-body">
                 
-                @include('articulo.alerts')
+                @include('almacen.articulo.alerts')
                                 
-                @include('articulo.search')  
+                @include('almacen.articulo.search')  
                 <div class="table-responsive">
                     <table class="table table-bordered text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
@@ -73,7 +73,7 @@
                                         @else
                                             <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_restore_{{ $value->idarticulo }}">Activar</button>
                                         @endif                                        
-                                        @include('articulo.modal_delete_restore')
+                                        @include('almacen.articulo.modal_delete_restore')
                                     </td>
                                 </tr>                           
                             @endforeach

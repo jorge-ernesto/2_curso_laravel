@@ -36,13 +36,13 @@ class CategoriaController extends Controller
                                     ->where('condicion', '=', '1')
                                     ->orderBy('idcategoria', 'ASC')
                                     ->paginate('10');
-            return view('categoria.index', compact('dataCategoria', 'searchText'));
+            return view('almacen.categoria.index', compact('dataCategoria', 'searchText'));
         }
     }
  
     public function create()
     {
-        return view('categoria.create');
+        return view('almacen.categoria.create');
     }
     
     public function store(Request $request)
@@ -68,13 +68,13 @@ class CategoriaController extends Controller
     public function show($id)
     {        
         $dataCategoria = App\Categoria::findOrFail($id);
-        return view('categoria.show', compact('dataCategoria'));
+        return view('almacen.categoria.show', compact('dataCategoria'));
     }
 
     public function edit($id)
     {        
         $dataCategoria = App\Categoria::findOrFail($id);
-        return view('categoria.edit', compact('dataCategoria'));
+        return view('almacen.categoria.edit', compact('dataCategoria'));
     }
 
     public function update(Request $request, $id)

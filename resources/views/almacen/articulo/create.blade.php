@@ -1,4 +1,4 @@
-@include('articulo.role')
+@include('almacen.articulo.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
@@ -8,7 +8,7 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Artículos</div>
             <div class="card-body">
 
-                @include('articulo.alerts')
+                @include('almacen.articulo.alerts')
 
                 <form method="POST" action="{{ route('articulo.store') }}" enctype="multipart/form-data">
                     @csrf

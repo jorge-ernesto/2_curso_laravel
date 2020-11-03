@@ -25,7 +25,7 @@ class ArticuloController extends Controller
                                     ->orWhere('a.nombre', 'LIKE', '%'.$searchText.'%')                                                                                                                                                                                
                                     ->orderBy('idarticulo', 'ASC')
                                     ->paginate('10');
-            return view('articulo.index', compact('dataArticulo', 'searchText'));
+            return view('almacen.articulo.index', compact('dataArticulo', 'searchText'));
         }
     }
     
@@ -34,7 +34,7 @@ class ArticuloController extends Controller
         $dataCategoria = DB::table('categoria')
                             ->where('condicion', '=', '1')
                             ->get();
-        return view('articulo.create', compact('dataCategoria'));
+        return view('almacen.articulo.create', compact('dataCategoria'));
     }
     
     public function store(Request $request)
@@ -73,7 +73,7 @@ class ArticuloController extends Controller
     public function show($id)
     {        
         $dataArticulo = App\Articulo::findOrFail($id);
-        return view('articulo.show', compact('dataArticulo'));
+        return view('almacen.articulo.show', compact('dataArticulo'));
     }
 
     public function edit($id)
@@ -82,7 +82,7 @@ class ArticuloController extends Controller
                             ->where('condicion', '=', '1')
                             ->get();
         $dataArticulo = App\Articulo::findOrFail($id);        
-        return view('articulo.edit', compact('dataCategoria', 'dataArticulo'));
+        return view('almacen.articulo.edit', compact('dataCategoria', 'dataArticulo'));
     }
 
     public function update(Request $request, $id)

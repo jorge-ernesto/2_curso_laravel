@@ -36,8 +36,8 @@ Route::get('/', function () {
 
     //Rutas
     Route::resources([
-        'categoria' => 'CategoriaController',
-        'articulo'  => 'ArticuloController',
+        'almacen/categoria' => 'CategoriaController',
+        'almacen/articulo'  => 'ArticuloController',
         'cliente'   => 'ClienteController',
         'proveedor' => 'ProveedorController',
         'ingreso'   => 'IngresoController',

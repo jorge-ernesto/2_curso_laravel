@@ -10,7 +10,7 @@
 
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#aprendiendoLaravel" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Aprendiendo Laravel
+                    Laravel
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="aprendiendoLaravel" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
