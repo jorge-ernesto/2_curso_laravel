@@ -76,7 +76,6 @@
     </div>
 @endsection
 
-
 @section('seccion-scripts') 
     <script>
         $('.custom-file-input').on('change', function(event) {
