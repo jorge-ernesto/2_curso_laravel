@@ -55,8 +55,8 @@
                         <label for="descripcion" class="col-form-label col-md-2">Imagen:</label>
                         <div class="col-md-5">
                             <div class="custom-file">
-                                <input type="file" name="imagen" class="custom-file-input" id="customFile">
-                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                <input type="file" name="imagen" class="custom-file-input" id="customFile" lang="es">
+                                <label class="custom-file-label" for="customFile">Seleccionar Archivo</label>
                             </div>
                         </div>                        
                     </div>
