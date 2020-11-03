@@ -55,7 +55,9 @@
                                     <td>{{ $value->stock }}</td>
                                     <td>{{ $value->descripcion }}</td>
                                     <td>
-                                        <img src="{{ asset('imagenes/articulos/' . $value->imagen) }}" alt="" width="100">
+                                        <div class="articulo_list">
+                                            <img src="{{ asset('assets/imagenes/articulos/' . $value->imagen) }}" alt="">
+                                        </div>                                        
                                     </td>
                                     <td>
                                         @if( $value->estado == "Activo" )

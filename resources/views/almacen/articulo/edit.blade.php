@@ -58,11 +58,13 @@
                                 <input type="file" name="imagen" class="custom-file-input" id="customFile">
                                 <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
+                        </div>                        
+                    </div>
+                    @if($dataArticulo['imagen'] != "")
+                        <div>
+                            <img src="{{ asset('assets/imagenes/articulos/'.$dataArticulo['imagen']) }}" class="articulo_edit" alt="">
                         </div>
-                        @if($dataArticulo['imagen'] != "")
-                            <img src="{{ asset('imagenes/articulos/'.$dataArticulo['imagen']) }}" alt="" width="100">
-                        @endif
-                    </div>                    
+                    @endif
                     <h4>
                         <button type="submit" class="btn btn-primary">Crear Artículo</button>                        
                         <a href="{{ route('articulo.index') }}" class="btn btn-primary">Atras</a>    
@@ -72,4 +74,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('seccion-scripts') 
+    <script>
+        $('.custom-file-input').on('change', function(event) {
+            var inputFile = event.currentTarget;
+            $(inputFile).parent()
+                .find('.custom-file-label')
+                .html(inputFile.files[0].name);
+        });  
+    </script>    
 @endsection
