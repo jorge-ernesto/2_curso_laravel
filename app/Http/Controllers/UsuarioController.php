@@ -94,6 +94,19 @@ class UsuarioController extends Controller
         return view('acceso.usuario.edit', compact('dataRole', 'dataUsuario'));
     }
 
+    public function changePasswordEdit($id)
+    {
+        $dataRole = DB::table('roles')->get();
+        $dataUsuario = DB::table('users as u')
+                            ->join('role_user as ru', 'ru.user_id', '=', 'u.id')
+                            ->join('roles as r', 'ru.role_id', '=', 'r.id')
+                            ->select('u.id', 'u.name', 'u.email', 'u.password', 'u.created_at', 'u.updated_at', 
+                                     'r.id as role_id', 'r.name as role_name')
+                            ->where('u.id', '=', $id)
+                            ->first();
+        return view('acceso.usuario.changePasswordEdit', compact('dataRole', 'dataUsuario'));
+    }
+
     public function update(Request $request, $id)
     {
         /* Obtenemos todo el request */
@@ -119,7 +132,35 @@ class UsuarioController extends Controller
             $usuario->update();
 
             /* Guardamos role */                  
-            DB::update("UPDATE role_user SET role_id = '$role_id', updated_at = NOW() WHERE user_id = '$id' ");
+            DB::update("UPDATE role_user 
+                        SET    role_id = '$role_id', updated_at = NOW() 
+                        WHERE  user_id = '$id'");
+             
+            DB::commit();
+            return back()->with('mensaje', 'Usuario editado');
+        }catch(\Exception $e){
+            DB::rollback();
+            return back()->with('mensaje_rollback', 'ROLLBACK: Usuario no se pudo editar');
+        }
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        /* Obtenemos todo el request */
+        // return $request->all();
+
+        /* Validar request user, role */
+        $request->validate([            
+            "password" => "required|min:8|confirmed",            
+        ]);
+
+        try{
+            DB::beginTransaction();            
+            
+            /* Guardamos user */       
+            $usuario           = App\User::findOrFail($id);     
+            $usuario->password = Hash::make($request->password);            
+            $usuario->update();            
              
             DB::commit();
             return back()->with('mensaje', 'Usuario editado');

@@ -60,10 +60,11 @@
                                     <td>{{ $value->role_name }}</td>
                                     
                                     <td>
-                                        <a href="{{ route('usuario.edit', $value->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                                        <a href="{{ route('usuario.edit', $value->id) }}" class="btn btn-success btn-sm">Editar</a>
+                                        <a href="{{ route('usuario.changePasswordEdit', $value->id) }}" class="btn btn-success btn-sm">Cambiar contraseña</a>
                                     </td>
                                     <td>                                        
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->id }}">Eliminar</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->id }}">Eliminar</button>
                                         @include('acceso.usuario.modal_delete')
                                     </td>
                                 </tr>                           

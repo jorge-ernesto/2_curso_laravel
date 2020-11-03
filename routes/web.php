@@ -44,6 +44,10 @@ Route::get('/', function () {
         //'venta'           => 'VentaController',
         'acceso/usuario'    => 'UsuarioController'
     ]);
+    
+    //Rutas de usuarios
+    Route::get("acceso/usuario/changePassword/{usuario}/edit", "UsuarioController@changePasswordEdit")->name('usuario.changePasswordEdit');
+    Route::put("acceso/usuario/changePassword/{usuario}", "UsuarioController@changePassword")->name('usuario.changePassword');
 
     //Rutas de autenticación
     // Auth::routes();
