@@ -26,7 +26,7 @@
                                 {{-- <th>role_id</th> --}}
                                 <th>role_name</th>                                
                                 
-                                <th>updated</th>
+                                <th>update</th>
                                 <th>delete</th>
                             </tr>
                         </thead>
@@ -41,7 +41,7 @@
                                 {{-- <th>role_id</th> --}}
                                 <th>role_name</th>                                
 
-                                <th>updated</th>
+                                <th>update</th>
                                 <th>delete</th>
                             </tr>
                         </tfoot>

@@ -39,10 +39,11 @@ Route::get('/', function () {
         'almacen/categoria' => 'CategoriaController',
         'almacen/articulo'  => 'ArticuloController',
         'ventas/cliente'    => 'ClienteController',
+        /*'ventas/venta'    => 'VentaController',*/
         'compras/proveedor' => 'ProveedorController',
-        'compras/ingreso'   => 'IngresoController',
-        //'venta'           => 'VentaController',
-        'acceso/usuario'    => 'UsuarioController'
+        'compras/ingreso'   => 'IngresoController',        
+        'acceso/usuario'    => 'UsuarioController',
+        'acceso/role'       => 'RoleController'
     ]);
     
     //Rutas de usuarios

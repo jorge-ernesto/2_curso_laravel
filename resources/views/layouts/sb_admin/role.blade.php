@@ -1,5 +1,5 @@
 @if( session('role') )
-    {{-- Ya se le asigno role --}}
+    {{-- Ya se asigno role --}}
 @else
     <?php $roles = Auth::user()->roles()->get(); ?>    
     <?php error_log("****** roles ******"); ?>
@@ -12,10 +12,11 @@
             session(['categoria' => true]);
             session(['articulo' => true]);
             session(['cliente' => true]);
-            session(['proveedor' => true]);                
-            session(['ingreso' => true]);        
             session(['venta' => true]);
+            session(['proveedor' => true]);                
+            session(['ingreso' => true]);                    
             session(['usuario' => true]);        
+            session(['role' => true]);    
             ?>
         @endif    
 
@@ -25,9 +26,9 @@
             session(['categoria' => true]);
             session(['articulo' => true]);
             session(['cliente' => true]);
-            session(['proveedor' => true]);                
-            session(['ingreso' => true]);        
             session(['venta' => true]);
+            session(['proveedor' => true]);                
+            session(['ingreso' => true]);                    
             ?>
         @endif    
 

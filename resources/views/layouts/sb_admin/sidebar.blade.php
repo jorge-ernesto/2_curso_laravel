@@ -78,6 +78,9 @@
                                 @if( session('usuario') )
                                     <a class="nav-link" href="{{ route('usuario.index') }}">Usuario</a>
                                 @endif
+                                @if( session('role') )
+                                    <a class="nav-link" href="{{ route('role.index') }}">Role</a>
+                                @endif
                             </nav>
                         </div>
                         <!-- CERRAR OPCION ACCESO -->
