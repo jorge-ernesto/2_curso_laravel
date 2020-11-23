@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\DB; //Recuperando resultados
  * echo "</pre>";
  * die();
  * 
- * ->dd(); //Detiene la ejecucion, usarlo sin get, first, paginate
- * ->toSql(); //Convierte a sql
+ * ->dd(); //Convierte a sql, detiene la ejecucion, usarlo sin get, first, paginate
+ * ->toSql(); //Convierte a sql, tiene sentido de sintaxis, pero nunca me funciono
  */
 
 class CategoriaController extends Controller
