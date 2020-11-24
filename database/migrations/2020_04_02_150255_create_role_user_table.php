@@ -15,8 +15,8 @@ class CreateRoleUserTable extends Migration
     {
         Schema::create('role_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade'); //Creamos una llave foranea que hace referencia a id de la tabla roles
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade'); //Creamos una llave foranea que hace referencia a id de la tabla users
+            $table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade'); //Creamos una llave foranea que hace referencia a id de la tabla roles            
             $table->timestamps();
         });
     }

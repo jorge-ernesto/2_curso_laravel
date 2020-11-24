@@ -26,6 +26,6 @@ class Role extends Model
     /* RELACION DE MUCHOS A MUCHOS */
     //Un rol puede tener muchos permisos
     public function permissions(){
-        return $this->belongsToMany('App\Permissions');
+        return $this->belongsToMany('App\Permission')->withTimeStamps();
     }
 }

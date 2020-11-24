@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Role;
 use App\Permission;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -33,7 +34,32 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         /* Obtenemos todo el request */
-        return $request->all();
+        // return $request->all();
+
+        /* Validar request */
+        $request->validate([
+            "name"        => "required|max:50|unique:roles",
+            "slug"        => "required|max:50|unique:roles",
+            "full-access" => "required|in:yes,no"
+        ]);
+                
+        try{
+            DB::beginTransaction();            
+            
+            /* Guardamos role */
+            $role = Role::create($request->all());      
+            
+            if(!empty($role) && is_object($role) && isset($role)){
+                /* Guardamos permission_role */          
+                $role->permissions()->sync( $request->get('permisos') );
+            }                                  
+             
+            DB::commit();
+            return back()->with('mensaje', 'Role agregado');
+        }catch(\Exception $e){
+            DB::rollback();
+            return back()->with('mensaje_rollback', 'ROLLBACK: Role no se pudo agregar');
+        }
     }
 
     public function show($id)

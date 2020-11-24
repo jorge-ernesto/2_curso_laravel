@@ -15,7 +15,7 @@
                     <div class="row form-group">
                         <label for="nombre" class="col-form-label col-md-2">Nombre:</label>
                         <div class="col-md-5">
-                            <input type="text" name="name" class="form-control" value="{{ old('nombre') }}">
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                         </div>
                     </div>
                     <div class="row form-group">
@@ -27,7 +27,7 @@
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Descripcion:</label>
                         <div class="col-md-5">                            
-                            <textarea name="description" class="form-control" rows="3">{{ old('descripcion') }}</textarea>
+                            <textarea name="description" class="form-control" rows="3">{{ old('description') }}</textarea>
                         </div>
                     </div>    
 
@@ -35,11 +35,11 @@
                         <label for="descripcion" class="col-form-label col-md-2">Full access:</label>
                         <div class="col-md-5 my-auto">                            
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="fullaccessyes" name="full-access" class="custom-control-input" value="yes" checked>
+                                <input type="radio" id="fullaccessyes" name="full-access" class="custom-control-input" value="yes">
                                 <label class="custom-control-label" for="fullaccessyes">Yes</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="fullaccessno" name="full-access" class="custom-control-input" value="no">
+                                <input type="radio" id="fullaccessno" name="full-access" class="custom-control-input" value="no" checked>
                                 <label class="custom-control-label" for="fullaccessno">No</label>
                             </div>                            
                         </div>
