@@ -34,12 +34,19 @@
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Full access:</label>
                         <div class="col-md-5 my-auto">                            
+                            @php
+                                $checked = "no";
+                                if(old('full-access') == "yes"){
+                                    $checked = "yes";
+                                }    
+                            @endphp
+
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="fullaccessyes" name="full-access" class="custom-control-input" value="yes">
+                                <input type="radio" id="fullaccessyes" name="full-access" class="custom-control-input" value="yes" @if($checked=="yes") checked @endif>
                                 <label class="custom-control-label" for="fullaccessyes">Yes</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="fullaccessno" name="full-access" class="custom-control-input" value="no" checked>
+                                <input type="radio" id="fullaccessno" name="full-access" class="custom-control-input" value="no" @if($checked=="no") checked @endif>
                                 <label class="custom-control-label" for="fullaccessno">No</label>
                             </div>                            
                         </div>
@@ -49,8 +56,16 @@
                         <label for="descripcion" class="col-form-label col-md-2">Permissions List:</label>
                         <div class="col-md-5 my-auto">                            
                             @foreach ($permisos as $key=>$permiso)
+                                @php
+                                    $permisos_ = old('permisos');
+                                    $checked = "";
+                                    if((!empty($permisos_) && is_array($permisos_) && isset($permisos_)) && in_array($permiso->id, $permisos_)){
+                                        $checked = "checked";
+                                    }
+                                @endphp
+
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="permiso_{{$permiso->id}}" value="{{$permiso->id}}"" name="permisos[]">
+                                    <input type="checkbox" class="custom-control-input" id="permiso_{{$permiso->id}}" value="{{$permiso->id}}"" name="permisos[]" {{$checked}}>
                                     <label class="custom-control-label" for="permiso_{{$permiso->id}}">
                                         {{$permiso->id ." - ". $permiso->name}}
                                         (<em>{{$permiso->description}}</em>)
@@ -69,4 +84,6 @@
             </div>
         </div>
     </div>
+    <!-- Verificar los datos de regreso (old), dd no detiene la ejecucion -->
+    {{-- {{ dd(old()) }} --}}
 @endsection

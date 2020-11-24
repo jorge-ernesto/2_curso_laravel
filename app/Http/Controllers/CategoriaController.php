@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\DB; //Recuperando resultados
  * 
  * ->dd(); //Convierte a sql, detiene la ejecucion, usarlo sin get, first, paginate
  * ->toSql(); //Convierte a sql, tiene sentido de sintaxis, pero nunca me funciono
+ * dd(); //Verifica cualquier variable, detiene la ejecucion
+ * dump(); //Verifica cualquier variable, no detiene la ejecucion
  */
 
 class CategoriaController extends Controller
