@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class PruebasController extends Controller
 {
-    public function User(Request $request)
+    public function user(Request $request)
     {
         $dataUser  = App\User::all();
         $dataUser2 = DB::select('select * from users');
@@ -29,12 +29,10 @@ class PruebasController extends Controller
         }
     }   
     
-    public function Role(Request $request)
-    {
-        $id = "1";
-
+    public function role(Request $request)
+    {        
         //Role
-        $user = App\User::find($id);
+        $user = App\User::find(1);
         foreach($user->roles as $key=>$role){
             echo $role->name;
         }
