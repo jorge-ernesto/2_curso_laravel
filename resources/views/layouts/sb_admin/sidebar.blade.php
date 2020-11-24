@@ -76,7 +76,7 @@
                         <div class="collapse" id="acceso" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
                                 @if( session('usuario') )
-                                    <a class="nav-link" href="{{ route('usuario.index') }}">Usuario</a>
+                                    <a class="nav-link" href="{{ route('user.index') }}">User</a>
                                 @endif
                                 @if( session('role') )
                                     <a class="nav-link" href="{{ route('role.index') }}">Role</a>

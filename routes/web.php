@@ -42,13 +42,13 @@ Route::get('/', function () {
         /*'ventas/venta'    => 'VentaController',*/
         'compras/proveedor' => 'ProveedorController',
         'compras/ingreso'   => 'IngresoController',        
-        'acceso/usuario'    => 'UsuarioController',
+        'acceso/user'       => 'UserController',
         'acceso/role'       => 'RoleController'
     ]);
     
     //Rutas de usuarios
-    Route::get("acceso/usuario/changePassword/{usuario}/edit", "UsuarioController@changePasswordEdit")->name('usuario.changePasswordEdit');
-    Route::put("acceso/usuario/changePassword/{usuario}", "UsuarioController@changePassword")->name('usuario.changePassword');
+    Route::get("acceso/usuario/changePassword/{usuario}/edit", "UserController@changePasswordEdit")->name('user.changePasswordEdit');
+    Route::put("acceso/usuario/changePassword/{usuario}", "UserController@changePassword")->name('user.changePassword');
 
     //Rutas de autenticación
     // Auth::routes();

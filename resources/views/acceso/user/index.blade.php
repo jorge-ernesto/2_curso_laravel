@@ -1,18 +1,18 @@
-@include('acceso.usuario.role')
+@include('acceso.user.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
     <div class="container-fluid text-primary">
         <h1 class="mt-4">Usuarios
-            <a href="{{ route('usuario.create') }}" class="btn btn-primary">Crear</a>              
+            <a href="{{ route('user.create') }}" class="btn btn-primary">Crear</a>              
         </h1>        
         <div class="card border-primary mb-4">
             <div class="card-header"><i class="fas fa-table mr-1"></i>Usuarios</div>
             <div class="card-body">
                 
-                @include('acceso.usuario.alerts')
+                @include('acceso.user.alerts')
                                 
-                @include('acceso.usuario.search')  
+                @include('acceso.user.search')  
                 <div class="table-responsive">
                     <table class="table table-bordered text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
@@ -49,7 +49,7 @@
                             @foreach($dataUsuario as $key=>$value)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('usuario.show', $value->id) }}">{{ $value->id }}</a>
+                                        <a href="{{ route('user.show', $value->id) }}">{{ $value->id }}</a>
                                     </td>
                                     <td>{{ $value->name }}</td>
                                     <td>{{ $value->email }}</td>
@@ -60,12 +60,12 @@
                                     <td>{{ $value->role_name }}</td>
                                     
                                     <td>
-                                        <a href="{{ route('usuario.edit', $value->id) }}" class="btn btn-success btn-sm">Editar</a>
-                                        <a href="{{ route('usuario.changePasswordEdit', $value->id) }}" class="btn btn-success btn-sm">Cambiar contraseña</a>
+                                        <a href="{{ route('user.edit', $value->id) }}" class="btn btn-success btn-sm">Editar</a>
+                                        <a href="{{ route('user.changePasswordEdit', $value->id) }}" class="btn btn-success btn-sm">Cambiar contraseña</a>
                                     </td>
                                     <td>                                        
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->id }}">Eliminar</button>
-                                        @include('acceso.usuario.modal_delete')
+                                        @include('acceso.user.modal_delete')
                                     </td>
                                 </tr>                           
                             @endforeach

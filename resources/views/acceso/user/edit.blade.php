@@ -1,4 +1,4 @@
-@include('acceso.usuario.role')
+@include('acceso.user.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    
@@ -8,9 +8,9 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>Usuarios</div>
             <div class="card-body">
 
-                @include('acceso.usuario.alerts')
+                @include('acceso.user.alerts')
 
-                <form method="POST" action="{{ route('usuario.update', $dataUsuario->id) }}">
+                <form method="POST" action="{{ route('user.update', $dataUsuario->id) }}">
                     @method('PUT')
                     @csrf
                     <div class="row form-group">
@@ -53,7 +53,7 @@
                     </div>
                     <h4>
                         <button type="submit" id="crear" class="btn btn-primary">Editar Usuario</button>                        
-                        <a href="{{ route('usuario.index') }}" class="btn btn-primary">Atras</a>    
+                        <a href="{{ route('user.index') }}" class="btn btn-primary">Atras</a>    
                     </h4>                
                 </form>
 

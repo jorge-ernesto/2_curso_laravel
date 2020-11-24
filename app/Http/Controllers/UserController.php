@@ -8,7 +8,7 @@ use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
 use Illuminate\Support\Facades\Hash;
 
-class UsuarioController extends Controller
+class UserController extends Controller
 {
     public function __construct()
     {
@@ -29,14 +29,14 @@ class UsuarioController extends Controller
                                 ->orWhere('r.name', 'LIKE', '%'.$searchText.'%')                                    
                                 ->orderBy('u.id', 'ASC')
                                 ->paginate('10');
-            return view('acceso.usuario.index', compact('dataUsuario', 'searchText'));
+            return view('acceso.user.index', compact('dataUsuario', 'searchText'));
         }
     }
 
     public function create()
     {
         $dataRole = DB::table('roles')->get();
-        return view('acceso.usuario.create', compact('dataRole'));
+        return view('acceso.user.create', compact('dataRole'));
     }
 
     public function store(Request $request)
@@ -78,7 +78,7 @@ class UsuarioController extends Controller
     public function show($id)
     {
         $dataUsuario = App\User::findOrFail($id);
-        return view('acceso.usuario.show', compact('dataUsuario'));
+        return view('acceso.user.show', compact('dataUsuario'));
     }
 
     public function edit($id)
@@ -91,7 +91,7 @@ class UsuarioController extends Controller
                                      'r.id as role_id', 'r.name as role_name')
                             ->where('u.id', '=', $id)
                             ->first();
-        return view('acceso.usuario.edit', compact('dataRole', 'dataUsuario'));
+        return view('acceso.user.edit', compact('dataRole', 'dataUsuario'));
     }
 
     public function changePasswordEdit($id)
@@ -104,7 +104,7 @@ class UsuarioController extends Controller
                                      'r.id as role_id', 'r.name as role_name')
                             ->where('u.id', '=', $id)
                             ->first();
-        return view('acceso.usuario.changePasswordEdit', compact('dataRole', 'dataUsuario'));
+        return view('acceso.user.changePasswordEdit', compact('dataRole', 'dataUsuario'));
     }
 
     public function update(Request $request, $id)

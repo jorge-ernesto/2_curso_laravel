@@ -46,7 +46,7 @@
                     </div> 
 
                     <div class="row form-group">
-                        <label for="descripcion" class="col-form-label col-md-2">Lista de permisos:</label>
+                        <label for="descripcion" class="col-form-label col-md-2">Permissions List:</label>
                         <div class="col-md-5 my-auto">                            
                             @foreach ($permisos as $key=>$permiso)
                                 <div class="custom-control custom-checkbox">
