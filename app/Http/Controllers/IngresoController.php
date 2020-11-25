@@ -25,7 +25,7 @@ class IngresoController extends Controller
                                 ->select('i.idingreso', 'p.idpersona as idproveedor', 'p.nombre as proveedor', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.fecha_hora', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * di.precio_compra) as total'))
                                 ->where('i.num_comprobante', 'LIKE', '%'.$searchText.'%')                                                            
                                 ->groupBy('i.idingreso')
-                                ->orderBy('i.idingreso', 'ASC')                                
+                                ->orderBy('i.idingreso', 'DESC')                                
                                 ->paginate(10);
             return view('compras.ingreso.index', compact('dataIngreso', 'searchText'));                                
         }
