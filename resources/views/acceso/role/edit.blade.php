@@ -10,35 +10,42 @@
 
                 @include('acceso.role.alerts')
 
-                <form method="POST" action="{{ route('role.store') }}">
+                <form method="POST" action="{{ route('role.update', $role->id) }}">
                     @csrf
+                    @method('PUT')                    
                     <div class="row form-group">
                         <label for="nombre" class="col-form-label col-md-2">Nombre:</label>
                         <div class="col-md-5">
-                            <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                            <input type="text" name="name" class="form-control" value="{{ old('name', $role->name) }}">
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Slug:</label>
                         <div class="col-md-5">
-                            <input type="text" name="slug" class="form-control" value="{{ old('slug') }}">
+                            <input type="text" name="slug" class="form-control" value="{{ old('slug', $role->slug) }}">
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Descripcion:</label>
                         <div class="col-md-5">                            
-                            <textarea name="description" class="form-control" rows="3">{{ old('description') }}</textarea>
+                            <textarea name="description" class="form-control" rows="3">{{ old('description', $role->description) }}</textarea>
                         </div>
                     </div>    
 
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Full access:</label>
                         <div class="col-md-5 my-auto">                            
-                            @php
+                            @php                                
                                 $checked = "no";
-                                if(old('full-access') == "yes"){
-                                    $checked = "yes";
-                                }    
+                                if(old('full-access')){                                    
+                                    if(old('full-access') == "yes"){
+                                        $checked = "yes";
+                                    } 
+                                }else{
+                                    if($role['full-access'] == "yes"){
+                                        $checked = "yes";
+                                    } 
+                                }
                             @endphp
 
                             <div class="custom-control custom-radio custom-control-inline">
@@ -57,7 +64,7 @@
                         <div class="col-md-5 my-auto">                            
                             @foreach ($permisos as $key=>$permiso)
                                 @php
-                                    $permisos_ = old('permisos');
+                                    $permisos_ = old('permisos') ? old('permisos') : $permisos_;                                                                      
                                     $checked = "";
                                     if((!empty($permisos_) && is_array($permisos_) && isset($permisos_)) && in_array($permiso->id, $permisos_)){
                                         $checked = "checked";
@@ -84,6 +91,6 @@
             </div>
         </div>
     </div>
-    <!-- Verificar los datos de regreso (old), dd detiene la ejecucion -->
+    <!-- Verificar los datos de regreso (old), dd no detiene la ejecucion -->
     {{-- {{ dd(old()) }} --}}
 @endsection

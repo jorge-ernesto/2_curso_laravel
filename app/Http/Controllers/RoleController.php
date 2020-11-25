@@ -38,8 +38,8 @@ class RoleController extends Controller
 
         /* Validar request */
         $request->validate([
-            "name"        => "required|max:50|unique:roles",
-            "slug"        => "required|max:50|unique:roles",
+            "name"        => "required|max:50|unique:roles,name",
+            "slug"        => "required|max:50|unique:roles,slug",
             "full-access" => "required|in:yes,no"
         ]);
                 
@@ -69,12 +69,63 @@ class RoleController extends Controller
 
     public function edit($id)
     {
-        //
+        /* Obtenemos todos los permisos existentes */
+        $permisos = Permission::get();
+
+        /* Obtenemos los datos del rol a editar */
+        $role = Role::findOrFail($id);
+        
+        /* Obtenemos los permisos del rol a editar y lo convertimos en un array */
+        $permisos_ = array();
+        foreach ($role->permissions as $key=>$permiso) {
+            $permisos_[] = $permiso->id;
+        }    
+
+        /* Verificamos los datos, dump no detiene la ejecucion */
+        // dump($permisos);
+        // dump($role);
+        // dump($permisos_);
+        // return $permisos_;
+
+        return view('acceso.role.edit', compact('permisos', 'role', 'permisos_'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        /* Obtenemos todo el request */
+        // return $request->all();
+
+        /* Validar request */
+        $request->validate([
+            "name"        => "required|max:50|unique:roles,name,$id",
+            "slug"        => "required|max:50|unique:roles,slug,$id",
+            "full-access" => "required|in:yes,no"
+        ]);
+
+        try{
+            DB::beginTransaction();            
+            
+            /* Quitamos los campos que no queremos actualizar */
+            $params_array = $request->all();
+            unset($params_array['_token']);
+            unset($params_array['_method']);
+            unset($params_array['permisos']);
+
+            /* Guardamos role */
+            $role = Role::where('id', $id)->firstOrFail();
+            $role->update($params_array);
+            
+            if(!empty($role) && is_object($role) && isset($role)){
+                /* Guardamos permission_role */          
+                $role->permissions()->sync( $request->get('permisos') );
+            }                                  
+             
+            DB::commit();
+            return back()->with('mensaje', 'Role actualizado');
+        }catch(\Exception $e){
+            DB::rollback();
+            return back()->with('mensaje_rollback', 'ROLLBACK: Role no se pudo actualizar '.$e->getMessage());
+        }
     }
 
     public function destroy($id)
