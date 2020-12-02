@@ -50,9 +50,12 @@
                                     <td>
                                         <a href="{{ route('role.edit', $value->id) }}" class="btn btn-success btn-sm">Editar</a>                                        
                                     </td>
-                                    <td>                                        
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->id }}">Eliminar</button>
-                                        @include('acceso.role.modal_delete')
+                                    <td>  
+                                        <form method="POST" action="{{ route('role.destroy', $value->id) }}">
+                                            @method('DELETE')
+                                            @csrf                                            
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Estas seguro que quieres eliminar?');">Eliminar</button>                                
+                                        </form>                                                                                
                                     </td>
                                 </tr>                           
                             @endforeach

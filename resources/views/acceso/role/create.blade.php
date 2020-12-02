@@ -42,11 +42,11 @@
                             @endphp
 
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="fullaccessyes" name="full-access" class="custom-control-input" value="yes" @if($checked=="yes") checked @endif>
+                                <input type="radio" id="fullaccessyes" name="full-access" class="custom-control-input" value="yes" @if($checked=="yes") checked @endif onclick="toggle(true)">
                                 <label class="custom-control-label" for="fullaccessyes">Yes</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="fullaccessno" name="full-access" class="custom-control-input" value="no" @if($checked=="no") checked @endif>
+                                <input type="radio" id="fullaccessno" name="full-access" class="custom-control-input" value="no" @if($checked=="no") checked @endif onclick="toggle(false)">
                                 <label class="custom-control-label" for="fullaccessno">No</label>
                             </div>                            
                         </div>
@@ -86,4 +86,14 @@
     </div>
     <!-- Verificar los datos de regreso (old), dd detiene la ejecucion -->
     {{-- {{ dd(old()) }} --}}
+@endsection
+
+@section('seccion-scripts')    
+    <script>
+        function toggle(checked) {
+            $("input[type=checkbox]").each(function(){                
+                $(this).prop('checked', checked);
+            });
+        }
+    </script>
 @endsection

@@ -19,7 +19,8 @@ class RoleController extends Controller
     {
         if($request){
             $searchText = $request->searchText;
-            $dataRole = Role::orderBy('id', 'ASC')
+            $dataRole = Role::where('name', 'LIKE', '%'.$searchText.'%')
+                            ->orderBy('id', 'ASC')
                             ->paginate('10');
             return view('acceso.role.index', compact('dataRole', 'searchText'));
         }
@@ -49,22 +50,45 @@ class RoleController extends Controller
             /* Guardamos role */
             $role = Role::create($request->all());      
             
-            if(!empty($role) && is_object($role) && isset($role)){
-                /* Guardamos permission_role */          
+            /* Guardamos permission_role */          
+            if(!empty($role) && is_object($role) && isset($role)){                
                 $role->permissions()->sync( $request->get('permisos') );
             }                                  
              
             DB::commit();
-            return back()->with('mensaje', 'Role agregado');
+            return back()->with('mensaje', 'Role agregado'); //return redirect()->route('role.create')->with('mensaje', 'Role agregado');            
         }catch(\Exception $e){
             DB::rollback();
-            return back()->with('mensaje_rollback', 'ROLLBACK: Role no se pudo agregar');
+            return back()->with('mensaje_rollback', 'ROLLBACK: Role no se pudo agregar'); //return redirect()->route('role.create')->with('mensaje_rollback', 'ROLLBACK: Role no se pudo agregar');            
         }
     }
 
+    /*
+     * Es lo mismo que edit, pero en lugar de retornar a acceso.role.edit retornamos a la vista acceso.role.view
+     * La vista no la cree ya que era una perdido de tiempo, pero esta en el video "10. Métodos view y destroy"
+     * https://youtu.be/VdoOfQfZRnI
+     */
     public function show($id)
     {
-        //
+        /* Obtenemos todos los permisos existentes */
+        $permisos = Permission::get();
+
+        /* Obtenemos los datos del rol a editar */
+        $role = Role::findOrFail($id);
+        
+        /* Obtenemos los permisos del rol y lo convertimos en un array */
+        $permisos_ = array();
+        foreach ($role->permissions as $key=>$permiso) {
+            $permisos_[] = $permiso->id;
+        }    
+
+        /* Verificamos los datos, dump no detiene la ejecucion */
+        // dump($permisos);
+        // dump($role);
+        // dump($permisos_);
+        // return $permisos_;
+
+        return view('acceso.role.view', compact('permisos', 'role', 'permisos_'));
     }
 
     public function edit($id)
@@ -75,7 +99,7 @@ class RoleController extends Controller
         /* Obtenemos los datos del rol a editar */
         $role = Role::findOrFail($id);
         
-        /* Obtenemos los permisos del rol a editar y lo convertimos en un array */
+        /* Obtenemos los permisos del rol y lo convertimos en un array */
         $permisos_ = array();
         foreach ($role->permissions as $key=>$permiso) {
             $permisos_[] = $permiso->id;
@@ -115,21 +139,23 @@ class RoleController extends Controller
             $role = Role::where('id', $id)->firstOrFail();
             $role->update($params_array);
             
+            /* Guardamos permission_role */          
             if(!empty($role) && is_object($role) && isset($role)){
-                /* Guardamos permission_role */          
                 $role->permissions()->sync( $request->get('permisos') );
             }                                  
              
             DB::commit();
-            return back()->with('mensaje', 'Role actualizado');
+            return back()->with('mensaje', 'Role actualizado'); //return redirect()->route('role.edit', $id)->with('mensaje', 'Role actualizado');
         }catch(\Exception $e){
             DB::rollback();
-            return back()->with('mensaje_rollback', 'ROLLBACK: Role no se pudo actualizar '.$e->getMessage());
+            return back()->with('mensaje_rollback', 'ROLLBACK: Role no se pudo actualizar '.$e->getMessage()); //return redirect()->route('role.edit', $id)->with('mensaje_rollback', 'ROLLBACK: Role no se pudo actualizar '.$e->getMessage());
         }
     }
 
     public function destroy($id)
-    {
-        //
+    {        
+        $role = Role::where('id', $id)->firstOrFail();
+        $role->delete();
+        return redirect()->route('role.index')->with('mensaje', 'Role eliminado');
     }
 }
