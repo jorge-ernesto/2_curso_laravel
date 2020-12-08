@@ -1,4 +1,3 @@
-@include('acceso.user.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    

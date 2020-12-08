@@ -1,4 +1,3 @@
-@include('ventas.cliente.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    

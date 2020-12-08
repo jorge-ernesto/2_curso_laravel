@@ -24,12 +24,12 @@
                         </a>
                         <div class="collapse" id="almacen" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                @if( session('categoria') )
+                                <!-- pendiente can -->
                                     <a class="nav-link" href="{{ route('categoria.index') }}">Categoría</a>
-                                @endif
-                                @if( session('articulo') )
+                                <!-- pendiente can -->
+                                <!-- pendiente can -->
                                     <a class="nav-link" href="{{ route('articulo.index') }}">Artículo</a>
-                                @endif
+                                <!-- pendiente can -->
                             </nav>
                         </div>
                         <!-- CERRAR OPCION ALMACEN -->
@@ -41,12 +41,12 @@
                         </a>
                         <div class="collapse" id="ventas" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                @if( session('cliente') )
+                                <!-- pendiente can -->
                                     <a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a>
-                                @endif
-                                {{-- @if( session('venta') )
-                                    <a class="nav-link" href="{{ route('venta.index') }}">Venta</a>
-                                @endif --}}
+                                <!-- pendiente can -->
+                                <!-- pendiente can -->
+                                    {{-- <a class="nav-link" href="{{ route('venta.index') }}">Venta</a> --}}
+                                <!-- pendiente can -->
                             </nav>
                         </div>
                         <!-- CERRAR OPCION VENTAS -->
@@ -58,12 +58,12 @@
                         </a>
                         <div class="collapse" id="compras" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                @if( session('proveedor') )
+                                <!-- pendiente can -->
                                     <a class="nav-link" href="{{ route('proveedor.index') }}">Proveedor</a>
-                                @endif
-                                @if( session('ingreso') )
+                                <!-- pendiente can -->
+                                <!-- pendiente can -->
                                     <a class="nav-link" href="{{ route('ingreso.index') }}">Ingreso</a>
-                                @endif
+                                <!-- pendiente can -->
                             </nav>
                         </div>
                         <!-- CERRAR OPCION COMPRAS -->
@@ -75,10 +75,10 @@
                         </a>
                         <div class="collapse" id="acceso" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                @if( session('usuario') )
+                                @can('haveaccess', 'user.list')
                                     <a class="nav-link" href="{{ route('user.index') }}">User</a>
-                                @endif
-                                @if( session('role') )
+                                @endcan
+                                @can('haveaccess', 'role.list')
                                     <a class="nav-link" href="{{ route('role.index') }}">Role</a>
                                 @endif
                             </nav>

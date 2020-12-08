@@ -1,5 +1,3 @@
-@include('layouts.sb_admin.role')        
-
 <!DOCTYPE html>
 <html lang="en">
     <head>

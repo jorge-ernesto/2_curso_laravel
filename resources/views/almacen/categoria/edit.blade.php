@@ -1,4 +1,3 @@
-@include('almacen.categoria.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    

@@ -11,12 +11,12 @@ class PruebasController extends Controller
 {
     public function user(Request $request)
     {
-        $dataUser  = App\User::all();
-        $dataUser2 = DB::select('select * from users');
-        $dataUser3 = DB::table('users')
+        $users  = App\User::get();
+        $users2 = DB::select('select * from users');
+        $users3 = DB::table('users')
                         ->get();
 
-        foreach($dataUser as $key=>$user){
+        foreach($users as $key=>$user){
             echo "<h1>{$user->name}</h1>";
 
             foreach($user->roles as $key=>$role){
@@ -39,8 +39,7 @@ class PruebasController extends Controller
         echo "<hr>";
         
         //Otra forma
-        $roles = App\User::find(1)->roles()->get();    
-        error_log("****** roles ******");
-        error_log(json_encode($roles));        
+        $roles = App\User::find(1)->roles()->get();     
+        echo $roles;       
     }   
 }
