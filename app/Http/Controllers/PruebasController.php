@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App;
-use Illuminate\Support\Facades\DB;
+use App; //Recuperando modelos, App es el namespace
+use Illuminate\Support\Facades\DB; //Recuperando resultados
 
 class PruebasController extends Controller
 {

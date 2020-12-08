@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Role;
-use App\Module;
-use App\Permission;
-use Illuminate\Support\Facades\DB;
+use App\Role; //Recuperando modelos, App es el namespace
+use App\Module; //Recuperando modelos, App es el namespace
+use App\Permission; //Recuperando modelos, App es el namespace
+use Illuminate\Support\Facades\DB; //Recuperando resultados
 use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
@@ -20,7 +20,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'role.list');
+        Gate::authorize('haveaccess', 'role.index');
         
         if($request){
             $searchText = $request->searchText;

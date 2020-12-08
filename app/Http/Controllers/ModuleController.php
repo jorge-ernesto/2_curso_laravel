@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Module;
-use Illuminate\Support\Facades\DB;
+use App\Module; //Recuperando modelos, App es el namespace
+use Illuminate\Support\Facades\DB; //Recuperando resultados
+use Illuminate\Support\Facades\Gate;
 
 class ModuleController extends Controller
 {
@@ -16,6 +17,9 @@ class ModuleController extends Controller
     
     public function index(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'module.index');
+
         if($request){
             $searchText = $request->searchText;
             $modules = Module::where('name', 'LIKE', '%'.$searchText.'%')
@@ -27,11 +31,17 @@ class ModuleController extends Controller
     
     public function create()
     {        
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'module.create');
+
         return view('acceso.module.create');
     }
     
     public function store(Request $request)
-    {                                      
+    {               
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'module.create');
+        
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -81,6 +91,9 @@ class ModuleController extends Controller
     
     public function destroy($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'module.destroy');
+
         $module = Module::where('id', $id)->firstOrFail();
         $module->delete();
         return redirect()->route('module.index')->with('mensaje', 'Module eliminado');

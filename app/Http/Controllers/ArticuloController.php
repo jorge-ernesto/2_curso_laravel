@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
+use Illuminate\Support\Facades\Gate;
 
 class ArticuloController extends Controller
 {    
@@ -16,6 +17,9 @@ class ArticuloController extends Controller
     
     public function index(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'article.index');
+
         if($request){
             $searchText = $request->searchText;
             $dataArticulo = DB::table('articulo as a')
@@ -31,6 +35,9 @@ class ArticuloController extends Controller
     
     public function create()
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'article.create');
+
         $dataCategoria = DB::table('categoria')
                             ->where('condicion', '=', '1')
                             ->get();
@@ -39,6 +46,9 @@ class ArticuloController extends Controller
     
     public function store(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'article.create');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -72,12 +82,18 @@ class ArticuloController extends Controller
     
     public function show($id)
     {        
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'article.show');
+
         $dataArticulo = App\Articulo::findOrFail($id);
         return view('almacen.articulo.show', compact('dataArticulo'));
     }
 
     public function edit($id)
-    {        
+    {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'article.edit');
+        
         $dataCategoria = DB::table('categoria')
                             ->where('condicion', '=', '1')
                             ->get();
@@ -87,6 +103,9 @@ class ArticuloController extends Controller
 
     public function update(Request $request, $id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'article.edit');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -120,6 +139,9 @@ class ArticuloController extends Controller
 
     public function destroy(Request $request, $id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'article.destroy');
+
         /* Obtenemos todo el request */
         // return $request->all();
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
+use Illuminate\Support\Facades\Gate;
 
 class ClienteController extends Controller
 {
@@ -16,6 +17,9 @@ class ClienteController extends Controller
 
     public function index(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'client.index');
+
         if($request){
             $searchText = $request->searchText;
             $dataPersona = DB::table('persona')
@@ -29,11 +33,17 @@ class ClienteController extends Controller
 
     public function create()
     {        
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'client.create');
+        
         return view('ventas.cliente.create');
     }
 
     public function store(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'client.create');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -63,18 +73,27 @@ class ClienteController extends Controller
 
     public function show($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'client.show');
+
         $dataPersona = App\Persona::findOrFail($id);
         return view('ventas.cliente.show', compact('dataPersona'));
     }
 
     public function edit($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'client.edit');
+
         $dataPersona = App\Persona::findOrFail($id);
         return view('ventas.cliente.edit', compact('dataPersona'));
     }
 
     public function update(Request $request, $id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'client.edit');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -104,6 +123,9 @@ class ClienteController extends Controller
 
     public function destroy($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'client.destroy');
+
         /* Eliminar persona */
         $personaActualizada = App\Persona::findOrFail($id);        
         $personaActualizada->delete();

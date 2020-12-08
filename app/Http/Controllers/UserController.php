@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index(Request $request)
     {     
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'user.list');
+        Gate::authorize('haveaccess', 'user.index');
         
         if($request){
             $searchText = $request->searchText;

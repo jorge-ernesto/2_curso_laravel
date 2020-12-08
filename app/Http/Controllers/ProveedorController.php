@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
+use Illuminate\Support\Facades\Gate;
 
 class ProveedorController extends Controller
 {
@@ -16,6 +17,9 @@ class ProveedorController extends Controller
     
     public function index(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'provider.index');
+
         if($request){
             $searchText = $request->searchText;
             $dataPersona = DB::table('persona')
@@ -29,11 +33,17 @@ class ProveedorController extends Controller
 
     public function create()
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'provider.create');
+
         return view('compras.proveedor.create');
     }
 
     public function store(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'provider.create');
+            
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -63,18 +73,27 @@ class ProveedorController extends Controller
 
     public function show($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'provider.show');
+
         $dataPersona = App\Persona::findOrFail($id);
         return view('compras.proveedor.show', compact('dataPersona'));
     }
 
     public function edit($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'provider.edit');
+
         $dataPersona = App\Persona::findOrFail($id);
         return view('compras.proveedor.edit', compact('dataPersona'));
     }
 
     public function update(Request $request, $id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'provider.edit');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -104,6 +123,9 @@ class ProveedorController extends Controller
 
     public function destroy($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'provider.destroy');
+
         /* Eliminar persona */
         $personaActualizada = App\Persona::findOrFail($id);        
         $personaActualizada->delete();

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Gate;
 
 class IngresoController extends Controller
 {   
@@ -16,7 +17,10 @@ class IngresoController extends Controller
     }
     
     public function index(Request $request)
-    {        
+    {      
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'entry.index');
+        
         if($request){
             $searchText = $request->searchText;            
             $dataIngreso  = DB::table('ingreso as i')                                
@@ -33,6 +37,9 @@ class IngresoController extends Controller
     
     public function create()
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'entry.create');
+
         $dataPersona = DB::table('persona')
                             ->where('tipo_persona', '=', 'Proveedor')
                             ->get();
@@ -45,6 +52,9 @@ class IngresoController extends Controller
     
     public function store(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'entry.create');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -110,6 +120,9 @@ class IngresoController extends Controller
 
     public function show($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'entry.show');
+
         $dataPersona = DB::table('persona')
                             ->where('tipo_persona', '=', 'Proveedor')
                             ->get();
@@ -138,6 +151,9 @@ class IngresoController extends Controller
 
     public function destroy($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'entry.destroy');
+
         /* Cambiar estado de ingreso */
         $ingreso = App\Ingreso::findOrFail($id);
         $ingreso->estado = "Cancelado";

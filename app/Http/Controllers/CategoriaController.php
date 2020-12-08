@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Comprobar data
@@ -30,7 +31,10 @@ class CategoriaController extends Controller
     }
 
     public function index(Request $request)
-    {        
+    {      
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'category.index');
+        
         if($request){
             $searchText = $request->searchText;
             $dataCategoria  = DB::table('categoria')
@@ -44,11 +48,17 @@ class CategoriaController extends Controller
  
     public function create()
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'category.create');
+
         return view('almacen.categoria.create');
     }
     
     public function store(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'category.create');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -68,19 +78,28 @@ class CategoriaController extends Controller
     }
 
     public function show($id)
-    {        
+    {    
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'category.show');
+        
         $dataCategoria = App\Categoria::findOrFail($id);
         return view('almacen.categoria.show', compact('dataCategoria'));
     }
 
     public function edit($id)
-    {        
+    {     
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'category.edit');
+        
         $dataCategoria = App\Categoria::findOrFail($id);
         return view('almacen.categoria.edit', compact('dataCategoria'));
     }
 
     public function update(Request $request, $id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'category.edit');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -100,6 +119,9 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'category.destroy');
+
         /* Eliminar categoria */
         $categoriaActualizada = App\Categoria::findOrFail($id);        
         $categoriaActualizada->delete();
