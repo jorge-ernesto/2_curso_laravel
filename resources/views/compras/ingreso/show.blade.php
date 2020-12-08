@@ -1,4 +1,3 @@
-@include('compras.ingreso.role')
 @extends('layouts.plantilla')
 
 @section('seccion-main')    

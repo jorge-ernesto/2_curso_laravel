@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-sm text-primary">
+                        <table class="table table-bordered table-hover table-hover table-sm text-primary">
                             <thead>
                                 <tr>
                                     <th class="d-none">ID</th>

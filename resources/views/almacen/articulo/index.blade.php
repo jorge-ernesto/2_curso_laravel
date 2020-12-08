@@ -13,7 +13,7 @@
                                 
                 @include('almacen.articulo.search')  
                 <div class="table-responsive">
-                    <table class="table table-bordered text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
+                    <table class="table table-bordered table-hover text-primary" width="100%" cellspacing="0"> <!-- id="dataTable" -->
                         <thead>
                             <tr>
                                 <th>id</th>

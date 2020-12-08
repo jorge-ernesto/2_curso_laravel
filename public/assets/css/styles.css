@@ -1723,7 +1723,7 @@ pre code {
 }
 
 .table-hover tbody tr:hover {
-  color: #212529;
+  /* color: #212529; */ /*Personalización en los estilos de la plantilla sb_admin*/
   background-color: rgba(0, 0, 0, 0.075);
 }
 
