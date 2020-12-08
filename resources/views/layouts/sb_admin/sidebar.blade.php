@@ -24,12 +24,12 @@
                         </a>
                         <div class="collapse" id="almacen" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <!-- pendiente can -->
-                                    <a class="nav-link" href="{{ route('categoria.index') }}">Categoría</a>
-                                <!-- pendiente can -->
-                                <!-- pendiente can -->
-                                    <a class="nav-link" href="{{ route('articulo.index') }}">Artículo</a>
-                                <!-- pendiente can -->
+                                @can('haveaccess', 'category.index')
+                                    <a class="nav-link" href="{{ route('categoria.index') }}">Categorías</a>
+                                @endcan
+                                @can('haveaccess', 'article.index')
+                                    <a class="nav-link" href="{{ route('articulo.index') }}">Artículos</a>
+                                @endcan
                             </nav>
                         </div>
                         <!-- CERRAR OPCION ALMACEN -->
@@ -41,9 +41,9 @@
                         </a>
                         <div class="collapse" id="ventas" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <!-- pendiente can -->
-                                    <a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a>
-                                <!-- pendiente can -->
+                                @can('haveaccess', 'client.index')
+                                    <a class="nav-link" href="{{ route('cliente.index') }}">Clientes</a>
+                                @endcan
                                 <!-- pendiente can -->
                                     {{-- <a class="nav-link" href="{{ route('venta.index') }}">Venta</a> --}}
                                 <!-- pendiente can -->
@@ -58,12 +58,12 @@
                         </a>
                         <div class="collapse" id="compras" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <!-- pendiente can -->
-                                    <a class="nav-link" href="{{ route('proveedor.index') }}">Proveedor</a>
-                                <!-- pendiente can -->
-                                <!-- pendiente can -->
-                                    <a class="nav-link" href="{{ route('ingreso.index') }}">Ingreso</a>
-                                <!-- pendiente can -->
+                                @can('haveaccess', 'provider.index')
+                                    <a class="nav-link" href="{{ route('proveedor.index') }}">Proveedores</a>
+                                @endcan
+                                @can('haveaccess', 'entry.index')
+                                    <a class="nav-link" href="{{ route('ingreso.index') }}">Ingresos</a>
+                                @endcan
                             </nav>
                         </div>
                         <!-- CERRAR OPCION COMPRAS -->
@@ -75,11 +75,14 @@
                         </a>
                         <div class="collapse" id="acceso" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                @can('haveaccess', 'user.list')
-                                    <a class="nav-link" href="{{ route('user.index') }}">User</a>
+                                @can('haveaccess', 'user.index')
+                                    <a class="nav-link" href="{{ route('user.index') }}">Usuarios</a>
                                 @endcan
-                                @can('haveaccess', 'role.list')
-                                    <a class="nav-link" href="{{ route('role.index') }}">Role</a>
+                                @can('haveaccess', 'role.index')
+                                    <a class="nav-link" href="{{ route('role.index') }}">Roles</a>
+                                @endif
+                                @can('haveaccess', 'module.index')
+                                    <a class="nav-link" href="{{ route('module.index') }}">Modulos</a>
                                 @endif
                             </nav>
                         </div>

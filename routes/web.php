@@ -54,7 +54,8 @@ Route::get('/', function () {
         'compras/proveedor' => 'ProveedorController',
         'compras/ingreso'   => 'IngresoController',        
         'acceso/user'       => 'UserController',
-        'acceso/role'       => 'RoleController'
+        'acceso/role'       => 'RoleController',
+        'acceso/module'     => 'ModuleController'
     ]);
     
     //Rutas de usuarios

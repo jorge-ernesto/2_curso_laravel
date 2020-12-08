@@ -6,7 +6,7 @@
             <a href="{{ route('ingreso.create') }}" class="btn btn-primary">Crear</a>              
         </h1>        
         <div class="card border-primary mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Ingreso</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Ingresos</div>
             <div class="card-body">
                 
                 @include('compras.ingreso.alerts')

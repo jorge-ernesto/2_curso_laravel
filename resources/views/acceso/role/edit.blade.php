@@ -61,28 +61,36 @@
                     <div class="row form-group">
                         <label for="descripcion" class="col-form-label col-md-2">Permissions List:</label>
                         <div class="col-md-5 my-auto">                            
-                            @foreach ($permisos as $key=>$permiso)
-                                @php
-                                    $permisos_ = old('permisos') ? old('permisos') : $permisos_;                                                                      
-                                    $checked = "";
-                                    if((!empty($permisos_) && is_array($permisos_) && isset($permisos_)) && in_array($permiso->id, $permisos_)){
-                                        $checked = "checked";
-                                    }
-                                @endphp
+                            @foreach ($modulos as $keyModulo=>$modulo)
+                                {{$modulo->name}}
 
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="permiso_{{$permiso->id}}" value="{{$permiso->id}}"" name="permisos[]" {{$checked}}>
-                                    <label class="custom-control-label" for="permiso_{{$permiso->id}}">
-                                        {{$permiso->id ." - ". $permiso->name}}
-                                        (<em>{{$permiso->description}}</em>)
-                                    </label>
-                                </div>
-                            @endforeach                                                    
+                                @foreach ($permisos as $key=>$permiso)
+                                    @if ($modulo->id === $permiso->module_id)
+                                        @php
+                                            $permisos_ = old('permisos') ? old('permisos') : $permisos_;                                                                      
+                                            $checked = "";
+                                            if((!empty($permisos_) && is_array($permisos_) && isset($permisos_)) && in_array($permiso->id, $permisos_)){
+                                                $checked = "checked";
+                                            }
+                                        @endphp
+
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="permiso_{{$permiso->id}}" value="{{$permiso->id}}"" name="permisos[]" {{$checked}}>
+                                            <label class="custom-control-label" for="permiso_{{$permiso->id}}">
+                                                {{$permiso->name}}
+                                                (<em>{{$permiso->description}}</em>)
+                                            </label>
+                                        </div>
+                                    @endif     
+                                @endforeach  
+                                
+                                <br>                     
+                            @endforeach
                         </div>
                     </div>
 
                     <h4>
-                        <button type="submit" class="btn btn-primary">Crear Categoría</button>                        
+                        <button type="submit" class="btn btn-primary">Crear Role</button>                        
                         <a href="{{ route('role.index') }}" class="btn btn-primary">Atras</a>    
                     </h4>
                 </form>                    

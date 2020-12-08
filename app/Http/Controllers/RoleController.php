@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Role;
+use App\Module;
 use App\Permission;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -23,10 +24,10 @@ class RoleController extends Controller
         
         if($request){
             $searchText = $request->searchText;
-            $dataRole = Role::where('name', 'LIKE', '%'.$searchText.'%')
+            $roles = Role::where('name', 'LIKE', '%'.$searchText.'%')
                             ->orderBy('id', 'ASC')
                             ->paginate('10');
-            return view('acceso.role.index', compact('dataRole', 'searchText'));
+            return view('acceso.role.index', compact('roles', 'searchText'));
         }
     }
 
@@ -35,8 +36,9 @@ class RoleController extends Controller
         /* Gate de acceso */
         Gate::authorize('haveaccess', 'role.create');
         
+        $modulos = Module::orderBy('name', 'ASC')->get();
         $permisos = Permission::get();
-        return view('acceso.role.create', compact('permisos'));
+        return view('acceso.role.create', compact('modulos', 'permisos'));
     }
 
     public function store(Request $request)
@@ -69,39 +71,18 @@ class RoleController extends Controller
             return back()->with('mensaje', 'Role agregado'); //return redirect()->route('role.create')->with('mensaje', 'Role agregado');            
         }catch(\Exception $e){
             DB::rollback();
-            return back()->with('mensaje_rollback', 'ROLLBACK: Role no se pudo agregar'); //return redirect()->route('role.create')->with('mensaje_rollback', 'ROLLBACK: Role no se pudo agregar');            
+            return back()->with('mensaje_rollback', 'ROLLBACK: Role no se pudo agregar '.$e->getMessage()); //return redirect()->route('role.create')->with('mensaje_rollback', 'ROLLBACK: Role no se pudo agregar');            
         }
     }
 
     /*
-     * Es lo mismo que edit, pero en lugar de retornar a acceso.role.edit retornamos a la vista acceso.role.view
+     * Es lo mismo que edit, pero en lugar de retornar a acceso.role.edit retornamos a la vista acceso.role.show
      * La vista no la cree ya que era una perdido de tiempo, pero esta en el video "10. Métodos view y destroy"
      * https://youtu.be/VdoOfQfZRnI
      */
     public function show($id)
     {
-        /* Gate de acceso */
-        Gate::authorize('haveaccess', 'role.show');
-
-        /* Obtenemos todos los permisos existentes */
-        $permisos = Permission::get();
-
-        /* Obtenemos los datos del rol a editar */
-        $role = Role::findOrFail($id);
-        
-        /* Obtenemos los permisos del rol y lo convertimos en un array */
-        $permisos_ = array();
-        foreach ($role->permissions as $key=>$permiso) {
-            $permisos_[] = $permiso->id;
-        }    
-
-        /* Verificamos los datos, dump no detiene la ejecucion */
-        // dump($permisos);
-        // dump($role);
-        // dump($permisos_);
-        // return $permisos_;
-
-        return view('acceso.role.view', compact('permisos', 'role', 'permisos_'));
+        //
     }
 
     public function edit($id)
@@ -110,6 +91,9 @@ class RoleController extends Controller
         Gate::authorize('haveaccess', 'role.edit');
 
         /* Obtenemos todos los permisos existentes */
+        $modulos = Module::orderBy('name', 'ASC')->get();
+
+        /* Obtenemos todos los permisos existentes */
         $permisos = Permission::get();
 
         /* Obtenemos los datos del rol a editar */
@@ -127,7 +111,7 @@ class RoleController extends Controller
         // dump($permisos_);
         // return $permisos_;
 
-        return view('acceso.role.edit', compact('permisos', 'role', 'permisos_'));
+        return view('acceso.role.edit', compact('modulos', 'permisos', 'role', 'permisos_'));
     }
 
     public function update(Request $request, $id)

@@ -18,6 +18,7 @@ class CreatePermissionsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('description')->nullable();            
+            $table->foreignId('module_id')->references('id')->on('modules')->onDelete('cascade'); //Creamos una llave foranea que hace referencia a id de la tabla modules            
             $table->timestamps();
         });
     }

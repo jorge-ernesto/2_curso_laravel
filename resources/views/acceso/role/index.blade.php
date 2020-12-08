@@ -37,11 +37,9 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($dataRole as $key=>$value)
+                            @foreach($roles as $key=>$value)
                                 <tr>
-                                    <td>
-                                        <a href="{{ route('role.show', $value->id) }}">{{ $value->id }}</a>
-                                    </td>
+                                    <td>{{ $value->id }}</td>   
                                     <td>{{ $value->name }}</td>
                                     <td>{{ $value->slug }}</td>
                                     <td>{{ $value->description }}</td>
@@ -61,8 +59,8 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-between">
-                        Mostrando registros del {{ $dataRole->firstItem() }} al {{ $dataRole->lastItem() }} de un total de {{ $dataRole->total() }} registros        
-                        {{ $dataRole->links() }}
+                        Mostrando registros del {{ $roles->firstItem() }} al {{ $roles->lastItem() }} de un total de {{ $roles->total() }} registros        
+                        {{ $roles->links() }}
                     </div>
                 </div>
                 
