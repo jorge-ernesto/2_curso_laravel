@@ -58,8 +58,8 @@ Route::get('/', function () {
     ]);
     
     //Rutas de usuarios
-    Route::get("acceso/usuario/changePassword/{usuario}/edit", "UserController@changePasswordEdit")->name('user.changePasswordEdit');
-    Route::put("acceso/usuario/changePassword/{usuario}", "UserController@changePassword")->name('user.changePassword');
+    Route::get("acceso/usuario/password/{usuario}/edit", "UserController@PasswordEdit")->name('user.passwordEdit');
+    Route::put("acceso/usuario/password/{usuario}", "UserController@PasswordUpdate")->name('user.passwordUpdate');
 
     //Rutas de autenticación
     // Auth::routes();

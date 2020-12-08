@@ -61,7 +61,7 @@
                                     
                                     <td>
                                         <a href="{{ route('user.edit', $value->id) }}" class="btn btn-success btn-sm">Editar</a>
-                                        <a href="{{ route('user.changePasswordEdit', $value->id) }}" class="btn btn-success btn-sm">Cambiar contraseña</a>
+                                        <a href="{{ route('user.passwordEdit', $value->id) }}" class="btn btn-success btn-sm">Cambiar contraseña</a>
                                     </td>
                                     <td>                                        
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_delete_{{ $value->id }}">Eliminar</button>

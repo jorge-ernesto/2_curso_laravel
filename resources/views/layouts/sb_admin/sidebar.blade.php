@@ -144,9 +144,13 @@
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
-            {{-- Start Bootstrap --}}
-            {{ Auth::user()->name }}
+            <div class="small">Autenticado como:</div>            
+            {{ Auth::user()->name }}            
+            
+            @foreach (Auth::user()->roles as $key=>$role)            
+                <br>
+                ( {{ $role->name }} )
+            @endforeach
         </div>
     </nav>
 </div>

@@ -10,7 +10,7 @@
 
                 @include('acceso.user.alerts')
 
-                <form method="POST" action="{{ route('user.changePassword', $dataUsuario->id) }}">
+                <form method="POST" action="{{ route('user.passwordUpdate', $dataUsuario->id) }}">
                     @method('PUT')
                     @csrf                    
                     <div class="row form-group">

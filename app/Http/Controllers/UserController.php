@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App; //Recuperando modelos, App es el namespace
 use Illuminate\Support\Facades\DB; //Recuperando resultados
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -16,7 +17,10 @@ class UserController extends Controller
     }
 
     public function index(Request $request)
-    {        
+    {     
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'user.list');
+        
         if($request){
             $searchText = $request->searchText;
             $dataUsuario  = DB::table('users as u')
@@ -35,12 +39,18 @@ class UserController extends Controller
 
     public function create()
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'user.create');
+
         $dataRole = DB::table('roles')->get();
         return view('acceso.user.create', compact('dataRole'));
     }
 
     public function store(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'user.create');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -77,12 +87,18 @@ class UserController extends Controller
 
     public function show($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'user.show');
+
         $dataUsuario = App\User::findOrFail($id);
         return view('acceso.user.show', compact('dataUsuario'));
     }
 
     public function edit($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'user.edit');
+
         $dataRole = DB::table('roles')->get();
         $dataUsuario = DB::table('users as u')
                             ->join('role_user as ru', 'ru.user_id', '=', 'u.id')
@@ -92,23 +108,13 @@ class UserController extends Controller
                             ->where('u.id', '=', $id)
                             ->first();
         return view('acceso.user.edit', compact('dataRole', 'dataUsuario'));
-    }
-
-    public function changePasswordEdit($id)
-    {
-        $dataRole = DB::table('roles')->get();
-        $dataUsuario = DB::table('users as u')
-                            ->join('role_user as ru', 'ru.user_id', '=', 'u.id')
-                            ->join('roles as r', 'ru.role_id', '=', 'r.id')
-                            ->select('u.id', 'u.name', 'u.email', 'u.password', 'u.created_at', 'u.updated_at', 
-                                     'r.id as role_id', 'r.name as role_name')
-                            ->where('u.id', '=', $id)
-                            ->first();
-        return view('acceso.user.changePasswordEdit', compact('dataRole', 'dataUsuario'));
-    }
+    }    
 
     public function update(Request $request, $id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'user.edit');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -144,8 +150,27 @@ class UserController extends Controller
         }
     }
 
-    public function changePassword(Request $request, $id)
+    public function PasswordEdit($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'user.edit');
+
+        $dataRole = DB::table('roles')->get();
+        $dataUsuario = DB::table('users as u')
+                            ->join('role_user as ru', 'ru.user_id', '=', 'u.id')
+                            ->join('roles as r', 'ru.role_id', '=', 'r.id')
+                            ->select('u.id', 'u.name', 'u.email', 'u.password', 'u.created_at', 'u.updated_at', 
+                                     'r.id as role_id', 'r.name as role_name')
+                            ->where('u.id', '=', $id)
+                            ->first();
+        return view('acceso.user.passwordEdit', compact('dataRole', 'dataUsuario'));
+    }
+
+    public function PasswordUpdate(Request $request, $id)
+    {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'user.edit');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -172,6 +197,9 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'user.destroy');
+
         /* Eliminar user */
         $usuario = App\User::findOrFail($id);        
         $usuario->delete();
