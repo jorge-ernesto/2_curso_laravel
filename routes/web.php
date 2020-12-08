@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use Illuminate\Support\Facades\Gate;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,15 @@ Route::get('/', function () {
     //Rutas de prueba
     Route::get("/pruebas/user", "PruebasController@user");
     Route::get("/pruebas/role", "PruebasController@role");
+    Route::get('/testGate', function () {
+        //$user = User::findOrFail(2);
+        //return $user->roles;        
+
+        //$user = User::findOrFail(2);
+        //return $user->havePermission('role.list');
+        
+        Gate::authorize('haveaccess', 'role.index');
+    });
 
     //Rutas
     Route::resources([

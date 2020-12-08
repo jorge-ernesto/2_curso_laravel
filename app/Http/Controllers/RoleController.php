@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\Permission;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
 {
@@ -17,6 +18,9 @@ class RoleController extends Controller
 
     public function index(Request $request)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'role.list');
+        
         if($request){
             $searchText = $request->searchText;
             $dataRole = Role::where('name', 'LIKE', '%'.$searchText.'%')
@@ -28,12 +32,18 @@ class RoleController extends Controller
 
     public function create()
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'role.create');
+        
         $permisos = Permission::get();
         return view('acceso.role.create', compact('permisos'));
     }
 
     public function store(Request $request)
-    {
+    {       
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'role.create');
+        
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -70,6 +80,9 @@ class RoleController extends Controller
      */
     public function show($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'role.show');
+
         /* Obtenemos todos los permisos existentes */
         $permisos = Permission::get();
 
@@ -93,6 +106,9 @@ class RoleController extends Controller
 
     public function edit($id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'role.edit');
+
         /* Obtenemos todos los permisos existentes */
         $permisos = Permission::get();
 
@@ -116,6 +132,9 @@ class RoleController extends Controller
 
     public function update(Request $request, $id)
     {
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'role.edit');
+
         /* Obtenemos todo el request */
         // return $request->all();
 
@@ -153,7 +172,10 @@ class RoleController extends Controller
     }
 
     public function destroy($id)
-    {        
+    {     
+        /* Gate de acceso */
+        Gate::authorize('haveaccess', 'role.destroy');
+        
         $role = Role::where('id', $id)->firstOrFail();
         $role->delete();
         return redirect()->route('role.index')->with('mensaje', 'Role eliminado');
