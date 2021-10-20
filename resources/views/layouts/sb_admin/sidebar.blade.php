@@ -24,10 +24,10 @@
                         </a>
                         <div class="collapse" id="almacen" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                @can('haveaccess', 'category.index')
+                                @can('haveaccess', 'categoria.index')
                                     <a class="nav-link" href="{{ route('categoria.index') }}">Categorías</a>
                                 @endcan
-                                @can('haveaccess', 'article.index')
+                                @can('haveaccess', 'articulo.index')
                                     <a class="nav-link" href="{{ route('articulo.index') }}">Artículos</a>
                                 @endcan
                             </nav>
@@ -41,7 +41,7 @@
                         </a>
                         <div class="collapse" id="ventas" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                @can('haveaccess', 'client.index')
+                                @can('haveaccess', 'cliente.index')
                                     <a class="nav-link" href="{{ route('cliente.index') }}">Clientes</a>
                                 @endcan
                                 <!-- pendiente can -->
@@ -58,10 +58,10 @@
                         </a>
                         <div class="collapse" id="compras" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                @can('haveaccess', 'provider.index')
+                                @can('haveaccess', 'proveedor.index')
                                     <a class="nav-link" href="{{ route('proveedor.index') }}">Proveedores</a>
                                 @endcan
-                                @can('haveaccess', 'entry.index')
+                                @can('haveaccess', 'ingreso.index')
                                     <a class="nav-link" href="{{ route('ingreso.index') }}">Ingresos</a>
                                 @endcan
                             </nav>

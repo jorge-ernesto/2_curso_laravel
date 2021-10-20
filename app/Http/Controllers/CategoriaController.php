@@ -33,7 +33,7 @@ class CategoriaController extends Controller
     public function index(Request $request)
     {      
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'category.index');
+        Gate::authorize('haveaccess', 'categoria.index');
         
         if($request){
             $searchText = $request->searchText;
@@ -49,7 +49,7 @@ class CategoriaController extends Controller
     public function create()
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'category.create');
+        Gate::authorize('haveaccess', 'categoria.create');
 
         return view('almacen.categoria.create');
     }
@@ -57,7 +57,7 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'category.create');
+        Gate::authorize('haveaccess', 'categoria.create');
 
         /* Obtenemos todo el request */
         // return $request->all();
@@ -80,7 +80,7 @@ class CategoriaController extends Controller
     public function show($id)
     {    
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'category.show');
+        Gate::authorize('haveaccess', 'categoria.show');
         
         $dataCategoria = App\Categoria::findOrFail($id);
         return view('almacen.categoria.show', compact('dataCategoria'));
@@ -89,7 +89,7 @@ class CategoriaController extends Controller
     public function edit($id)
     {     
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'category.edit');
+        Gate::authorize('haveaccess', 'categoria.edit');
         
         $dataCategoria = App\Categoria::findOrFail($id);
         return view('almacen.categoria.edit', compact('dataCategoria'));
@@ -98,7 +98,7 @@ class CategoriaController extends Controller
     public function update(Request $request, $id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'category.edit');
+        Gate::authorize('haveaccess', 'categoria.edit');
 
         /* Obtenemos todo el request */
         // return $request->all();
@@ -120,7 +120,7 @@ class CategoriaController extends Controller
     public function destroy($id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'category.destroy');
+        Gate::authorize('haveaccess', 'categoria.destroy');
 
         /* Eliminar categoria */
         $categoriaActualizada = App\Categoria::findOrFail($id);        

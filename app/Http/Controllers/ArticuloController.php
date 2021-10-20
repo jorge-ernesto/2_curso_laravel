@@ -18,7 +18,7 @@ class ArticuloController extends Controller
     public function index(Request $request)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'article.index');
+        Gate::authorize('haveaccess', 'articulo.index');
 
         if($request){
             $searchText = $request->searchText;
@@ -36,7 +36,7 @@ class ArticuloController extends Controller
     public function create()
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'article.create');
+        Gate::authorize('haveaccess', 'articulo.create');
 
         $dataCategoria = DB::table('categoria')
                             ->where('condicion', '=', '1')
@@ -47,7 +47,7 @@ class ArticuloController extends Controller
     public function store(Request $request)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'article.create');
+        Gate::authorize('haveaccess', 'articulo.create');
 
         /* Obtenemos todo el request */
         // return $request->all();
@@ -83,7 +83,7 @@ class ArticuloController extends Controller
     public function show($id)
     {        
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'article.show');
+        Gate::authorize('haveaccess', 'articulo.show');
 
         $dataArticulo = App\Articulo::findOrFail($id);
         return view('almacen.articulo.show', compact('dataArticulo'));
@@ -92,7 +92,7 @@ class ArticuloController extends Controller
     public function edit($id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'article.edit');
+        Gate::authorize('haveaccess', 'articulo.edit');
         
         $dataCategoria = DB::table('categoria')
                             ->where('condicion', '=', '1')
@@ -104,7 +104,7 @@ class ArticuloController extends Controller
     public function update(Request $request, $id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'article.edit');
+        Gate::authorize('haveaccess', 'articulo.edit');
 
         /* Obtenemos todo el request */
         // return $request->all();
@@ -140,7 +140,7 @@ class ArticuloController extends Controller
     public function destroy(Request $request, $id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'article.destroy');
+        Gate::authorize('haveaccess', 'articulo.destroy');
 
         /* Obtenemos todo el request */
         // return $request->all();

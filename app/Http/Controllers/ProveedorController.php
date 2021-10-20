@@ -18,7 +18,7 @@ class ProveedorController extends Controller
     public function index(Request $request)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'provider.index');
+        Gate::authorize('haveaccess', 'proveedor.index');
 
         if($request){
             $searchText = $request->searchText;
@@ -34,7 +34,7 @@ class ProveedorController extends Controller
     public function create()
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'provider.create');
+        Gate::authorize('haveaccess', 'proveedor.create');
 
         return view('compras.proveedor.create');
     }
@@ -42,7 +42,7 @@ class ProveedorController extends Controller
     public function store(Request $request)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'provider.create');
+        Gate::authorize('haveaccess', 'proveedor.create');
             
         /* Obtenemos todo el request */
         // return $request->all();
@@ -74,7 +74,7 @@ class ProveedorController extends Controller
     public function show($id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'provider.show');
+        Gate::authorize('haveaccess', 'proveedor.show');
 
         $dataPersona = App\Persona::findOrFail($id);
         return view('compras.proveedor.show', compact('dataPersona'));
@@ -83,7 +83,7 @@ class ProveedorController extends Controller
     public function edit($id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'provider.edit');
+        Gate::authorize('haveaccess', 'proveedor.edit');
 
         $dataPersona = App\Persona::findOrFail($id);
         return view('compras.proveedor.edit', compact('dataPersona'));
@@ -92,7 +92,7 @@ class ProveedorController extends Controller
     public function update(Request $request, $id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'provider.edit');
+        Gate::authorize('haveaccess', 'proveedor.edit');
 
         /* Obtenemos todo el request */
         // return $request->all();
@@ -124,7 +124,7 @@ class ProveedorController extends Controller
     public function destroy($id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'provider.destroy');
+        Gate::authorize('haveaccess', 'proveedor.destroy');
 
         /* Eliminar persona */
         $personaActualizada = App\Persona::findOrFail($id);        

@@ -19,7 +19,7 @@ class IngresoController extends Controller
     public function index(Request $request)
     {      
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'entry.index');
+        Gate::authorize('haveaccess', 'ingreso.index');
         
         if($request){
             $searchText = $request->searchText;            
@@ -38,7 +38,7 @@ class IngresoController extends Controller
     public function create()
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'entry.create');
+        Gate::authorize('haveaccess', 'ingreso.create');
 
         $dataPersona = DB::table('persona')
                             ->where('tipo_persona', '=', 'Proveedor')
@@ -53,7 +53,7 @@ class IngresoController extends Controller
     public function store(Request $request)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'entry.create');
+        Gate::authorize('haveaccess', 'ingreso.create');
 
         /* Obtenemos todo el request */
         // return $request->all();
@@ -121,7 +121,7 @@ class IngresoController extends Controller
     public function show($id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'entry.show');
+        Gate::authorize('haveaccess', 'ingreso.show');
 
         $dataPersona = DB::table('persona')
                             ->where('tipo_persona', '=', 'Proveedor')
@@ -152,7 +152,7 @@ class IngresoController extends Controller
     public function destroy($id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'entry.destroy');
+        Gate::authorize('haveaccess', 'ingreso.destroy');
 
         /* Cambiar estado de ingreso */
         $ingreso = App\Ingreso::findOrFail($id);

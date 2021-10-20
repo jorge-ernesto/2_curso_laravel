@@ -18,7 +18,7 @@ class ClienteController extends Controller
     public function index(Request $request)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'client.index');
+        Gate::authorize('haveaccess', 'cliente.index');
 
         if($request){
             $searchText = $request->searchText;
@@ -34,7 +34,7 @@ class ClienteController extends Controller
     public function create()
     {        
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'client.create');
+        Gate::authorize('haveaccess', 'cliente.create');
         
         return view('ventas.cliente.create');
     }
@@ -42,7 +42,7 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'client.create');
+        Gate::authorize('haveaccess', 'cliente.create');
 
         /* Obtenemos todo el request */
         // return $request->all();
@@ -74,7 +74,7 @@ class ClienteController extends Controller
     public function show($id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'client.show');
+        Gate::authorize('haveaccess', 'cliente.show');
 
         $dataPersona = App\Persona::findOrFail($id);
         return view('ventas.cliente.show', compact('dataPersona'));
@@ -83,7 +83,7 @@ class ClienteController extends Controller
     public function edit($id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'client.edit');
+        Gate::authorize('haveaccess', 'cliente.edit');
 
         $dataPersona = App\Persona::findOrFail($id);
         return view('ventas.cliente.edit', compact('dataPersona'));
@@ -92,7 +92,7 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'client.edit');
+        Gate::authorize('haveaccess', 'cliente.edit');
 
         /* Obtenemos todo el request */
         // return $request->all();
@@ -124,7 +124,7 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         /* Gate de acceso */
-        Gate::authorize('haveaccess', 'client.destroy');
+        Gate::authorize('haveaccess', 'cliente.destroy');
 
         /* Eliminar persona */
         $personaActualizada = App\Persona::findOrFail($id);        
